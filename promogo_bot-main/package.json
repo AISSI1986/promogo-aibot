@@ -1,0 +1,25 @@
+{
+    "name": "promogo-chat-widget",
+    "version": "1.0.0",
+    "description": "Widget de chat vocal multilingue pour les sites web",
+    "main": "app.js",
+    "scripts": {
+        "start": "serve",
+        "dev": "serve"
+    },
+    "keywords": [
+        "chat",
+        "voice",
+        "widget",
+        "multilingual",
+        "haoussa",
+        "ewe",
+        "twi",
+        "ga"
+    ],
+    "author": "",
+    "license": "MIT",
+    "dependencies": {
+        "serve": "^14.0.1"
+    }
+}

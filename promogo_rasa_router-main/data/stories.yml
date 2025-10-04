@@ -1,0 +1,285 @@
+version: "3.1"
+
+stories:
+  - story: happy path - greeting
+    steps:
+      - intent: greet
+      - action: action_multilingual_response
+
+  - story: happy path - goodbye
+    steps:
+      - intent: goodbye
+      - action: action_multilingual_response
+
+  - story: happy path - thank
+    steps:
+      - intent: thank
+      - action: action_multilingual_response
+
+  - story: happy path - who are you
+    steps:
+      - intent: who_are_you
+      - action: action_multilingual_response
+
+  - story: happy path - out of scope
+    steps:
+      - intent: out_of_scope
+      - action: action_multilingual_response
+
+  - story: happy path - product search
+    steps:
+      - intent: product_search
+      - action: action_multilingual_response
+
+  - story: happy path - price inquiry
+    steps:
+      - intent: price_inquiry
+      - action: action_multilingual_response
+
+  - story: happy path - product recommendation
+    steps:
+      - intent: product_recommendation
+      - action: action_multilingual_response
+
+  - story: happy path - payment method
+    steps:
+      - intent: payment_method
+      - action: action_multilingual_response
+
+  - story: happy path - complaint
+    steps:
+      - intent: complaint
+      - action: action_multilingual_response
+
+  - story: happy path - contact support
+    steps:
+      - intent: contact_support
+      - action: action_contact_support
+
+  - story: happy path - signup
+    steps:
+      - intent: signup
+      - action: action_redirect_signup
+
+  - story: happy path - login
+    steps:
+      - intent: login
+      - action: action_redirect_login
+
+  - story: happy path - open seller app
+    steps:
+      - intent: open_seller_app
+      - action: action_open_seller_app
+
+  - story: happy path - open buyer app
+    steps:
+      - intent: open_buyer_app
+      - action: action_open_buyer_app
+
+  - story: happy path - open delivery app
+    steps:
+      - intent: open_delivery_app
+      - action: action_open_delivery_app
+
+  - story: achat avec formulaire - chemin heureux
+    steps:
+      - intent: greet
+      - action: action_multilingual_response
+      - intent: buy
+      - action: purchase_form
+      - active_loop: purchase_form
+      - slot_was_set:
+          - requested_slot: product
+      - intent: inform
+        entities:
+          - product: "riz"
+      - slot_was_set:
+          - product: "riz"
+      - action: purchase_form
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - action: action_search_products
+
+  - story: vente avec formulaire - chemin heureux
+    steps:
+      - intent: greet
+      - action: action_multilingual_response
+      - intent: sell
+      - action: sales_form
+      - active_loop: sales_form
+      - slot_was_set:
+          - requested_slot: product
+      - intent: inform
+        entities:
+          - product: "téléphone"
+      - slot_was_set:
+          - product: "téléphone"
+      - action: sales_form
+      - active_loop: sales_form
+      - slot_was_set:
+          - requested_slot: price
+      - intent: inform
+        entities:
+          - price: 500
+      - slot_was_set:
+          - price: 500
+      - action: sales_form
+      - active_loop: sales_form
+      - slot_was_set:
+          - requested_slot: condition
+      - intent: inform
+        entities:
+          - condition: "occasion"
+      - slot_was_set:
+          - condition: "occasion"
+      - action: sales_form
+      - active_loop: sales_form
+      - slot_was_set:
+          - requested_slot: location
+      - intent: inform
+        entities:
+          - location: "Accra"
+      - slot_was_set:
+          - location: "Accra"
+      - action: sales_form
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - action: action_process_sale
+
+  - story: achat direct avec produit mentionné
+    steps:
+      - intent: buy
+        entities:
+          - product: "ordinateur"
+      - action: purchase_form
+      - active_loop: purchase_form
+      - slot_was_set:
+          - product: "ordinateur"
+      - action: purchase_form
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - action: action_search_products
+
+  - story: interruption et reprise du formulaire d'achat
+    steps:
+      - intent: buy
+      - action: purchase_form
+      - active_loop: purchase_form
+      - slot_was_set:
+          - requested_slot: product
+      - action: purchase_form
+      - active_loop: purchase_form
+      - slot_was_set:
+          - requested_slot: product
+      - intent: inform
+        entities:
+          - product: "livre"
+      - slot_was_set:
+          - product: "livre"
+      - action: purchase_form
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - action: action_search_products
+
+  - story: interruption et reprise du formulaire de vente
+    steps:
+      - intent: sell
+      - action: sales_form
+      - active_loop: sales_form
+      - slot_was_set:
+          - requested_slot: product
+      - intent: who_are_you
+      - action: action_multilingual_response
+      - action: sales_form
+      - active_loop: sales_form
+      - slot_was_set:
+          - requested_slot: product
+      - intent: inform
+        entities:
+          - product: "voiture"
+      - slot_was_set:
+          - product: "voiture"
+      - action: sales_form
+      - active_loop: sales_form
+      - slot_was_set:
+          - requested_slot: price
+      - intent: inform
+        entities:
+          - price: 15000
+      - slot_was_set:
+          - price: 15000
+      - action: sales_form
+      - active_loop: sales_form
+      - slot_was_set:
+          - requested_slot: condition
+      - intent: inform
+        entities:
+          - condition: "neuf"
+      - slot_was_set:
+          - condition: "neuf"
+      - action: sales_form
+      - active_loop: sales_form
+      - slot_was_set:
+          - requested_slot: location
+      - intent: inform
+        entities:
+          - location: "Lagos"
+      - slot_was_set:
+          - location: "Lagos"
+      - action: sales_form
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - action: action_process_sale
+
+  - story: conversation complète avec remerciements
+    steps:
+      - intent: greet
+      - action: action_multilingual_response
+      - intent: buy
+      - action: purchase_form
+      - active_loop: purchase_form
+      - slot_was_set:
+          - requested_slot: product
+      - intent: inform
+        entities:
+          - product: "smartphone"
+      - slot_was_set:
+          - product: "smartphone"
+      - action: purchase_form
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - action: action_search_products
+      - intent: thank
+      - action: action_multilingual_response
+      - intent: goodbye
+      - action: action_multilingual_response
+
+  - story: interruption formulaire pour login
+    steps:
+      - intent: buy
+      - action: purchase_form
+      - active_loop: purchase_form
+      - intent: login
+      - action: action_redirect_login
+      - action: action_reset_slots
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+
+  - story: interruption formulaire pour support
+    steps:
+      - intent: buy
+      - action: purchase_form
+      - active_loop: purchase_form
+      - intent: contact_support
+      - action: action_contact_support
+      - action: action_reset_slots
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null

@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  stt-api:
+    build: .
+    container_name: stt-promogo
+    ports:
+      - "9000:9000"
+    volumes:
+      - models_cache:/app/models_cache
+    environment:
+      - MODELS_CACHE_DIR=/app/models_cache
+    restart: unless-stopped
+
+volumes:
+  models_cache:
+    driver: local

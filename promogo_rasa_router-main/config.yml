@@ -1,0 +1,69 @@
+# The config recipe.
+# https://rasa.com/docs/rasa/model-configuration/
+recipe: default.v1
+
+# The assistant project unique identifier
+assistant_id: promogorasarouter
+
+# Language configuration
+language: "xx" # 'xx' enables multilingual processing
+
+# NLU pipeline
+pipeline:
+  # Tokenizer for multilingual support
+  - name: WhitespaceTokenizer
+  
+  # Feature extractors
+  - name: RegexFeaturizer
+  - name: LexicalSyntacticFeaturizer
+  
+  # Count vectors for better entity recognition
+  - name: CountVectorsFeaturizer
+    analyzer: word
+    min_ngram: 1
+    max_ngram: 2  # Réduit de 4 pour économiser la mémoire
+  
+  - name: CountVectorsFeaturizer
+    analyzer: char_wb
+    min_ngram: 2
+    max_ngram: 3  # Réduit de 4 pour économiser la mémoire
+  
+  # DIET Classifier optimisé pour les entités
+  - name: DIETClassifier
+    epochs: 50  # Augmenté de 10 à 50 pour un meilleur apprentissage
+    batch_size: [32, 64]  # Batch size adaptatif
+    entity_recognition: True
+    constrain_similarities: True
+    evaluate_every_number_of_epochs: 10
+    # Paramètres pour améliorer la reconnaissance d'entités
+    number_of_transformer_layers: 2
+    transformer_size: 128  # Réduit pour économiser la mémoire
+    use_masked_language_model: True
+    drop_rate: 0.2
+    weight_sparsity: 0.8
+    
+  - name: EntitySynonymMapper
+  
+  - name: ResponseSelector
+    epochs: 50  # Augmenté pour un meilleur apprentissage
+    batch_size: [16, 32]  # Batch size plus petit pour économiser la mémoire
+    constrain_similarities: True
+    retrieval_intent: promogo
+    
+  - name: FallbackClassifier
+    threshold: 0.7
+    ambiguity_threshold: 0.3
+
+# Configuration for Rasa Core.
+policies:
+  - name: MemoizationPolicy
+    max_history: 3  # Réduit pour économiser la mémoire
+    
+  - name: RulePolicy
+  
+  - name: TEDPolicy
+    max_history: 3  # Réduit de 5 à 3
+    epochs: 50  # Augmenté de 10 à 50
+    batch_size: [16, 32]  # Batch size adaptatif
+    constrain_similarities: True
+    evaluate_every_number_of_epochs: 10

@@ -1,0 +1,4009 @@
+version: "3.1"
+
+nlu:
+  - intent: greet
+    examples: |
+      # English
+      - hello
+      - hi
+      - hey
+      - good morning
+      - good afternoon
+      - good evening
+      - greetings
+      - how are you
+      - how's it going
+      - what's up
+      - howdy
+      - hi there
+      - hello there
+      - hey there
+      - good day
+      - morning
+      - afternoon
+      - evening
+      - hey there 
+      - hi hi 
+      - good to see you 
+      - morning! 
+      - hello [store](location)
+      - hey [shop](location) bot 
+      - hi, I'm looking to [buy](action_type)
+      - hello there 
+      - greetings 
+      - what's up? 
+      - hi, how's it going?
+      - how are you doing
+      - how have you been
+      - how's your day
+      - how's your day going
+      - how's everything
+      - how's everything going
+      - how's life
+      - how's life treating you
+      - nice to meet you
+      - pleased to meet you
+      - it's a pleasure to meet you
+      - I'm glad to meet you
+      - I'm happy to meet you
+      - I'm delighted to meet you
+      - welcome
+      - welcome back
+      - I've been waiting for you
+      - I've been expecting you
+      - I've been looking forward to talking with you
+      - I've been looking forward to chatting with you
+      - I've been looking forward to speaking with you
+      - I've been looking forward to meeting you
+      - hello there, how are you doing today?
+      - hi, I hope you're having a great day
+      - hey, nice to meet you
+      - good day to you
+      - greetings and salutations
+      - hello, I'm reaching out to you
+      - hi there, I need some [assistance](action_type)
+      - hey, can you help me with something?
+      - good morning, I have a [question](action_type)
+      - good afternoon, I'd like some [information](action_type)
+      - good evening, are you available?
+      - hello, is anyone there?
+      - hi, are you online?
+      - hey, can we talk?
+      - hello, I'm looking for [help](action_type)
+
+      # Hausa
+      - sannu
+      - barka
+      - barka da zuwa
+      - sannu da zuwa
+      - sannu da safe
+      - sannu da yamma
+      - sannu da dare
+      - barka da safe
+      - barka da rana
+      - barka da dare
+      - barka da zuwa
+      - barka da yamma
+      - barka da yini
+      - barka da kwana
+      - lafiya lau?
+      - yaya aiki?
+      - yaya hanya?
+      - yaya gida?
+      - yaya iyali?
+      - yaya kwana?
+      - ina yini?
+      - sallama
+      - ina kwana
+      - Ina wuni?
+      - Ina gajiya?
+      - Yaya kake?
+      - Yaya kike?
+      - Yaya ku ke?
+      - Ina kwana lafiya?
+      - Ina yini lafiya?
+      - Ina gajiya lafiya?
+      - Barka da zuwa [gidanmu](location)
+      - Barka da zuwa [shagonmu](location)
+      - Barka da zuwa [kasuwarmu](location)
+      - Barka da ganin ka
+      - Barka da ganin ki
+      - Barka da ganin ku
+      - Ina jin daɗin ganinku
+      - Ina murna da ganinku
+      - Ina farin cikin ganinku
+      - Ina matukar farin ciki da ganinku
+      - Na gode da zuwa
+      - Mun gode da zuwa
+      - Ina murna da zuwa ka
+      - Ina murna da zuwa ki
+      - Ina murna da zuwa ku
+      - Ina farin cikin zuwa ka
+      - Ina farin cikin zuwa ki
+      - Ina farin cikin zuwa ku
+      - Ina matukar farin cikin zuwa ka
+      - Ina matukar farin cikin zuwa ki
+      - Ina matukar farin cikin zuwa ku
+      - sannu da aiki, yaya kake yau?
+      - barka da yamma, ina fata kana jin daɗi
+      - sannu, ina murna da haɗuwa da kai
+      - rana mai kyau gare ka
+      - gaisuwa da bangaskiya
+      - sannu, ina neman [tuntubarka](action_type)
+      - barka, ina bukatar [taimako](action_type)
+      - sannu, za ka iya taimaka min da wani [abu](product)?
+      - barka da safiya, ina da [tambaya](action_type)
+      - barka da rana, ina son samun wasu [bayani](action_type)
+      - barka da yamma, kana nan?
+      - sannu, akwai wani a nan?
+      - barka, kana cikin layi?
+      - sannu, za mu iya magana?
+      - barka, ina neman [taimako](action_type)
+
+      # Ewe
+      - Ŋdɔ na mi
+      - Ŋdɔ na mi katã
+      - Aleke nèle?
+      - Aleke mia katã miele?
+      - Aleke ƒomea le?
+      - Dɔ le edzi nyuia?
+      - Wòezɔ ɖe mía gbɔ
+      - Wòezɔ ɖe míaƒe [fiasea](location)
+      - Wòezɔ ɖe míaƒe [dua](location) me
+      - Enyo be mekpɔ wò
+      - Enyo be míekpɔ mi
+      - Mekpɔ dzidzɔ be mekpɔ wò
+      - Mekpɔ dzidzɔ be míekpɔ mi
+      - Míaƒe fiase xɔ wò atuu
+      - Míaƒe dua xɔ wò atuu
+      - Ŋdi na wo
+      - Ŋdi na mi
+      - Ŋdi na mi na wo
+      - Woezɔ
+      - Woezɔ na mi
+      - Woezɔ na wo
+      - Ŋdi na mi na miawoe
+      - Ŋdi na wo na miawoe
+      - Ŋdi na mi na wo na miawoe
+      - Ŋdi na wo na mi na miawoe
+      - Ŋdi na miawoe
+      - Ŋdi na miawoe na mi
+      - Ŋdi na miawoe na wo
+      - Ŋdi na miawoe na mi na wo
+      - Ŋdi na miawoe na wo na mi
+      - víɛ nɔ wo
+      - wɔfɛ akpɔ
+      - míevɔ na wo
+      - dɔ agɔ
+      - Ŋdi nyuie
+      - Ŋdi na wò
+      - Do agbe
+      - Alɛkɛ?
+      - Mekpɔ dzidzɔ ŋutɔ be medo go wò
+      - Enyo ŋutɔ be míekpɔ mía nɔewo
+      - Akpe na Mawu be míekpɔ mía nɔewo
+      - Mekpɔ dzidzɔ be míedo go mía nɔewo
+      - Mekpɔ dzidzɔ be míeƒo nu
+      - Mekpɔ dzidzɔ be míeƒo nu egbe
+      - Mekpɔ dzidzɔ be míeƒo nu ŋdi sia
+      - Mekpɔ dzidzɔ be míeƒo nu ɣetrɔ sia
+      - Mekpɔ dzidzɔ be míeƒo nu fiẽ sia
+      - Mekpɔ dzidzɔ be míeƒo nu zã sia
+      - Ŋdi na wo, aleke nèle egbe?
+      - Ŋdɔ, mekpɔ mɔ be ŋkeke nyui le asiwò
+      - Ŋdi, enyo be míekpɔ mía nɔewo
+      - Ŋkeke nyui na wò
+      - Gbedoname kple dzideƒo
+      - Ŋdi, mele didim be mado go wò
+      - Ŋdɔ, mehiã [kpekpeɖeŋu](action_type)
+      - Ŋdi, àte ŋu akpe ɖe ŋunye le [nane](product) me?
+      - Ŋdi nyui, [biabia](action_type) aɖe le asinye
+      - Ŋdɔ nyui, medi [nyatakakawo](action_type) aɖewo
+      - Fiẽ nyui, èle afisia?
+      - Ŋdi, ame aɖe le afima?
+      - Ŋdɔ, èle dɔ dzi?
+      - Ŋdi, míate ŋu aƒo nua?
+      - Ŋdɔ, mele [kpekpeɖeŋu](action_type) dim
+
+      # Twi
+      - Ɛte sɛn bio?
+      - Wo ho te sɛn ɛnnɛ?
+      - Wo ho te sɛn anɔpa yi?
+      - Wo ho te sɛn ewimbra yi?
+      - Wo ho te sɛn anwummere yi?
+      - Wo ho te sɛn nnansa yi?
+      - Wo ho te sɛn nnɛra?
+      - Wo ho te sɛn ɛnnora?
+      - Akwaaba yɛn [fie](location)
+      - Akwaaba yɛn [store](location) mu
+      - Akwaaba yɛn [shop](location) mu
+      - Ɛyɛ me anigye sɛ mahunu wo
+      - Ɛyɛ yɛn anigye sɛ yɛahunu mo
+      - Ɛyɛ me fɛ sɛ mahunu wo
+      - Ɛyɛ yɛn fɛ sɛ yɛahunu mo
+      - Maakye
+      - Maaha
+      - Maadwo
+      - Ɛte sɛn?
+      - Wo ho te sɛn?
+      - Wo ho yɛ?
+      - Wo ho yɛ fɛ?
+      - Wo ho yɛ den?
+      - Wo ho yɛ dɛ?
+      - Wo ho yɛ bɛn?
+      - Ɛte sɛn papa?
+      - Ɛte sɛn maame?
+      - Ɛte sɛn nana?
+      - agoo
+      - mawoo
+      - me ma wo akye
+      - wo ho te sɛn?
+      - agya/gya mo
+      - Ɛyɛ me anigye paa sɛ mahyia wo
+      - Ɛyɛ me anigye paa sɛ yɛahyia
+      - Ɛyɛ me anigye paa sɛ yɛakasa
+      - Ɛyɛ me anigye paa sɛ yɛakasa ɛnnɛ
+      - Ɛyɛ me anigye paa sɛ yɛakasa anɔpa yi
+      - Ɛyɛ me anigye paa sɛ yɛakasa awia yi
+      - Ɛyɛ me anigye paa sɛ yɛakasa anwummere yi
+      - Ɛyɛ me anigye paa sɛ yɛakasa anadwo yi
+      - Ɛyɛ me anigye paa sɛ yɛakasa bio
+      - Ɛyɛ me anigye paa sɛ yɛahyia bio
+      - Maakye, wo ho te sɛn ɛnnɛ?
+      - Mema wo akye, mewɔ anidasoɔ sɛ wo wɔ da pa
+      - Maakye, ɛyɛ me fɛ sɛ mahyia wo
+      - Da pa ma wo
+      - Nkyea ne gyidie
+      - Maakye, merepɛ sɛ me ne wo di [nkɔmmɔ](action_type)
+      - Mema wo akye, mehia [mmoa](action_type)
+      - Maakye, wobɛtumi aboa me wɔ [biribi](product) ho?
+      - Anɔpa pa, mewɔ [asɛmmisa](action_type) bi
+      - Awia pa, mepɛ [nsɛm](action_type) bi
+      - Anwummere pa, wo wɔ hɔ?
+      - Maakye, obi wɔ hɔ?
+      - Mema wo akye, wo wɔ online?
+      - Maakye, yɛbɛtumi akasa?
+      - Mema wo akye, merehwehwɛ [mmoa](action_type)
+
+  - intent: goodbye
+    examples: |
+      # English
+      - bye
+      - goodbye
+      - see you later
+      - see you soon
+      - take care
+      - have a good day
+      - have a nice day
+      - until next time
+      - talk to you later
+      - catch you later
+      - bye bye 
+      - see ya 
+      - talk later 
+      - I'm off 
+      - thanks, bye 
+      - catch you later 
+      - have a nice day 
+      - see you soon 
+      - that's it for now 
+      - see you around
+      - see you tomorrow
+      - see you next time
+      - see you next [week](time)
+      - see you next [month](time)
+      - see you next [year](time)
+      - see you in a [bit](time)
+      - see you in a [while](time)
+      - see you in a [minute](time)
+      - see you in a [moment](time)
+      - farewell
+      - I must go now
+      - I have to leave
+      - I need to go
+      - I'm leaving now
+      - I'll be back
+      - I'll talk to you [later](time)
+      - I'll see you [later](time)
+      - I'll catch you [later](time)
+      - I'll be in touch
+      - I'll call you [later](time)
+      - I'll message you [later](time)
+      - I'll text you [later](time)
+      - I'll email you [later](time)
+
+      # Hausa
+      - sai an jima
+      - sai wata [rana](time)
+      - sai [gobe](time)
+      - sai mun hadu
+      - sai mun ga juna
+      - Allah ya kiyaye hanya
+      - Allah ya ba da sa'a
+      - sai an jima
+      - na tafi
+      - sai wata [rana](time)
+      - bye
+      - Sai an hadu
+      - Sai an sake hadu
+      - Sai an sake ganawa
+      - Sai an jima [anjima](time)
+      - Sai an jima [kaɗan](time)
+      - Sai an jima [da yawa](time)
+      - Sai an jima [sosai](time)
+      - Sai an jima [kadan](time)
+      - Allah ya kiyaye
+      - Allah ya kiyaye ka
+      - Allah ya kiyaye ki
+      - Allah ya kiyaye ku
+      - Allah ya ba da sa'a
+      - Allah ya ba da sa'a gare ka
+      - Allah ya ba da sa'a gare ki
+      - Allah ya ba da sa'a gare ku
+      - Allah ya ba da lafiya
+      - Allah ya ba da lafiya gare ka
+      - Allah ya ba da lafiya gare ki
+      - Allah ya ba da lafiya gare ku
+      - Sai na dawo
+      - Sai mun sake hadu
+      - Sai mun sake ganawa
+      - Sai mun sake magana
+      - Sai mun sake tattaunawa
+      - Sai mun sake hulɗa
+      - Sai mun sake haɗuwa
+      - Sai mun sake saduwa
+      - Sai mun sake taruwa
+      - Sai mun sake haɗawa
+      - Sai mun sake haɗuwa da juna
+      - Sai mun sake ganawa da juna
+      - Sai mun sake magana da juna
+
+      # Ewe
+      - Míakpe kpuie
+      - Míakpe kpuie ake
+      - Míakpe kpuie ake ɖe [ŋgɔ](time)
+      - Míakpe kpuie ake ɖe [megbe](time)
+      - Míakpe kpuie ake ɖe [ŋkeke ɖeka](time) me
+      - Míakpe kpuie ake ɖe [ŋkeke eve](time) me
+      - Míakpe kpuie ake ɖe [ŋkeke etɔ̃](time) me
+      - Míakpe kpuie ake ɖe [ŋkeke ene](time) me
+      - Míakpe kpuie ake ɖe [ŋkeke atɔ̃](time) me
+      - Míakpe kpuie ake ɖe [ŋkeke adẽ](time) me
+      - Míakpe kpuie ake ɖe [ŋkeke adre](time) me
+      - Míakpe kpuie ake ɖe [ŋkeke enyi](time) me
+      - Míakpe kpuie ake ɖe [ŋkeke asieke](time) me
+      - Míakpe kpuie ake ɖe [ŋkeke ewo](time) me
+      - Mawu nayra wò
+      - Mawu nayra mi
+      - Mawu nakpɔ wò ta
+      - Mawu nakpɔ mi ta
+      - Mawu nana wò ŋutifafa
+      - Mawu nana mi ŋutifafa
+      - Gbugbɔ dze egɔme
+      - Gbugbɔ dze fia
+      - Gbugbɔ dze eŋu
+      - Miadogo
+      - Miadogo na mi
+      - Miadogo na wo
+      - Miadogo na miawoe
+      - Míènɔ dzo
+      - néwɔ dzo
+      - wòle dzo
+      - dzo dzi
+      - xɔ dzo
+      - Ele be mayi fifia
+      - Ele be madzo fifia
+      - Ele be madzo azɔ
+      - Ele be madzo [kaba](time)
+      - Ele be madzo [kpata](time)
+      - Ele be madzo [enumake](time)
+      - Ele be madzo [kpuie](time)
+      - Ele be madzo [kpata kpata](time)
+      - Ele be madzo [kpata kpata kpata](time)
+      - Ele be madzo [kpata kpata kpata kpata](time)
+      - Ele be madzo [kpata kpata kpata kpata kpata](time)
+
+      # Twi
+      - Yɛbɛhyia bio [ɛnkyɛ](time)
+      - Yɛbɛhyia bio [ɔkyena](time)
+      - Yɛbɛhyia bio [nnawɔtwe yi](time)
+      - Yɛbɛhyia bio [bosome yi](time)
+      - Yɛbɛhyia bio [afe yi](time)
+      - Yɛbɛhyia bio [berɛ bi](time)
+      - Yɛbɛhyia bio [berɛ tiawa bi](time)
+      - Yɛbɛhyia bio [berɛ kakra bi](time)
+      - Yɛbɛhyia bio [berɛ kakraa bi](time)
+      - Yɛbɛhyia bio [berɛ kakraabi](time)
+      - Onyame nhyira wo
+      - Onyame nhyira mo
+      - Onyame nkɔ wo ho
+      - Onyame nkɔ mo ho
+      - Onyame mma wo asomdwee
+      - Onyame mma mo asomdwee
+      - Yɛbɛhyia bio
+      - Nante yie
+      - Da yie
+      - Daakye
+      - Mema wo akye
+      - Mema wo adwo
+      - Nante yie
+      - yera
+      - me re kɔ
+      - da yie
+      - kɔ yiye
+      - Ɛsɛ sɛ me kɔ seesei
+      - Ɛsɛ sɛ me fi ha
+      - Ɛsɛ sɛ me kɔ
+      - Me re kɔ seesei
+      - Me bɛ san aba
+      - Me bɛ kasa akyerɛ wo [akyire yi](time)
+      - Me bɛ hu wo [akyire yi](time)
+      - Me bɛ frɛ wo [akyire yi](time)
+      - Me bɛ twerɛ wo [akyire yi](time)
+      - Me bɛ twerɛ wo [email](contact_method) [akyire yi](time)
+      - Me bɛ twerɛ wo [message](contact_method) [akyire yi](time)
+      - Me bɛ twerɛ wo [text](contact_method) [akyire yi](time)
+      - Me bɛ twerɛ wo [WhatsApp](contact_method) [akyire yi](time)
+
+  - intent: inform
+    examples: |
+      # English
+      - [rice](product)
+      - [maize](product)
+      - [phone](product)
+      - [computer](product)
+      - [1](quantity)
+      - [2](quantity)
+      - [5](quantity)
+      - [10](quantity)
+      - [20](quantity)
+      - [50](quantity)
+      - [100](quantity)
+      - [10ghs](price)
+      - [20ghs](price)
+      - [50ghs](price)
+      - [100ghs](price)
+      - [red](color)
+      - [blue](color)
+      - [green](color)
+      - [black](color)
+      - [white](color)
+      - [new](condition)
+      - [used](condition)
+      - [like new](condition)
+      - [Accra](location)
+      - [Lagos](location)
+      - [Nairobi](location)
+      - [credit card](payment_method)
+      - [mobile money](payment_method)
+      - [bank transfer](payment_method)
+      - [cash](payment_method)
+      - I want [3](quantity) [bags](product)
+      - I need [5](quantity) [shirts](product) in [blue](color)
+      - The price is [200ghs](price)
+      - It costs [150ghs](price)
+      - I'm in [Kumasi](location)
+      - The item is in [Tema](location)
+      - I'll pay with [MTN Mobile Money](payment_method)
+      - I prefer [Vodafone Cash](payment_method)
+      - The condition is [excellent](condition)
+      - It's in [good](condition) condition
+      - I want it in [yellow](color)
+      - Do you have it in [purple](color)?
+      - I need [10](quantity) pieces
+      - About [25](quantity) units
+      - I'm selling for [300ghs](price)
+      - I'm asking [75ghs](price) per item
+      - Located in [Tamale](location)
+      - I'm based in [Cape Coast](location)
+      - I'll use [AirtelTigo Money](payment_method)
+      - Can I pay through [PayPal](payment_method)?
+
+      # Hausa
+      - [shinkafa](product)
+      - [masara](product)
+      - [waya](product)
+      - [kwamfyuta](product)
+      - [1](quantity)
+      - [2](quantity)
+      - [5](quantity)
+      - [10](quantity)
+      - [dala 10](price)
+      - [dala 20](price)
+      - [ja](color)
+      - [shuɗi](color)
+      - [kore](color)
+      - [sabon](condition)
+      - [an yi amfani](condition)
+      - Ina son [jaka](product) [uku](quantity)
+      - Ina bukatar [riguna](product) [biyar](quantity) masu [shuɗi](color)
+      - Farashin shi ne [dala 200](price)
+      - Yana da tsada [dala 150](price)
+      - Ina a [Kano](location)
+      - Kayan yana a [Kaduna](location)
+      - Zan biya ta [MTN Mobile Money](payment_method)
+      - Na fi son [Airtel Money](payment_method)
+      - Halin kayan [kyakkyawa ne](condition)
+      - Yana cikin [kyakkyawan](condition) hali
+      - Ina son [rawaya](color)
+      - Kuna da shi a [shudi mai duhu](color)?
+      - Ina bukatar [guda goma](quantity)
+      - Kusan [ashirin da biyar](quantity)
+      - Ina sayarwa a [dala 300](price)
+      - Ina neman [dala 75](price) ga kowanne
+      - Yana a [Zaria](location)
+      - Ina zaune a [Jos](location)
+      - Zan yi amfani da [Glo Mobile Money](payment_method)
+      - Zan iya biya ta [PayPal](payment_method)?
+
+      # Ewe
+      - [mɔli](product)
+      - [bli](product)
+      - [kaƒomɔ](product)
+      - [kɔmputa](product)
+      - [ɖeka](quantity)
+      - [eve](quantity)
+      - [atɔ̃](quantity)
+      - [ewo](quantity)
+      - [dɔla 10](price)
+      - [dɔla 20](price)
+      - [dzĩe](color)
+      - [blɔ](color)
+      - [yeye](condition)
+      - [wozãe](condition)
+      - Medi [kotoku](product) [etɔ̃](quantity)
+      - Mehiã [awu](product) [atɔ̃](quantity) si le [blɔ](color) me
+      - Asi la nye [dɔla 200](price)
+      - Exɔ asi [dɔla 150](price)
+      - Mele [Ho](location)
+      - Nu la le [Keta](location)
+      - Maxe fe to [MTN Mobile Money](payment_method) dzi
+      - Melɔ̃ [Vodafone Cash](payment_method) wu
+      - Nɔnɔme la [nyo ŋutɔ](condition)
+      - Ele [nɔnɔme nyui](condition) me
+      - Medi eya si le [yibɔ](color) me
+      - Èle [blɔ tume](color) me?
+      - Mehiã [ewo](quantity) ƒe akpa
+      - Abe [blaeve vɔ atɔ̃](quantity) ene
+      - Mele edzram [dɔla 300](price)
+      - Mele ebiam [dɔla 75](price) ɖe ɖeka nu
+      - Ele [Aflao](location)
+      - Mele [Akatsi](location)
+      - Mazã [AirtelTigo Money](payment_method)
+      - Mate ŋu axe fe to [PayPal](payment_method) dzia?
+
+      # Twi
+      - [ɔmo](product)
+      - [aburo](product)
+      - [fon](product)
+      - [kɔmputa](product)
+      - [baako](quantity)
+      - [mmienu](quantity)
+      - [enum](quantity)
+      - [du](quantity)
+      - [dɔla 10](price)
+      - [dɔla 20](price)
+      - [kɔkɔɔ](color)
+      - [bruu](color)
+      - [foforɔ](condition)
+      - [wɔadi dwuma](condition)
+      - Mepɛ [kotoku](product) [mmiɛnsa](quantity)
+      - Mehia [ntade](product) [enum](quantity) a ɛyɛ [bruu](color)
+      - Ne boɔ yɛ [sika 200](price)
+      - Ɛyɛ [sika 150](price)
+      - Mewɔ [Kumasi](location)
+      - Adeɛ no wɔ [Tema](location)
+      - Mede [MTN Mobile Money](payment_method) bɛtua ka
+      - Mepɛ [Vodafone Cash](payment_method)
+      - Ne tebea yɛ [papa paa](condition)
+      - Ɛwɔ [tebea pa](condition) mu
+      - Mepɛ no wɔ [akokɔsradeɛ](color) mu
+      - Mowɔ bi wɔ [purpul](color) mu?
+      - Mehia [du](quantity) bi
+      - Bɛyɛ [aduonu enum](quantity)
+      - Meretɔn no [sika 300](price)
+      - Merebisa [sika 75](price) ma baako
+      - Ɛwɔ [Tamale](location)
+      - Mete [Cape Coast](location)
+      - Mede [AirtelTigo Money](payment_method) bɛdi dwuma
+      - Metumi de [PayPal](payment_method) atua ka?
+
+  - intent: thank
+    examples: |
+      # English
+      - thanks
+      - thank you
+      - thanks a lot
+      - thank you very much
+      - thanks a million
+      - I appreciate it
+      - I'm grateful
+      - that's very kind
+      - much obliged
+      - I owe you one
+      - thank you so much
+      - thanks so much
+      - thanks a bunch
+      - thank you a bunch
+      - thanks a ton
+      - thank you a ton
+      - thanks a lot 
+      - appreciate it 
+      - you're a lifesaver 
+      - cheers 
+      - thank you so much 
+      - many thanks 
+      - thanks for that 
+      - thanks, that helps 
+      - thank you very much 
+      - I appreciate your [help](assistance_type)
+      - I appreciate your [assistance](assistance_type)
+      - I appreciate your [support](assistance_type)
+      - I appreciate your [guidance](assistance_type)
+      - I appreciate your [advice](assistance_type)
+      - I appreciate your [time](assistance_type)
+      - I appreciate your [effort](assistance_type)
+      - I appreciate your [patience](assistance_type)
+      - I appreciate your [understanding](assistance_type)
+      - I appreciate your [kindness](assistance_type)
+      - I appreciate your [generosity](assistance_type)
+      - I appreciate your [consideration](assistance_type)
+      - I appreciate your [attention](assistance_type)
+      - I appreciate your [prompt response](assistance_type)
+      - I appreciate your [quick reply](assistance_type)
+      - I appreciate your [immediate attention](assistance_type)
+      - Thanks for finding that [product](product) for me
+      - Thank you for the [information](assistance_type) about [pricing](topic)
+      - I appreciate your [help](assistance_type) with my [order](topic)
+      - Thanks for the [discount](topic)
+      - Thank you for the [fast delivery](assistance_type)
+      - I appreciate the [quality service](assistance_type)
+
+      # Hausa
+      - na gode
+      - na gode sosai
+      - na gode da yawa
+      - na gode da gaske
+      - na gode kwarai
+      - Allah ya saka da alheri
+      - Allah ya bar zumunci
+      - nagode sosai
+      - muna godiya
+      - godiya
+      - na yaba
+      - Na gode sosai
+      - Na gode da yawa
+      - Na gode da gaske
+      - Na gode kwarai
+      - Na gode kwarai da gaske
+      - Na gode ainun
+      - Na yi godiya
+      - Na yi godiya sosai
+      - Na yi godiya da yawa
+      - Na yi godiya da gaske
+      - Na yi godiya kwarai
+      - Na yi godiya kwarai da gaske
+      - Na yi godiya ainun
+      - Na yi maka godiya
+      - Na yi miki godiya
+      - Na yi muku godiya
+      - Allah ya saka da alheri
+      - Allah ya saka maka da alheri
+      - Allah ya saka miki da alheri
+      - Allah ya saka muku da alheri
+      - Na gode da [taimakonka](assistance_type)
+      - Na gode da [taimakonki](assistance_type)
+      - Na gode da [taimakonku](assistance_type)
+      - Na gode da [agajinka](assistance_type)
+      - Na gode da [agajinki](assistance_type)
+      - Na gode da [agajinku](assistance_type)
+      - Na gode da [goyon bayanka](assistance_type)
+      - Na gode da [goyon bayanka](assistance_type)
+      - Na gode da [goyon bayanku](assistance_type)
+      - Na gode da [jagorancinka](assistance_type)
+      - Na gode da [jagorancinki](assistance_type)
+      - Na gode da [jagorancinku](assistance_type)
+      - Na gode da [shawararka](assistance_type)
+      - Na gode da [shawaraki](assistance_type)
+      - Na gode da [shawaraku](assistance_type)
+      - Na gode da neman wannan [kaya](product) domina
+      - Na gode da [bayani](assistance_type) game da [farashin](topic)
+      - Na gode da [taimako](assistance_type) game da [oda na](topic)
+      - Na gode da [rangwame](topic)
+      - Na gode da [sauri a isarwa](assistance_type)
+      - Na gode da [ingantaccen sabis](assistance_type)
+
+      # Ewe
+      - Akpe kakaka
+      - Akpe geɖe
+      - Akpe geɖe ŋutɔ
+      - Akpe geɖe ŋutɔŋutɔ
+      - Akpe geɖe ŋutɔŋutɔŋutɔ
+      - Akpe nami
+      - Akpe nami kakaka
+      - Akpe nami geɖe
+      - Akpe nami geɖe ŋutɔ
+      - Akpe nami geɖe ŋutɔŋutɔ
+      - Akpe nami geɖe ŋutɔŋutɔŋutɔ
+      - Akpe nawo
+      - Akpe nawo kakaka
+      - Akpe nawo geɖe
+      - Akpe nawo geɖe ŋutɔ
+      - Akpe nawo geɖe ŋutɔŋutɔ
+      - Akpe nawo geɖe ŋutɔŋutɔŋutɔ
+      - Mawu nayra wò
+      - Mawu nayra mi
+      - Akpe
+      - Akpe kaka
+      - Akpe kaka oo
+      - Akpe kaka daa
+      - Akpe na mi
+      - Akpe na wo
+      - Akpe na miawoe
+      - akpe fia
+      - míakpe
+      - akpe le eme
+      - akpe nyuie
+      - gake
+      - Akpe ɖe wò [kpekpeɖeŋu](assistance_type) ta
+      - Akpe ɖe wò [ɖoɖo](assistance_type) ta
+      - Akpe ɖe wò [nuxexlẽ](assistance_type) ta
+      - Akpe ɖe wò [nufiame](assistance_type) ta
+      - Akpe ɖe wò [aɖaŋuɖoɖo](assistance_type) ta
+      - Akpe ɖe wò [ɣeyiɣi](assistance_type) ta
+      - Akpe ɖe wò [kutrikuku](assistance_type) ta
+      - Akpe ɖe wò [dzigbɔɖi](assistance_type) ta
+      - Akpe ɖe wò [gɔmesese](assistance_type) ta
+      - Akpe ɖe wò [dɔmenyonyo](assistance_type) ta
+      - Akpe ɖe wò [lɔlɔ̃nu](assistance_type) ta
+      - Akpe ɖe wò [susu](assistance_type) ta
+      - Akpe ɖe wò [ŋkuléle](assistance_type) ta
+      - Akpe ɖe wò [ŋuɖoɖo kaba](assistance_type) ta
+      - Akpe ɖe wò [ŋuɖoɖo kpata](assistance_type) ta
+      - Akpe ɖe wò [ŋkuléle enumake](assistance_type) ta
+      - Akpe ɖe [nu](product) sia didi nam ta
+      - Akpe ɖe [nyatakakawo](assistance_type) tso [asixɔxɔ](topic) ŋu ta
+      - Akpe ɖe wò [kpekpeɖeŋu](assistance_type) kple nye [ɖoɖo](topic) ta
+      - Akpe ɖe [asi ɖiɖi](topic) ta
+      - Akpe ɖe [dɔdɔɖa kaba](assistance_type) ta
+      - Akpe ɖe [subɔsubɔ nyui](assistance_type) ta
+
+      # Twi
+      - Meda wo ase paa
+      - Meda wo ase pii
+      - Meda wo ase bebree
+      - Meda wo ase papaapa
+      - Meda wo ase kɛse
+      - Meda wo ase kɛse paa
+      - Meda wo ase kɛse pii
+      - Meda wo ase kɛse bebree
+      - Meda wo ase kɛse papaapa
+      - Meda mo ase
+      - Meda mo ase paa
+      - Meda mo ase pii
+      - Meda mo ase bebree
+      - Meda mo ase papaapa
+      - Meda mo ase kɛse
+      - Meda mo ase kɛse paa
+      - Meda mo ase kɛse pii
+      - Meda mo ase kɛse bebree
+      - Meda mo ase kɛse papaapa
+      - Onyame nhyira wo
+      - Onyame nhyira mo
+      - Medaase
+      - Meda wo ase paa
+      - Meda wo ase kɛse
+      - Meda wo ase pii
+      - Meda wo ase dodo
+      - Meda wo ase na wo
+      - meda wo ase pii
+      - meda wo ase
+      - meda ase
+      - meda mo ase
+      - da wo ase
+      - Meda wo ase wɔ wo [mmoa](assistance_type) ho
+      - Meda wo ase wɔ wo [akyedeɛ](assistance_type) ho
+      - Meda wo ase wɔ wo [mmoa](assistance_type) ho
+      - Meda wo ase wɔ wo [akwankyerɛ](assistance_type) ho
+      - Meda wo ase wɔ wo [afotuo](assistance_type) ho
+      - Meda wo ase wɔ wo [berɛ](assistance_type) ho
+      - Meda wo ase wɔ wo [mmɔdenbɔ](assistance_type) ho
+      - Meda wo ase wɔ wo [abodwokyɛre](assistance_type) ho
+      - Meda wo ase wɔ wo [nteaseɛ](assistance_type) ho
+      - Meda wo ase wɔ wo [ayamye](assistance_type) ho
+      - Meda wo ase wɔ wo [adɔeɛ](assistance_type) ho
+      - Meda wo ase wɔ wo [adwene](assistance_type) ho
+      - Meda wo ase wɔ wo [ahwɛyie](assistance_type) ho
+      - Meda wo ase wɔ wo [mmuaeɛ ntɛm](assistance_type) ho
+      - Meda wo ase wɔ wo [mmuaeɛ ntɛmntɛm](assistance_type) ho
+      - Meda wo ase wɔ wo [ahwɛyie ntɛm](assistance_type) ho
+      - Meda wo ase sɛ wohu saa [adeɛ](product) yi ma me
+      - Meda wo ase wɔ [nsɛm](assistance_type) a ɛfa [boɔ](topic) ho
+      - Meda wo ase wɔ wo [mmoa](assistance_type) a ɛfa me [order](topic) ho
+      - Meda wo ase wɔ [te so](topic) no ho
+      - Meda wo ase wɔ [abrɛ ntɛm](assistance_type) no ho
+      - Meda wo ase wɔ [som pa](assistance_type) no ho
+
+  - intent: product_search
+    examples: |
+      # English
+      - show me [sneakers](product)
+      - I'm looking for a [red](color) [dress](product)
+      - find [smartphones](product) under [200](price)
+      - search for [headphones](product)
+      - what [laptops](product) do you have?
+      - show [running shoes](product)
+      - find [yoga mats](product)
+      - search [winter jackets](product)
+      - show me [gaming monitors](product)
+      - find [budget tablets](product)
+      - I want to see [men's shirts](product)
+      - Do you have [women's shoes](product)?
+      - Show me [children's toys](product)
+      - I need a new [phone](product)
+      - I'm looking for [kitchen appliances](product)
+      - Do you sell [furniture](product)?
+      - Show me [outdoor equipment](product)
+      - I need [sports gear](product)
+      - Do you have [beauty products](product)?
+      - Show me [books](product)
+      - I'm looking for [black](color) [sneakers](product) in [size 42](size)
+      - Do you have [Samsung](brand) [phones](product)?
+      - I need a [waterproof](feature) [watch](product)
+      - Show me [wireless](feature) [headphones](product)
+      - I'm looking for [cotton](material) [t-shirts](product)
+      - Do you have [leather](material) [wallets](product)?
+      - I need a [fast](feature) [laptop](product) for [gaming](purpose)
+      - Show me [comfortable](feature) [chairs](product) for [office](
+      - Show me [comfortable](feature) [chairs](product) for [office](purpose)
+      - Find [affordable](price_range) [tablets](product) for [kids](user_type)
+      - I need [durable](feature) [shoes](product) for [running](purpose)
+      - Do you have [organic](feature) [food](product) items?
+      - Show me [high-quality](feature) [cameras](product) under [500ghs](price)
+      - I'm looking for [energy-efficient](feature) [refrigerators](product)
+      - Do you have [anti-glare](feature) [screen protectors](product) for [iPhone](brand)?
+      - I need a [lightweight](feature) [backpack](product) for [travel](purpose)
+      - Show me [non-stick](feature) [cookware](product) sets
+      - Find [hypoallergenic](feature) [pillows](product) for [sensitive skin](purpose)
+
+      # Hausa
+      - nuna mini [takalma](product)
+      - ina neman [riga](product) [ja](color)
+      - nemo [wayoyin itace](product) ƙasa da [200](price)
+      - bincika [belun kunne](product)
+      - wane [kwamfutocin](product) tafi da gidanka kuna da su?
+      - nuna [takalman gudu](product)
+      - nemo [mats na yoga](product)
+      - bincika [jakoki na sanyi](product)
+      - nuna mini [allon wasan kwamfyuta](product)
+      - nemo [allunan](product) da ba su da tsada
+      - Ina son ganin [riguna na maza](product)
+      - Kuna da [takalman mata](product)?
+      - Nuna mini [kayan wasan yara](product)
+      - Ina bukatar sabuwar [waya](product)
+      - Ina neman [kayan amfanin gidan girki](product)
+      - Kuna sayar da [kayan gida](product)?
+      - Nuna mini [kayan amfani na waje](product)
+      - Ina bukatar [kayan wasanni](product)
+      - Kuna da [kayan ƙawa](product)?
+      - Nuna mini [littattafai](product)
+      - Ina neman [takalma](product) [baƙi](color) a [size 42](size)
+      - Kuna da [wayoyin](product) [Samsung](brand)?
+      - Ina bukatar [agogo](product) [mai jurewa ruwa](feature)
+      - Nuna mini [belun kunne](product) [marasa waya](feature)
+      - Ina neman [riguna](product) na [auduga](material)
+      - Kuna da [jakar kuɗi](product) ta [fata](material)?
+      - Ina bukatar [kwamfyuta](product) [mai sauri](feature) don [wasa](purpose)
+      - Nuna mini [kujeru](product) [masu kwanciya](feature) don [ofis](purpose)
+      - Nemo [allunan](product) [masu araha](price_range) don [yara](user_type)
+      - Ina bukatar [takalma](product) [masu jurewa](feature) don [gudu](purpose)
+      - Kuna da [abinci](product) [na organik](feature)?
+      - Nuna mini [kyamarorin](product) [masu inganci](feature) ƙasa da [dala 500](price)
+      - Ina neman [firiji](product) [mai adana wutar lantarki](feature)
+      - Kuna da [mai kare haske](feature) [kare allo](product) don [iPhone](brand)?
+      - Ina bukatar [jaka](product) [mai sauƙi](feature) don [tafiya](purpose)
+      - Nuna mini [tukwanen](product) [marasa maɗaɗi](feature)
+      - Nemo [makoshi](product) [marasa haifar da rashin lafiya](feature) don [fata mai laushi](purpose)
+
+      # Ewe
+      - wɔmɛ fihã [sneakers](product)
+      - menye [dukatsi](product) kpakple [dɔwɔnu](product)
+      - etsɔ [smartphones](product) heƒe nutome ɖe [200](price)
+      - dɔ [headphones](product) le eme?
+      - wòle [laptops](product) le be?
+      - wɔmɛ fihã [afɔkpa ƒuƒu](product)
+      - dɔ [yoga mats](product) le eme?
+      - dɔ [vuvɔŋɔli](product) le eme?
+      - wɔmɛ fihã [gaming monitors](product)
+      - dɔ [tablets](product) si wòxɔxɔ le eme?
+      - Medi be makpɔ [ŋutsuwo ƒe awu](product)
+      - Miele [nyɔnuwo ƒe afɔkpa](product)?
+      - Wɔmɛ fihã [ɖeviwo ƒe fefenu](product)
+      - Mehiã [kaƒomɔ](product) yeye
+      - Mele [nudada dɔwɔnu](product) dim
+      - Miele [atikpui](product) dzram?
+      - Wɔmɛ fihã [gota dɔwɔnu](product)
+      - Mehiã [sports gear](product)
+      - Miele [beauty products](product)?
+      - Wɔmɛ fihã [agbalẽwo](product)
+      - Mele [afɔkpa](product) [yibɔ](color) dim le [lolome 42](size) me
+      - Miele [Samsung](brand) ƒe [kaƒomɔwo](product)?
+      - Mehiã [gaƒoƒoga](product) si [metsɔna tsi o](feature)
+      - Wɔmɛ fihã [headphones](product) [siwo mekplɔa ka ɖe asi o](feature)
+      - Mele [awu](product) siwo wowɔ kple [ɖeti](material) dim
+      - Miele [gaɖaka](product) siwo wowɔ kple [aɖaka](material)?
+      - Mehiã [kɔmputa](product) [si ɖea abla](feature) na [fefewɔwɔ](purpose)
+      - Wɔmɛ fihã [zikpuiwo](product) [siwo dze eme](feature) na [dɔwɔƒe](purpose)
+      - Dɔ [tablets](product) [siwo mexɔ asi o](price_range) na [ɖeviwo](user_type)
+      - Mehiã [afɔkpa](product) [sesẽwo](feature) na [ƒuƒu](purpose)
+      - Miele [nuɖuɖu](product) [organikwo](feature)?
+      - Wɔmɛ fihã [fotomɔwo](product) [nyuiwo](feature) le [dɔla 500](price) te
+      - Mele [frigidɛwo](product) [siwo mezãa dzo geɖe o](feature) dim
+      - Miele [kpɔɖeŋunuwo](product) [siwo xea mɔ na keklẽ](feature) na [iPhone](brand)?
+      - Mehiã [megbati](product) [si mekpena o](feature) na [mɔzɔzɔ](purpose)
+      - Wɔmɛ fihã [nuɖagbawo](product) [siwo nuɖuɖu melénɛ o](feature)
+      - Dɔ [abɔmewo](product) [siwo mena allergies o](feature) na [ŋutilã bɔbɔewo](purpose)
+
+      # Twi
+      - kyerɛ me [sneakers](product)
+      - merehwehwɛ [kɔkɔɔ](color) [ataade](product)
+      - hwehwɛ [smartphones](product) a bo ne kora [200](price)
+      - hwehwɛ [headphones](product)
+      - dɛn [laptops](product) na wowɔ?
+      - kyerɛ me [mmirika mpaboa](product)
+      - hwehwɛ [yoga mats](product)
+      - hwehwɛ [awɔwberɛ mu ntade](product)
+      - kyerɛ me [agodie monitors](product)
+      - hwehwɛ [tablets](product) a ɛnyɛ den
+      - Mepɛ sɛ mehwɛ [mmarima ntade](product)
+      - Mowɔ [mmaa mpaboa](product)?
+      - Kyerɛ me [mmofra agodie](product)
+      - Mehia [fon](product) foforɔ
+      - Merehwehwɛ [kitchen appliances](product)
+      - Motɔn [furniture](product)?
+      - Kyerɛ me [abɔnten nneɛma](product)
+      - Mehia [agodie nneɛma](product)
+      - Mowɔ [ahoɔfɛ nneɛma](product)?
+      - Kyerɛ me [nwoma](product)
+      - Merehwehwɛ [tuntum](color) [mpaboa](product) wɔ [size 42](size) mu
+      - Mowɔ [Samsung](brand) [fon](product)?
+      - Mehia [dɔn](product) a [nsuo ntumi nka](feature)
+      - Kyerɛ me [headphones](product) a [ɛnni hama](feature)
+      - Merehwehwɛ [asaawa](material) [ntade](product)
+      - Mowɔ [nwoma](material) [sika kotoku](product)?
+      - Mehia [kɔmputa](product) a [ɛyɛ ntɛm](feature) ma [agodie](purpose)
+      - Kyerɛ me [akonnwa](product) a [ɛyɛ asomdwee](feature) ma [ɔfese](purpose)
+      - Hwehwɛ [tablets](product) a [ɛnyɛ den](price_range) ma [mmofra](user_type)
+      - Mehia [mpaboa](product) a [ɛyɛ den](feature) ma [mmirika](purpose)
+      - Mowɔ [aduane](product) a [ɛyɛ organic](feature)?
+      - Kyerɛ me [mfoni twa adeɛ](product) a [ɛyɛ papa](feature) a ne boɔ nnuru [sika 500](price)
+      - Merehwehwɛ [fridges](product) a [ɛnhye ahoɔden pii](feature)
+      - Mowɔ [skrin protectors](product) a [ɛnhyerɛn](feature) ma [iPhone](brand)?
+      - Mehia [akyi kotoku](product) a [ɛyɛ hare](feature) ma [akwantu](purpose)
+      - Kyerɛ me [nkuku](product) a [aduane nka ho](feature)
+      - Hwehwɛ [sumina](product) a [ɛmma allergies](feature) ma [honam a ɛyɛ mmerɛw](purpose)
+
+  - intent: product_inquiry
+    examples: |
+      # English
+      - what's the price of the [iPhone 12](product)?
+      - how much is this [jacket](product)?
+      - price of the [blue](color) [shirt](product)
+      - cost of shipping [sneakers](product)
+      - how much for a [coffee mug](product)?
+      - what does this [product](product) cost?
+      - how expensive is this [bag](product)?
+      - price details for this [item](product)
+      - is [VAT](tax_type) included?
+      - is there a [discount](discount_type) on this?
+      - What are the specifications of this [laptop](product)?
+      - What features does this [phone](product) have?
+      - Is this [product](product) available in other [colors](attribute)?
+      - What [sizes](attribute) do you have for this [shirt](product)?
+      - Is this [item](product) in [stock](availability)?
+      - When will this be back in [stock](availability)?
+      - What [materials](attribute) is this made from?
+      - Is this [product](product) [waterproof](feature)?
+      - Does this come with a [warranty](service_type)?
+      - How long is the [warranty](service_type)?
+      - What's the [return policy](policy_type) for this [item](product)?
+      - Can I get a [refund](service_type) if I don't like it?
+      - How long will [shipping](service_type) take?
+      - Do you [ship](service_type) internationally?
+      - What's the difference between these two [models](product_type)?
+      - Can you tell me more about this [product](product)?
+      - Is this [compatible](feature) with my [device](product)?
+      - Does this require [batteries](accessory_type)?
+      - Is [assembly](service_type) required for this?
+      - Are there any [accessories](product_type) included?
+      - What's the [battery life](feature) of this [device](product)?
+      - Does this [product](product) come with [instructions](accessory_type)?
+      - Is this [product](product) [eco-friendly](feature)?
+      - What's the [weight](attribute) of this [item](product)?
+      - Does this [product](product) have [Bluetooth](feature) capability?
+      - Is this [product](product) suitable for [children](user_type)?
+      - What's the [power consumption](feature) of this [appliance](product)?
+      - Does this [product](product) require [special maintenance](service_type)?
+      - What's the [screen size](attribute) of this [TV](product)?
+      - Is this [product](product) [compatible](feature) with [Mac](device_type)?
+
+      # Hausa
+      - menene farashin [iPhone 12](product)?
+      - nawa ne wannan [jaket](product)?
+      - farashin [rigar](product) [shuɗi](color)
+      - farashin jigilar [takalma](product)
+      - nawa ne [kofin kofi](product)?
+      - Menene keɓaɓɓen bayanin wannan [kwamfyuta](product)?
+      - Wane fasali ne wannan [waya](product) take da shi?
+      - Shin wannan [kaya](product) yana da sauran [launuka](attribute)?
+      - Wane [girma](attribute) kuke da shi don wannan [riga](product)?
+      - Shin wannan [kaya](product) yana cikin [ajiya](availability)?
+      - Yaushe wannan zai dawo cikin [ajiya](availability)?
+      - Da wane [kayan](attribute) aka yi wannan?
+      - Shin wannan [kaya](product) yana [jurewa ruwa](feature)?
+      - Shin wannan yana zuwa tare da [tabbaci](service_type)?
+      - Har tsawon wane lokaci ne [tabbacin](service_type)?
+      - Menene [manufar mayar da](policy_type) wannan [kaya](product)?
+      - Zan iya samun [maido](service_type) idan ban so ba?
+      - Har tsawon wane lokaci [jigilar](service_type) zai ɗauka?
+      - Kuna [jigilar](service_type) kaya zuwa ƙasashen waje?
+      - Menene bambancin tsakanin waɗannan [samfurori](product_type) biyu?
+      - Za ka iya gaya mini ƙarin bayani game da wannan [kaya](product)?
+      - Shin wannan [yana dacewa](feature) da [na'urar](product) da?
+      - Shin wannan yana buƙatar [baturi](accessory_type)?
+      - Shin ana buƙatar [haɗawa](service_type) don wannan?
+      - Shin akwai wasu [kayan haɗi](product_type) da aka haɗa?
+      - Menene [tsawon rayuwar baturi](feature) na wannan [na'ura](product)?
+      - Shin wannan [kaya](product) yana zuwa tare da [umurni](accessory_type)?
+      - Shin wannan [kaya](product) [mai amfani ga muhalli](feature) ne?
+      - Menene [nauyin](attribute) wannan [kaya](product)?
+      - Shin wannan [kaya](product) yana da [Bluetooth](feature)?
+      - Shin wannan [kaya](product) ya dace da [yara](user_type)?
+      - Menene [amfanin wutar lantarki](feature) na wannan [kayan amfani](product)?
+      - Shin wannan [kaya](product) yana buƙatar [kulawa na musamman](service_type)?
+      - Menene [girman allon](attribute) wannan [talabijin](product)?
+      - Shin wannan [kaya](product) [yana dacewa](feature) da [Mac](device_type)?
+
+      # Ewe
+      - [iPhone 12](product) nutomeɖe odoƒe na mi?
+      - ƒe [jacket](product) le be akpaɖeŋu?
+      - [blue](color) [shirt](product) nu nutomeɖe?
+      - [sneakers](product) ƒe gbevia nutome?
+      - [coffee mug](product) ƒe nutomeɖe?
+      - [Laptop](product) sia ƒe ŋutete ɖe?
+      - [Kaƒomɔ](product) sia ƒe ŋutetewo ɖe?
+      - Ðe [nu](product) sia le ame le [amadede](attribute) bubuwo me?
+      - [Lolome](attribute) kawo le mia si na [awu](product) sia?
+      - Ðe [nu](product) sia le mia si [fifia](availability)?
+      - Ɣekaɣie [nu](product) sia agatrɔ va mia [si](availability)?
+      - [Nu](attribute) kawo wowɔ [nu](product) sia tsoe?
+      - Ðe [nu](product) sia [tea ŋu nɔa tsi](feature) me?
+      - Ðe [nu](product) sia va kple [kpeɖeŋuɖoɖo](service_type)?
+      - Ɣeyiɣi neni [kpeɖeŋuɖoɖo](service_type) sia nɔa anyi?
+      - [Nu](product) sia ƒe [megbexɔxɔ](policy_type) ƒe ɖoɖo ɖe?
+      - Mate ŋu axɔ [ga](service_type) ne nyemelɔ̃e o?
+      - Ɣeyiɣi neni [dɔdɔɖa](service_type) axɔ?
+      - Mie[dɔa nu](service_type) ɖe dukɔ bubuwo me?
+      - Vovototo ka le [modɛl](product_type) eve siawo dome?
+      - Àte ŋu agblɔ nu geɖe wu tso [nu](product) sia ŋu?
+      - Ðe [nu](product) sia [sɔ](feature) kple nye [mɔ](product)?
+      - Ðe [nu](product) sia hiã [batri](accessory_type)?
+      - Ðe ehiã be [woaƒo](service_type) [nu](product) sia ɖekae?
+      - Ðe [kpekpeɖeŋunu](product_type) aɖewo le eme?
+      - Ɣeyiɣi neni [batri](feature) sia nɔa anyi le [mɔ](product) sia me?
+      - Ðe [nu](product) sia va kple [nufiame](accessory_type)?
+      - Ðe [nu](product) sia [nyo na anyigba](feature)?
+      - [Nu](product) sia ƒe [kpekpeme](attribute) ɖe?
+      - Ðe [nu](product) sia te ŋu zãa [Bluetooth](feature)?
+      - Ðe [nu](product) sia dze na [ɖeviwo](user_type)?
+      - [Dzo](feature) neni [dɔwɔnu](product) sia zãna?
+      - Ðe [nu](product) sia hiã [dzikpɔkpɔ tɔxɛ](service_type)?
+      - [TV](product) sia ƒe [nuŋɔŋlɔƒe](attribute) ƒe lolome ɖe?
+      - Ðe [nu](product) sia [sɔ](feature) kple [Mac](device_type)?
+
+      # Twi
+      - [iPhone 12](product) boɔ no siɛ neɛ?
+      - ɛhe na saa [jakɛt](product) yi bo?
+      - [blue](color) [shirt](product) no bo sɛn?
+      - [takalma](product) no shipping bo akyiriɛn?
+      - [kofiemu](product) no bo sɛn?
+      - Dɛn ne saa [laptop](product) yi mu nsɛnkyerɛnneɛ?
+      - Dɛn nkyerɛkyerɛmu na saa [fon](product) yi wɔ?
+      - Saa [adeɛ](product) yi wɔ wɔ [ahosu](attribute) foforɔ mu?
+      - [Kɛseɛ](attribute) bɛn na mowɔ ma saa [ataadeɛ](product) yi?
+      - Saa [adeɛ](product) yi wɔ [hɔ](availability) seesei?
+      - Berɛ bɛn na saa [adeɛ](product) yi bɛba [bio](availability)?
+      - Dɛn [nneɛma](attribute) na wɔde yɛɛ saa [adeɛ](product) yi?
+      - Saa [adeɛ](product) yi [betumi agyina nsuo](feature) ano?
+      - Saa [adeɛ](product) yi bɛba wɔ [abodin](service_type) mu?
+      - Mmere tenten sɛn na [abodin](service_type) no wɔ?
+      - Dɛn ne saa [adeɛ](product) yi ho [nsankyire](policy_type) nhyehyɛeɛ?
+      - Metumi anya me [sika bio](service_type) sɛ mempɛ a?
+      - Mmere tenten sɛn na [shipping](service_type) no bɛfa?
+      - Mo[tumi de nneɛma](service_type) kɔ amanɔne?
+      - Dɛn ne nsonsonoeɛ a ɛwɔ saa [nhwɛsoɔ](product_type) mmienu yi ntam?
+      - Wobɛtumi aka me ho asɛm pii akyerɛ me?
+      - Saa [adeɛ](product) yi ne me [adeɛ](product) [bɛyɛ adwuma](feature)?
+      - Saa [adeɛ](product) yi hia [battery](accessory_type)?
+      - Ɛhia sɛ [wɔbɛhyehyɛ](service_type) saa [adeɛ](product) yi?
+      - [Nkekaho](product_type) bi ka ho?
+      - [Battery](feature) no tena mmere tenten sɛn wɔ saa [adeɛ](product) yi mu?
+      - Saa [adeɛ](product) yi ba wɔ [nkyerɛkyerɛmu](accessory_type) mu?
+      - Saa [adeɛ](product) yi [yɛ eco-friendly](feature)?
+      - Saa [adeɛ](product) yi [duru](attribute) sɛn?
+      - Saa [adeɛ](product) yi wɔ [Bluetooth](feature)?
+      - Saa [adeɛ](product) yi fata [mmofra](user_type)?
+      - [Ahoɔden](feature) ahe na saa [adeɛ](product) yi di?
+      - Saa [adeɛ](product) yi hia [hwɛ soronko](service_type)?
+      - Saa [TV](product) yi [skrin](attribute) kɛseɛ yɛ sɛn?
+      - Saa [adeɛ](product) yi [bɛyɛ adwuma](feature) wɔ [Mac](device_type) so?
+
+  - intent: product_recommendation
+    examples: |
+      # English
+      - recommend me a [gift](product_type) for [mom](recipient)
+      - what's popular in [electronics](product_category)?
+      - best [laptops](product) for [students](user_type)?
+      - suggest some [running gear](product_category)
+      - what should I buy for [toddlers](user_type)?
+      - suggest a [birthday gift](product_type)
+      - what's trending now?
+      - show me top-rated [headphones](product)
+      - recommend [eco-friendly](feature) [products](product_type)
+      - what are bestsellers?
+      - What do you recommend for a [beginner cook](user_type)?
+      - Can you suggest a good [book](product) to read?
+      - What's a good [gift](product_type) for someone who has everything?
+      - What [camera](product) would you recommend for a [beginner](user_type)?
+      - What's the best [smartphone](product) for [photography](purpose)?
+      - Can you recommend a good [moisturizer](product) for [dry skin](condition)?
+      - What's a good [workout routine](service_type) for [beginners](user_type)?
+      - What's the best [TV](product) under [500ghs](price)?
+      - Can you suggest some [healthy snacks](product_category)?
+      - What's a good [laptop](product) for [video editing](purpose)?
+      - What's the best [vacuum cleaner](product) for [pet hair](purpose)?
+      - Can you recommend a good [pillow](product) for [neck pain](condition)?
+      - What's a good [car](product) for a [small family](user_type)?
+      - What's the best [coffee maker](product) for [home use](purpose)?
+      - Can you suggest some [indoor plants](product) that are [easy to maintain](feature)?
+      - What's a good [watch](product) for [everyday wear](purpose)?
+      - What's the best [blender](product) for [smoothies](purpose)?
+      - Can you recommend a good [sunscreen](product)?
+      - What's a good [backpack](product) for [hiking](purpose)?
+      - What's the best [gaming console](product) right now?
+      - What [shoes](product) would you recommend for [running](purpose)?
+      - Can you suggest a [budget-friendly](price_range) [smartphone](product)?
+      - What's the best [tablet](product) for [children](user_type)?
+      - What [skincare products](product_category) do you recommend for [oily skin](condition)?
+      - What's a good [gift](product_type) for a [teenage boy](recipient)?
+      - Can you recommend [wireless earbuds](product) for [workouts](purpose)?
+      - What's the best [air purifier](product) for [allergies](condition)?
+      - What [kitchen gadgets](product_category) are worth buying?
+      - What's a good [camera](product) for [travel photography](purpose)?
+
+      # Hausa
+      - ba ni shawarar [kyauta](product_type) ga [uwa](recipient)
+      - me ake sayarwa sosai a [kayan lantarki](product_category)?
+      - mafi kyawun [kwamfyutoci](product) ga [ɗalibai](user_type)?
+      - ba da shawarar kayan [gudu](product_category)
+      - me ya kamata in saya wa [jarirai](user_type)?
+      - ba ni shawarar [kyautar haihuwa](product_type)
+      - me ke cikin jita-jita yanzu?
+      - nuna mini [belun kunne](product) mafi kyau
+      - ba ni shawarar [kayan](product_type) da ke da [amfani ga muhalli](feature)
+      - menene mafi sayarwa?
+      - Me kake ba da shawara ga [mai koyon girki](user_type)?
+      - Za ka iya ba da shawarar [littafi](product) mai kyau don karatu?
+      - Menene [kyauta](product_type) mai kyau ga wanda yake da kome?
+      - Wace [kyamara](product) za ka ba da shawara ga [mai fara koyo](user_type)?
+      - Menene mafi kyawun [wayar salula](product) don [ɗaukar hotuna](purpose)?
+      - Za ka iya ba da shawarar [mai](product) kyau don [busasshen fata](condition)?
+      - Menene tsarin [motsa jiki](service_type) mai kyau ga [masu fara koyo](user_type)?
+      - Menene mafi kyawun [talabijin](product) ƙasa da [dala 500](price)?
+      - Za ka iya ba da shawarar wasu [abincin marmari masu lafiya](product_category)?
+      - Menene [kwamfyuta](product) mai kyau don [gyaran bidiyo](purpose)?
+      - Menene mafi kyawun [na'urar tsaftace ciki](product) don [gashin dabbobi](purpose)?
+      - Za ka iya ba da shawarar mafi kyawun [makoshi](product) don [ciwo a wuya](condition)?
+      - Menene [mota](product) mai kyau ga [iyali ƙarami](user_type)?
+      - Menene mafi kyawun [na'urar yin kofi](product) don [amfani a gida](purpose)?
+      - Za ka iya ba da shawarar wasu [tsirrai na cikin gida](product) da [ba sa wahalar kula](feature)?
+      - Menene [agogo](product) mai kyau don [sa kullum](purpose)?
+      - Menene mafi kyawun [na'urar niƙa](product) don [smoothies](purpose)?
+      - Za ka iya ba da shawarar mafi kyawun [man rana](product)?
+      - Menene [jaka](product) mai kyau don [tafiya](purpose)?
+      - Menene mafi kyawun [na'urar wasan kwamfyuta](product) a yanzu?
+      - Wane [takalma](product) za ka ba da shawara don [gudu](purpose)?
+      - Za ka iya ba da shawarar [wayar salula](product) mai [farashin dace](price_range)?
+      - Menene mafi kyawun [allon](product) don [yara](user_type)?
+      - Wane [kayan kula da fata](product_category) kake ba da shawara don [fata mai mai](condition)?
+      - Menene [kyauta](product_type) mai kyau ga [saurayi](recipient)?
+      - Za ka iya ba da shawarar [belun kunne marasa waya](product) don [motsa jiki](purpose)?
+      - Menene mafi kyawun [na'urar tsaftace iska](product) don [rashin jurewa wasu abubuwa](condition)?
+      - Wane [kayan amfani na gidan girki](product_category) ya cancanci saya?
+      - Menene [kyamara](product) mai kyau don [ɗaukar hotuna yayin tafiya](purpose)?
+
+      # Ewe
+      - dɔm [akpe](product_type) aɖe na [mama](recipient)
+      - [elektrɔniks](product_category) me le dɔɖi aɖe si wòxɔxɔ?
+      - [laptops](product) si le [ɖeviwo](user_type) gbɔ me nyea?
+      - dɔ agbalẽ siwo wòle [anyi](product_category)
+      - nu bɛnanyea menye xɔ na [susuviwo](user_type)?
+      - dɔ [akpe](product_type) le [ɣeyiɣi](product_type) me
+      - nu bɛnanye le ɖeɖeɖe dzi?
+      - wòna [headphones](product) si wòxɔxɔ
+      - dɔ [nu](product_type) si le [amedzro kple anyigba](feature) me
+      - bestseller siwo nyea?
+      - Nu ka nàɖo na [ame si le nuɖaɖa srɔ̃m](user_type)?
+      - Àte ŋu aɖo [agbalẽ](product) nyui aɖe na xexlẽ?
+      - Nu ka nye [nunana](product_type) nyui na ame si si nu sia nu le?
+      - [Fotomɔ](product) ka nàɖo na [ame si le egɔme dze ge](user_type)?
+      - [Kaƒomɔ](product) ka nye nyuitɔ na [fotodada](purpose)?
+      - Àte ŋu aɖo [ŋutilãkpɔkplɔnu](product) nyui aɖe na [ŋutilã ƒuƒu](condition)?
+      - Nu ka nye [lãmesẽdɔwɔwɔ](service_type) nyui na [ame siwo le egɔme dze ge](user_type)?
+      - [TV](product) ka nye nyuitɔ le [dɔla 500](price) te?
+      - Àte ŋu aɖo [nuɖuɖu ƒuƒui](product_category) aɖewo?
+      - [Laptop](product) ka nye nyuitɔ na [bidiyo ɖɔɖɔɖo](purpose)?
+      - [Vacuum cleaner](product) ka nye nyuitɔ na [lãwo ƒe ɖa](purpose)?
+      - Àte ŋu aɖo [abɔme](product) nyui aɖe na [kɔveve](condition)?
+      - [Ʋu](product) ka nye nyuitɔ na [ƒome sue aɖe](user_type)?
+      - [Kofi wɔnu](product) ka nye nyuitɔ na [aƒeme zaza](purpose)?
+      - Àte ŋu aɖo [aƒemeti](product) siwo [mesesẽ na dzikpɔkpɔ o](feature)?
+      - [Gaƒoƒoga](product) ka nye nyuitɔ na [gbe sia gbe zaza](purpose)?
+      - [Blender](product) ka nye nyuitɔ na [smoothies wɔwɔ](purpose)?
+      - Àte ŋu aɖo [ŋdɔdovigbɔgblɔnu](product) nyui aɖe?
+      - [Megbati](product) ka nye nyuitɔ na [todzidede](purpose)?
+      - [Game console](product) ka nye nyuitɔ fifia?
+      - [Afɔkpa](product) ka nàɖo na [ƒuƒu](purpose)?
+      - Àte ŋu aɖo [kaƒomɔ](product) si [mexɔ asi o](price_range)?
+      - [Tablet](product) ka nye nyuitɔ na [ɖeviwo](user_type)?
+      - [Ŋutilãkpɔkplɔnu](product_category) ka nàɖo na [ŋutilã si daa ami](condition)?
+      - Nu ka nye [nunana](product_type) nyui na [ɖekakpui](recipient)?
+      - Àte ŋu aɖo [todzinu marasa ka](product) na [lãmesẽdɔwɔwɔ](purpose)?
+      - [Yaƒoƒonu](product) ka nye nyuitɔ na [allergies](condition)?
+      - [Gidakpɔnu](product_category) kawo dze na ƒleƒle?
+      - [Fotomɔ](product) ka nye nyuitɔ na [fotodada le mɔzɔzɔ me](purpose)?
+
+      # Twi
+      - fa [akyɛde](product_type) bi ma me [maame](recipient)
+      - dɛn na ɛyɛ popular wɔ [electronics](product_category) mu?
+      - sɛn na yɛ [laptop](product) a ɛfata [sukuufo](user_type)?
+      - fa ntoma anaa adeɛ a ɛfata [running](product_category)
+      - dɛn na menyɛ mma [mmɔfra](user_type)?
+      - fa [akyɛde](product_type) bi a ɛfata [birthday](product_type)
+      - dɛn na ɛre trend seesei?
+      - kyerɛ me [headphones](product) a wɔyɛ papa
+      - fa [adeɛ](product_type) bi a [ɛyɛ eco-friendly](feature)
+      - dɛn na wɔtɔn pii?
+      - Dɛn na wode bɛma [obi a ɔrefiri aseɛ asuasua aduane noa](user_type)?
+      - Wobɛtumi akyerɛ me [nwoma](product) pa bi a mɛkenkan?
+      - Dɛn [akyɛdeɛ](product_type) na ɛyɛ ma obi a ɔwɔ biribiara?
+      - [Mfoni camera](product) bɛn na wode bɛma [obi a ɔrefiri aseɛ](user_type)?
+      - [Smartphone](product) bɛn na ɛyɛ papa ma [mfoni twa](purpose)?
+      - Wobɛtumi akyerɛ me [honam ho ngo](product) pa bi ma [honam wesee](condition)?
+      - Dɛn [dwumadie](service_type) na ɛyɛ ma [wɔn a wɔrefiri aseɛ](user_type)?
+      - [TV](product) bɛn na ɛyɛ papa a ne boɔ nnuru [sika 500](price)?
+      - Wobɛtumi akyerɛ me [aduane nkakrankakra bi a ɛyɛ ma apɔmuden](product_category)?
+      - [Laptop](product) bɛn na ɛyɛ papa ma [video editing](purpose)?
+      - [Vacuum cleaner](product) bɛn na ɛyɛ papa ma [mmoa ho nwi](purpose)?
+      - Wobɛtumi akyerɛ me [sumina](product) pa bi ma [kɔn mu yaw](condition)?
+      - [Kar](product) bɛn na ɛyɛ papa ma [abusua ketewa bi](user_type)?
+      - [Coffee maker](product) bɛn na ɛyɛ papa ma [efie mu](purpose)?
+      - Wobɛtumi akyerɛ me [efie mu nnua](product) bi a [ɛnyɛ den sɛ wobɛhwɛ so](feature)?
+      - [Dɔn](product) bɛn na ɛyɛ papa ma [dabiara hyɛ](purpose)?
+      - [Blender](product) bɛn na ɛyɛ papa ma [smoothies](purpose)?
+      - Wobɛtumi akyerɛ me [owia ho aduro](product) pa bi?
+      - [Akyi kotoku](product) bɛn na ɛyɛ papa ma [bepɔ so nante](purpose)?
+      - [Gaming console](product) bɛn na ɛyɛ papa seesei?
+      - [Mpaboa](product) bɛn na wode bɛma [mmirika](purpose)?
+      - Wobɛtumi akyerɛ me [smartphone](product) a [ne boɔ nyɛ den](price_range)?
+      - [Tablet](product) bɛn na ɛyɛ papa ma [mmofra](user_type)?
+      - [Honam ho nneɛma](product_category) bɛn na wode bɛma [honam a ɛyɛ ngo](condition)?
+      - Dɛn [akyɛdeɛ](product_type) na ɛyɛ ma [abranteɛ](recipient)?
+      - Wobɛtumi akyerɛ me [wireless earbuds](product) a ɛfata [dwumadie](purpose)?
+      - [Air purifier](product) bɛn na ɛyɛ papa ma [allergies](condition)?
+      - [Kitchen nneɛma](product_category) bɛn na ɛfata sɛ wɔtɔ?
+      - [Camera](product) bɛn na ɛyɛ papa ma [akwantu mfoni twa](purpose)?
+
+  - intent: price_inquiry
+    examples: |
+      # English
+      - How much is it?
+      - What's the price?
+      - How much does it cost?
+      - What's the cost?
+      - How much do you want for it?
+      - What's your asking price?
+      - Can you tell me the price?
+      - What is the price of this [item](product)?
+      - How much for this?
+      - How much do I need to pay?
+      - What is the cost of this [product](product)?
+      - How much should I pay?
+      - Is it expensive?
+      - Is it cheap?
+      - What's the total price?
+      - Is there any [discount](discount_type)?
+      - Do you offer any [special price](discount_type)?
+      - Is the price [negotiable](price_attribute)?
+      - Can you give me a better price?
+      - Is this the [final price](price_attribute)?
+      - Does the price include [tax](fee_type)?
+      - Is [shipping](fee_type) included in the price?
+      - How much is it with [delivery](fee_type)?
+      - What's the price after [discount](discount_type)?
+      - Can I get a price breakdown?
+      - How much would it cost for [two](quantity)?
+      - What's the [bulk price](price_type)?
+      - Do you have any [promotions](discount_type)?
+      - Is there a [sale](discount_type) going on?
+      - What's the [regular price](price_type)?
+      - what's the [price range](price_attribute) for this?
+      - how much would I pay for this?
+      - can you tell me about the pricing?
+      - what's the [cost breakdown](price_attribute)?
+      - are there any [hidden fees](fee_type)?
+      - is [tax](fee_type) included in the price?
+      - what's the total cost with [shipping](fee_type)?
+      - how much is the [premium version](product_variant)?
+      - what's the difference in price between [models](product_variant)?
+      - is there a [subscription fee](fee_type)?
+      - how much do I need to budget for this?
+      - what's the [monthly payment](payment_term)?
+      - how much would this cost in [bulk](quantity_type)?
+      - what's the price per [unit](quantity_unit)?
+      - how much for the [complete package](product_variant)?
+      - what's the price of the [basic model](product_variant)?
+      - how much extra for [express shipping](service_type)?
+      - is there an [additional charge](fee_type) for [international delivery](service_type)?
+      - what's the price difference between [small](size) and [large](size)?
+      - how much would I save with the [family plan](product_variant)?
+      - what's the cost of [upgrading](service_type) later?
+
+      # Hausa
+      - Nawa zan biya don wannan?
+      - Nawa ne kudin wannan [abu](product)?
+      - Nawa ne farashin [kaya](product)?
+      - Nawa ne kudin wannan [kaya](product)?
+      - Nawa ne kudin wannan [abu](product)?
+      - Nawa ne wannan?
+      - Nawa ne wannan [kaya](product)?
+      - Nawa ne wannan [abu](product)?
+      - Nawa ne farashin wannan?
+      - Nawa ne farashin wannan [kaya](product)?
+      - Nawa ne farashin wannan [abu](product)?
+      - Nawa ne kudin wannan?
+      - Nawa ne kudin wannan [kaya](product)?
+      - Nawa ne kudin wannan [abu](product)?
+      - Nawa ne kudin wannan?
+      - Nawa ne kudin wannan [kaya](product)?
+      - Nawa ne kudin wannan [abu](product)?
+      - Nawa ne wannan ya ke?
+      - Nawa ne wannan [kaya](product) ya ke?
+      - Nawa ne wannan [abu](product) ya ke?
+      - Nawa ne wannan ya ke da shi?
+      - Nawa ne wannan [kaya](product) ya ke da shi?
+      - Nawa ne wannan [abu](product) ya ke da shi?
+      - Nawa ne wannan ya ke da tsada?
+      - Nawa ne wannan [kaya](product) ya ke da tsada?
+      - Nawa ne wannan [abu](product) ya ke da tsada?
+      - Nawa ne jimlar farashin?
+      - Akwai [rangwame](discount_type)?
+      - Kuna ba da [farashi na musamman](discount_type)?
+      - Za a iya [tattauna farashin](price_attribute)?
+      - Za ku iya ba ni farashi mafi kyau?
+      - Wannan ne [farashin ƙarshe](price_attribute)?
+      - Farashin ya haɗa da [haraji](fee_type)?
+      - An haɗa [jigilar kaya](fee_type) cikin farashin?
+      - Nawa ne tare da [isarwa](fee_type)?
+      - Menene farashin bayan [rangwame](discount_type)?
+      - Zan iya samun bayanan farashi?
+      - Nawa ne farashin [biyu](quantity)?
+      - Menene [farashin da yawa](price_type)?
+      - Kuna da wani [talla](discount_type)?
+      - Akwai [sayarwa](discount_type)?
+      - Menene [farashin na yau da kullun](price_type)?
+      - menene [tsarin farashin](price_attribute) wannan?
+      - nawa zan biya don wannan?
+      - za ka iya gaya mini game da farashin?
+      - menene [rarrabe na kuɗin](price_attribute)?
+      - akwai wasu [kuɗin da aka ɓoye](fee_type)?
+      - an haɗa [haraji](fee_type) a cikin farashin?
+      - menene jimlar kuɗin tare da [jigilar kaya](fee_type)?
+      - nawa ne [sigar premium](product_variant)?
+      - menene bambancin farashin tsakanin [samfurori](product_variant)?
+      - akwai [kuɗin rajista](fee_type)?
+      - nawa ne zan buƙaci don wannan?
+      - nawa ne [biyan kuɗi na wata-wata](payment_term)?
+      - nawa wannan zai kasance idan [da yawa](quantity_type)?
+      - nawa ne farashin kowane [ɗaya](quantity_unit)?
+      - nawa ne don [cikakken kwandon](product_variant)?
+      - nawa ne farashin [samfurin na asali](product_variant)?
+      - nawa ne ƙarin don [jigilar kaya mai sauri](service_type)?
+      - akwai [ƙarin cajin](fee_type) don [isarwa zuwa ƙasashen waje](service_type)?
+      - menene bambancin farashin tsakanin [ƙarami](size) da [babba](size)?
+      - nawa zan adana tare da [shirin iyali](product_variant)?
+      - menene kudin [haɓaka](service_type) daga baya?
+
+      # Ewe
+      - Nukae nye asixɔxɔ?
+      - Nukae nàkpɔ asi?
+      - Nukae nàkpɔ asixɔxɔ?
+      - Nukae nàkpɔ nu?
+      - Nukae nàkpɔ [nu](product) aɖe?
+      - Nenie nye esia?
+      - Nenie nye [nu](product) sia?
+      - Nenie nye [nu](product) sia aɖe?
+      - Nenie nye esia ƒe asi?
+      - Nenie nye [nu](product) sia ƒe asi?
+      - Nenie nye [nu](product) sia aɖe ƒe asi?
+      - Nenie nye esia ƒe home?
+      - Nenie nye [nu](product) sia ƒe home?
+      - Nenie nye [nu](product) sia aɖe ƒe home?
+      - Nenie nye esia ƒe ga?
+      - Nenie nye [nu](product) sia ƒe ga?
+      - Nenie nye [nu](product) sia aɖe ƒe ga?
+      - Nenie wòle?
+      - Nenie [nu](product) sia le?
+      - Nenie [nu](product) sia aɖe le?
+      - Nenie wòle na?
+      - Nenie [nu](product) sia le na?
+      - Nenie [nu](product) sia aɖe le na?
+      - Nenie wòle xɔxɔ?
+      - Nenie [nu](product) sia le xɔxɔ?
+      - Nenie [nu](product) sia aɖe le xɔxɔ?
+      - Ga home ɖe?
+      - Ðe [asi ɖiɖi](discount_type) aɖe li?
+      - Mienaa [asi tɔxɛ](discount_type) aɖea?
+      - Ðe woate ŋu [aɖo asi ŋu](price_attribute)?
+      - Àte ŋu ana asi nyui wum?
+      - Esia nye [asi mamlɛtɔ](price_attribute)?
+      - Ðe [adzɔ](fee_type) le asi me?
+      - Ðe [dɔdɔɖa](fee_type) le asi me?
+      - Home nenie wòle kple [dɔdɔɖa](fee_type)?
+      - Asi ka le megbe na [asi ɖiɖi](discount_type)?
+      - Mate ŋu akpɔ asi ƒe akɔnta?
+      - Home nenie wòanye na [eve](quantity)?
+      - Asi ka nye na [agbɔsɔsɔ](price_type)?
+      - Ðe [dɔdodo](discount_type) aɖe le mia si?
+      - Ðe [dzadzra](discount_type) le edzi yim?
+      - Asi ka nye [edziedzi asi](price_type)?
+      - [asi ƒe gbɔsɔsɔ](price_attribute) ka le esia ŋu?
+      - home nenie maxe ɖe esia ta?
+      - àte ŋu agblɔ nu tso asixɔxɔ ŋu nam?
+      - nukae nye [ga home ƒe akɔntabubu](price_attribute)?
+      - ɖe [fe ɣaɣlawo](fee_type) aɖewo li?
+      - ɖe wode [adzɔ](fee_type) ɖe asi me?
+      - home nenie nye ga home blibo kple [dɔdɔɖa](fee_type)?
+      - home nenie nye [premium version](product_variant)?
+      - vovototo ka le asi dome le [modɛlwo](product_variant) dome?
+      - ɖe [subscription fe](fee_type) aɖe li?
+      - home nenie mahiã be madzra ɖo na esia?
+      - home nenie nye [fexexe le ɣleti me](payment_term)?
+      - home nenie esia axɔ ne wòle [agbɔsɔsɔ](quantity_type) me?
+      - home nenie nye asi ɖe [ɖeka](quantity_unit) nu?
+      - home nenie na [package blibo](product_variant) la?
+      - home nenie nye [modɛl gbãtɔ](product_variant) ƒe asi?
+      - home nenie ƒe ɖe dzi na [dɔdɔɖa kaba](service_type)?
+      - ɖe [fe bubu](fee_type) aɖe li na [dɔdɔɖa yi dukɔ bubuwo me](service_type)?
+      - vovototo ka le asi dome le [suetɔ](size) kple [gãtɔ](size) dome?
+      - home nenie madzra ɖo kple [ƒome ƒe ɖoɖo](product_variant)?
+      - home nenie nye [ɖɔɖɔɖo](service_type) emegbe?
+
+      # Twi
+      - Ne bo yɛ dɛn?
+      - Ɛyɛ sika sɛn?
+      - Ɛyɛ dɛn na ɛbɛyɛ?
+      - Ɛyɛ dɛn na ɛbɛyɛ sika?
+      - Ɛyɛ dɛn na ɛbɛyɛ bo?
+      - Ɛyɛ sɛn?
+      - Ɛyɛ sɛn [yi](product)?
+      - Ɛyɛ sɛn [biribi yi](product)?
+      - Ɛyɛ sɛn ne bo?
+      - Ɛyɛ sɛn [yi](product) ne bo?
+      - Ɛyɛ sɛn [biribi yi](product) ne bo?
+      - Ɛyɛ sɛn ne ka?
+      - Ɛyɛ sɛn [yi](product) ne ka?
+      - Ɛyɛ sɛn [biribi yi](product) ne ka?
+      - Ɛyɛ sɛn ne sika?
+      - Ɛyɛ sɛn [yi](product) ne sika?
+      - Ɛyɛ sɛn [biribi yi](product) ne sika?
+      - Ɛyɛ sɛn na ɛwɔ?
+      - Ɛyɛ sɛn [yi](product) na ɛwɔ?
+      - Ɛyɛ sɛn [biribi yi](product) na ɛwɔ?
+      - Ɛyɛ sɛn na ɛwɔ hɔ?
+      - Ɛyɛ sɛn [yi](product) na ɛwɔ hɔ?
+      - Ɛyɛ sɛn [biribi yi](product) na ɛwɔ hɔ?
+      - Ɛyɛ sɛn na ɛyɛ den?
+      - Ɛyɛ sɛn [yi](product) na ɛyɛ den?
+      - Ɛyɛ sɛn [biribi yi](product) na ɛyɛ den?
+      - Sika dodoɔ ne ɛyɛ?
+      - [Te so](discount_type) bi wɔ hɔ?
+      - Mode ma [boɔ soronko](discount_type) bi?
+      - Wobɛtumi [ate so ase](price_attribute)?
+      - Wobɛtumi ama me boɔ pa?
+      - Eyi ne ne [boɔ a etwa toɔ](price_attribute)?
+      - [Toɔ](fee_type) ka boɔ no mu?
+      - [Shipping](fee_type) ka boɔ no mu?
+      - Ɛyɛ sɛn ne [delivery](fee_type)?
+      - Boɔ bɛn na ɛwɔ wɔ [te so ase](discount_type) akyi?
+      - Metumi anya boɔ no mu nsɛm?
+      - Ɛbɛyɛ sɛn ma [mmienu](quantity)?
+      - Dɛn ne [bulk boɔ](price_type)?
+      - Mowɔ [promotion](discount_type) bi?
+      - [Adetɔn](discount_type) bi rekɔ so?
+      - Dɛn ne [daa boɔ](price_type)?
+      - [boɔ ntam](price_attribute) bɛn na ɛwɔ wei ho?
+      - sika ahe na metua ma wei?
+      - wobɛtumi aka boɔ no ho asɛm akyerɛ me?
+      - dɛn ne [boɔ no mu nkyekyɛmu](price_attribute)?
+      - [sika a wɔde sie](fee_type) bi wɔ hɔ?
+      - [toɔ](fee_type) ka boɔ no mu?
+      - sika dodoɔ bɛn na ɛyɛ ne [shipping](fee_type)?
+      - [premium version](product_variant) no boɔ yɛ sɛn?
+      - dɛn ne nsonsonoeɛ a ɛwɔ [nhwɛsoɔ](product_variant) no ntam wɔ boɔ mu?
+      - [subscription fee](fee_type) bi wɔ hɔ?
+      - sika ahe na ɛsɛ sɛ mesiesie ma wei?
+      - [bosome biara tuadie](payment_term) no yɛ sɛn?
+      - ɛbɛyɛ sɛn sɛ metɔ [pii](quantity_type)?
+      - boɔ bɛn na ɛwɔ [baako](quantity_unit) ho?
+      - sika ahe na ɛwɔ [package no nyinaa](product_variant) ho?
+      - [nhwɛsoɔ a ɛyɛ basic](product_variant) no boɔ yɛ sɛn?
+      - sika ahe na ɛka ho ma [shipping ntɛm](service_type)?
+      - [sika foforɔ](fee_type) bi wɔ hɔ ma [amanɔne delivery](service_type)?
+      - dɛn ne nsonsonoeɛ a ɛwɔ [ketewa](size) ne [kɛseɛ](size) ntam wɔ boɔ mu?
+      - sika ahe na mɛgye so wɔ [abusua nhyehyɛeɛ](product_variant) no mu?
+      - [nkɔsoɔ](service_type) no boɔ yɛ sɛn akyire yi?
+
+  - intent: payment_method
+    examples: |
+      # English
+      - what payment options do you have? 
+      - can I pay with [PayPal](payment_method)? 
+      - do you accept [credit cards](payment_method)? 
+      - payment methods 
+      - how to pay? 
+      - payment options 
+      - which payments are accepted? 
+      - [mobile money](payment_method) payment? 
+      - pay with [mobile money](payment_method) 
+      - pay via [bank transfer](payment_method)
+      - Do you accept [cash](payment_method)?
+      - Can I pay on [delivery](payment_time)?
+      - Do you take [debit cards](payment_method)?
+      - Is [Apple Pay](payment_method) accepted?
+      - Can I use [Google Pay](payment_method)?
+      - Do you accept [cryptocurrency](payment_method)?
+      - Can I pay in [installments](payment_term)?
+      - Is [financing](payment_term) available?
+      - Do you accept [checks](payment_method)?
+      - Can I pay with [gift cards](payment_method)?
+      - Do you accept [international cards](payment_method)?
+      - Is [Venmo](payment_method) accepted?
+      - Can I use [Zelle](payment_method)?
+      - Do you accept [wire transfers](payment_method)?
+      - Can I pay with [store credit](payment_method)?
+      - Is [afterpay](payment_method) available?
+      - Do you accept [prepaid cards](payment_method)?
+      - Can I split the payment?
+      - Do you have a [payment plan](payment_term)?
+      - Is [cash app](payment_method) accepted?
+      - what payment methods are supported?
+      - can I pay with a [digital wallet](payment_method)?
+      - do you accept [contactless payment](payment_method)?
+      - is it possible to pay in [installments](payment_term)?
+      - can I use multiple payment methods?
+      - do you have a [payment plan](payment_term)?
+      - what's your policy on [international payments](payment_type)?
+      - is there a fee for using certain payment methods?
+      - can I save my payment information for later?
+      - do you offer [buy now, pay later](payment_term) options?
+      - what's the most secure payment method?
+      - can I change my payment method after ordering?
+      - do you accept payment on [delivery](payment_time)?
+      - what happens if my payment fails?
+      - how long does payment processing take?
+      - do you accept [MTN Mobile Money](payment_method)?
+      - can I pay with [Vodafone Cash](payment_method)?
+      - is [AirtelTigo Money](payment_method) accepted?
+      - do you take [Glo Mobile Money](payment_method)?
+      - can I use [Zeepay](payment_method)?
+      - is [ExpressPay](payment_method) available?
+      - do you accept [Hubtel](payment_method) payments?
+      - can I pay through [Slydepay](payment_method)?
+      - what about [G-Money](payment_method)?
+      - is [E-zwich](payment_method) accepted?
+
+      # Hausa
+      - wane zaɓin biyan kuɗi kuke da shi?
+      - zan iya biya da [PayPal](payment_method)?
+      - kuna karɓar [katin kuɗi](payment_method)?
+      - hanyoyin biyan kuɗi
+      - ta yaya ake biya?
+      - zaɓuɓɓukan biyan kuɗi
+      - wane nau'in biyan kuɗi kuke karɓa?
+      - biyan kuɗi ta [wayar hannu](payment_method)?
+      - biya da [wayar hannu](payment_method)
+      - biya ta hanyar [canja wurin banki](payment_method)
+      - Kuna karɓar [tsabar kuɗi](payment_method)?
+      - Zan iya biya lokacin [isarwa](payment_time)?
+      - Kuna karɓar [katin zare kuɗi](payment_method)?
+      - Ana karɓar [Apple Pay](payment_method)?
+      - Zan iya amfani da [Google Pay](payment_method)?
+      - Kuna karɓar [cryptocurrency](payment_method)?
+      - Zan iya biya a [rabe-rabe](payment_term)?
+      - Akwai hanyar [samun kuɗi](payment_term)?
+      - Kuna karɓar [cak](payment_method)?
+      - Zan iya biya da [katin kyauta](payment_method)?
+      - Kuna karɓar [katunan ƙasashen waje](payment_method)?
+      - Ana karɓar [Venmo](payment_method)?
+      - Zan iya amfani da [Zelle](payment_method)?
+      - Kuna karɓar [canja wurin waya](payment_method)?
+      - Zan iya biya da [kuɗin shago](payment_method)?
+      - Akwai [afterpay](payment_method)?
+      - Kuna karɓar [katunan da aka riga aka biya](payment_method)?
+      - Zan iya raba biyan kuɗi?
+      - Kuna da [tsarin biyan kuɗi](payment_term)?
+      - Ana karɓar [cash app](payment_method)?
+      - wane hanyoyin biyan kuɗi ake goyon baya?
+      - zan iya biya da [digital wallet](payment_method)?
+      - kuna karɓar biyan kuɗi [ba tare da taɓawa ba](payment_method)?
+      - shin zai yiwu a biya a [kashi-kashi](payment_term)?
+      - zan iya amfani da hanyoyi biyan kuɗi da yawa?
+      - kuna da [tsarin biyan kuɗi](payment_term)?
+      - menene manufar ku game da [biyan kuɗi na ƙasashen waje](payment_type)?
+      - akwai kuɗi don amfani da wasu hanyoyin biyan kuɗi?
+      - zan iya ajiye bayanin biyan kuɗi na don nan gaba?
+      - kuna ba da zaɓin [saya yanzu, biya daga baya](payment_term)?
+      - menene hanyar biyan kuɗi mafi tsaro?
+      - zan iya canza hanyar biyan kuɗi na bayan yin oda?
+      - kuna karɓar biyan kuɗi lokacin [isarwa](payment_time)?
+      - me zai faru idan biyan kuɗi na ya gaza?
+      - har tsawon wane lokaci sarrafa biyan kuɗi ke ɗauka?
+      - kuna karɓar [MTN Mobile Money](payment_method)?
+      - zan iya biya da [Vodafone Cash](payment_method)?
+      - ana karɓar [AirtelTigo Money](payment_method)?
+      - kuna karɓar [Glo Mobile Money](payment_method)?
+      - zan iya amfani da [Zeepay](payment_method)?
+      - akwai [ExpressPay](payment_method)?
+      - kuna karɓar biyan kuɗi ta [Hubtel](payment_method)?
+      - zan iya biya ta [Slydepay](payment_method)?
+      - me game da [G-Money](payment_method)?
+      - ana karɓar [E-zwich](payment_method)?
+
+      # Ewe
+      - payment ƒe dɔwɔnu aɖe le be?
+      - menye be mètsɔ [PayPal](payment_method)?
+      - mèkpɔa [credit card](payment_method) le be?
+      - payment ƒe agbalẽwo
+      - nya mekpɔa be mèlɔ nuɖu?
+      - payment ƒe ɖeɖeɖewo
+      - payment siwo míetɔ?
+      - [mobile money](payment_method) kple payment?
+      - dɔ le [mobile money](payment_method) me
+      - dɔ le [banki transfer](payment_method) me
+      - Miexɔa [ga](payment_method)?
+      - Mate ŋu axe fe ne [wotsɔ nu vɛ](payment_time)?
+      - Miexɔa [ga dede kadi](payment_method)?
+      - Ðe woxɔa [Apple Pay](payment_method)?
+      - Mate ŋu azã [Google Pay](payment_method)?
+      - Miexɔa [cryptocurrency](payment_method)?
+      - Mate ŋu axe fe le [ɣeyiɣi aɖewo](payment_term) me?
+      - Ðe [gaxɔxɔ mɔnu](payment_term) li?
+      - Miexɔa [tɛki](payment_method)?
+      - Mate ŋu axe fe kple [nunana kadi](payment_method)?
+      - Miexɔa [dukɔ bubu ƒe kadiwo](payment_method)?
+      - Ðe woxɔa [Venmo](payment_method)?
+      - Mate ŋu azã [Zelle](payment_method)?
+      - Miexɔa [ga dɔdɔ to ka dzi](payment_method)?
+      - Mate ŋu axe fe kple [fiase ga](payment_method)?
+      - Ðe [afterpay](payment_method) li?
+      - Miexɔa [kadi siwo woxe fe do ŋgɔ na](payment_method)?
+      - Mate ŋu ama fexexe?
+      - Ðe [fexexe ɖoɖo](payment_term) le mia si?
+      - Ðe woxɔa [cash app](payment_method)?
+      - fexexe ƒe mɔnu kawo wòdoa alɔ ɖe dzi?
+      - mate ŋu axe fe kple [digital wallet](payment_method)?
+      - miexɔa fexexe [si meda asi ŋu o](payment_method)?
+      - ɖe wòate ŋu axe fe le [akpawo](payment_term) me?
+      - mate ŋu azã fexexe ƒe mɔnu geɖewo?
+      - ɖe [fexexe ɖoɖo](payment_term) aɖe le mia si?
+      - nukae nye miaƒe ɖoɖo le [dukɔ bubuwo me fexexe](payment_type) ŋu?
+      - ɖe fe aɖe li na fexexe ƒe mɔnu aɖewo zaza?
+      - mate ŋu adzra nye fexexe ƒe nyatakakawo ɖo na emegbe?
+      - mienaa [ƒle fifia, xe fe emegbe](payment_term) ƒe tiatiawo?
+      - fexexe ƒe mɔnu ka nye dedzidzɔtɔ wu?
+      - mate ŋu atrɔ nye fexexe ƒe mɔnu le ɖoɖo wɔwɔ megbe?
+      - miexɔa fexexe ne [wotsɔ nu vɛ](payment_time)?
+      - nukae adzɔ ne nye fexexe mete ŋu yi edzi o?
+      - ɣeyiɣi neni fexexe ƒe nuŋɔŋlɔ xɔna?
+      - miexɔa [MTN Mobile Money](payment_method)?
+      - mate ŋu axe fe kple [Vodafone Cash](payment_method)?
+      - woxɔa [AirtelTigo Money](payment_method)?
+      - miexɔa [Glo Mobile Money](payment_method)?
+      - mate ŋu azã [Zeepay](payment_method)?
+      - [ExpressPay](payment_method) li?
+      - miexɔa [Hubtel](payment_method) fexexe?
+      - mate ŋu axe fe to [Slydepay](payment_method) dzi?
+      - nukae nye [G-Money](payment_method)?
+      - woxɔa [E-zwich](payment_method)?
+
+      # Twi
+      - mo wɔhe bɔ ahe na ɛyɛ payment?
+      - metumi de [PayPal](payment_method) akɔtɔ adeɛ?
+      - mo gye [credit card](payment_method)?
+      - ɔkwan a yɛfa so tua ka
+      - ɛyɛ dɛn na me tua sika?
+      - payment ɔkwan ahorow
+      - dɛn payment na mo gye?
+      - [mobile money](payment_method) tua ka?
+      - tua ka de [mobile money](payment_method)
+      - tua ka wɔ [bank transfer](payment_method) mu
+      - Mo gye [sika](payment_method)?
+      - Metumi atua ka berɛ a [wɔde adeɛ no aba](payment_time)?
+      - Mo gye [debit card](payment_method)?
+      - Wɔ gye [Apple Pay](payment_method)?
+      - Metumi de [Google Pay](payment_method)?
+      - Mo gye [cryptocurrency](payment_method)?
+      - Metumi atua ka [nkakrankakra](payment_term)?
+      - [Sika a wɔbɛbɔ wo](payment_term) wɔ hɔ?
+      - Mo gye [check](payment_method)?
+      - Metumi de [akyɛdeɛ card](payment_method) atua ka?
+      - Mo gye [amanɔne card](payment_method)?
+      - Wɔ gye [Venmo](payment_method)?
+      - Metumi de [Zelle](payment_method)?
+      - Mo gye [wire transfer](payment_method)?
+      - Metumi de [store credit](payment_method) atua ka?
+      - [Afterpay](payment_method) wɔ hɔ?
+      - Mo gye [prepaid card](payment_method)?
+      - Metumi akyɛ sika tuadie no mu?
+      - Mo wɔ [sika tuadie nhyehyɛeɛ](payment_term)?
+      - Wɔ gye [cash app](payment_method)?
+      - sika tuadie akwan bɛn na wɔgye tom?
+      - metumi de [digital wallet](payment_method) atua ka?
+      - mo gye [contactless payment](payment_method)?
+      - ɛbɛyɛ dɛ metua ka [nkakrankakra](payment_term)?
+      - metumi de sika tuadie akwan pii?
+      - mo wɔ [sika tuadie nhyehyɛeɛ](payment_term)?
+      - dɛn ne mo nhyehyɛeɛ wɔ [amanɔne sika tuadie](payment_type) ho?
+      - fee bi wɔ hɔ ma sika tuadie akwan bi?
+      - metumi akora me sika tuadie ho nsɛm ama akyire?
+      - mode [tɔ seesei, tua ka akyire](payment_term) akwan ma?
+      - sika tuadie kwan bɛn na ɛwɔ bammɔ paa?
+      - metumi asesa me sika tuadie kwan wɔ order akyi?
+      - mo gye sika wɔ [delivery berɛ](payment_time)?
+      - dɛn na ɛbɛsi sɛ me sika tuadie annyɛ yie?
+      - mmere tenten sɛn na sika tuadie processing fa?
+      - mo gye [MTN Mobile Money](payment_method)?
+      - metumi de [Vodafone Cash](payment_method) atua ka?
+      - wɔ gye [AirtelTigo Money](payment_method)?
+      - mo gye [Glo Mobile Money](payment_method)?
+      - metumi de [Zeepay](payment_method)?
+      - [ExpressPay](payment_method) wɔ hɔ?
+      - mo gye [Hubtel](payment_method) sika tuadie?
+      - metumi atua ka denam [Slydepay](payment_method) so?
+      - dɛn ne [G-Money](payment_method)?
+      - wɔ gye [E-zwich](payment_method)?
+
+  - intent: buy
+    examples: |
+      # English - General buying intent without specific products
+      - I want to buy something
+      - I want to purchase something
+      - I need to buy something
+      - I'm looking to buy something
+      - I would like to buy something
+      - I want to get something
+      - I need to get something
+      - I'm looking to get something
+      - I would like to get something
+      - I want to order something
+      - I want to buy
+      - I want to purchase
+      - I need to buy
+      - I'm looking to buy
+      - I would like to buy
+      - I want to shop
+      - I need to shop
+      - I'm looking to shop
+      - I want to make a purchase
+      - I need to make a purchase
+      - I'm ready to buy
+      - I'm interested in buying
+      - Can I buy something?
+      - Can I purchase something?
+      - Can I order something?
+
+      # English - Specific products
+      - I want to buy [rice](product)
+      - I want to purchase [maize](product)
+      - I need to buy [a phone](product)
+      - I'm looking to buy [a computer](product)
+      - I would like to buy [5](quantity) [shirts](product)
+      - I'm interested in buying [headphones](product) for [under 50ghs](price)
+      - I want to get [a new watch](product)
+      - I need to get [beans](product) in [bulk](quantity_type)
+      - I'm looking to get [a table](product) with [free shipping](shipping_type)
+      - I would like to get [chairs](product) in [black](color)
+      - I want to order [10](quantity) [bags](product) of [rice](product)
+      - Can I buy [Samsung](brand) [phones](product) from you?
+      - I'd like to purchase [organic](feature) [vegetables](product)
+      - I'm ready to buy the [blue](color) [dress](product) in [size M](size)
+      - I want to buy [2](quantity) [laptops](product) for my [office](purpose)
+      - Looking to buy [waterproof](feature) [shoes](product)
+      - I need to order [kitchen appliances](product_category) [urgently](urgency)
+      - I want to buy [gifts](product_type) for [Christmas](occasion)
+      - Can I purchase [wholesale](quantity_type) [clothing](product_category)?
+      - I'm interested in buying [eco-friendly](feature) [products](product_type)
+      - I want to buy something [under 100ghs](price_range)
+      - Looking to purchase [electronics](product_category) on [credit](payment_term)
+      - I need to buy [school supplies](product_category) for my [kids](user_type)
+      - I want to order [furniture](product_category) for [delivery](service_type)
+      - Can I buy [multiple items](quantity_type) with a [discount](discount_type)?
+
+      # Hausa - General buying intent
+      - Ina son saya wani abu
+      - Ina son sayen wani abu
+      - Ina bukatar saya wani abu
+      - Ina neman saya wani abu
+      - Zan so in sayi wani abu
+      - Ina son saya
+      - Ina bukatar saya
+      - Ina neman saya
+      - Zan so in sayi
+      - Ina son yin saya
+      - Ina bukatar yin saya
+      - Zan iya saya wani abu?
+      - Zan iya sayen wani abu?
+
+      # Hausa - Specific products
+      - Ina son saya [shinkafa](product)
+      - Ina son sayen [masara](product)
+      - Ina bukatar sayen [waya](product)
+      - Ina neman sayen [kwamfyuta](product)
+      - Zan so in sayi [riguna](product) [biyar](quantity)
+      - Ina sha'awar sayen [belun kunne](product) ƙasa da [dala 50](price)
+      - Ina son samun [sabon agogo](product)
+      - Ina bukatar samun [wake](product) a [yawa](quantity_type)
+      - Ina neman samun [tebur](product) tare da [jigilar kyauta](shipping_type)
+      - Zan so in sami [kujeru](product) masu [baƙi](color)
+      - Ina son oda [buhuna](product) [goma](quantity) na [shinkafa](product)
+      - Zan iya sayen [wayoyin](product) [Samsung](brand) daga gare ku?
+      - Ina son sayen [kayan lambu](product) [na halitta](feature)
+      - Na shirya don sayen [rigar](product) [shuɗi](color) a [girman M](size)
+      - Ina son sayen [kwamfutoci](product) [biyu](quantity) don [ofis na](purpose)
+      - Ina neman sayen [takalma](product) [masu jurewa ruwa](feature)
+      - Ina bukatar oda [kayan amfanin gidan girki](product_category) [cikin gaggawa](urgency)
+      - Ina son sayen [kyaututtuka](product_type) don [Kirsimeti](occasion)
+      - Zan iya sayen [tufafi](product_category) a [yawa](quantity_type)?
+      - Ina sha'awar sayen [kayan](product_type) [masu amfani ga muhalli](feature)
+      - Ina son sayen wani abu [ƙasa da dala 100](price_range)
+      - Ina neman sayen [kayan lantarki](product_category) a [bashi](payment_term)
+      - Ina bukatar sayen [kayan makaranta](product_category) don [yarana](user_type)
+      - Ina son oda [kayan gida](product_category) don [isarwa](service_type)
+      - Zan iya sayen [abubuwa da yawa](quantity_type) tare da [rangwame](discount_type)?
+
+      # Ewe - General buying intent
+      - Medi be maƒle nu aɖe
+      - Medi be maƒle nane
+      - Mehiã be maƒle nu aɖe
+      - Mele nu dim be maƒle nu aɖe
+      - Madi be maƒle nu aɖe
+      - Medi be maƒle
+      - Mehiã be maƒle
+      - Mele nu dim be maƒle
+      - Madi be maƒle
+      - Medi be mawɔ nuƒle
+      - Mehiã be mawɔ nuƒle
+      - Mate ŋu aƒle nu aɖe?
+      - Mate ŋu aƒle nane?
+
+      # Ewe - Specific products
+      - Medi be maƒle [mɔli](product)
+      - Medi be maƒle [bli](product)
+      - Mehiã be maƒle [kaƒomɔ](product)
+      - Mele nu dim be maƒle [kɔmputa](product)
+      - Madi be maƒle [awu](product) [atɔ̃](quantity)
+      - Metsɔ ɖeke le [headphones](product) ƒle me le [dɔla 50](price) te
+      - Medi be maxɔ [gaƒoƒoga yeye](product)
+      - Mehiã be maxɔ [ayi](product) le [agbɔsɔsɔ](quantity_type) me
+      - Mele nu dim be maxɔ [kplɔ̃](product) kple [dɔdɔɖa femaxe](shipping_type)
+      - Madi be maxɔ [zikpuiwo](product) siwo nye [yibɔ](color)
+      - Medi be maɖe gbe ɖi na [kotoku](product) [ewo](quantity) siwo me [mɔli](product) le
+      - Mate ŋu aƒle [Samsung](brand) ƒe [kaƒomɔwo](product) le mia gbɔ?
+      - Medi be maƒle [amagbewo](product) siwo nye [organikwo](feature)
+      - Mele klalo be maƒle [awudodo](product) [blɔ](color) si ƒe [lolome nye M](size)
+      - Medi be maƒle [kɔmputa](product) [eve](quantity) na nye [dɔwɔƒe](purpose)
+      - Mele [afɔkpa](product) siwo [tea ŋu nɔa tsi me](feature) dim
+      - Mehiã be maɖe gbe ɖi na [nudada dɔwɔnuwo](product_category) [kaba](urgency)
+      - Medi be maƒle [nunanawo](product_type) na [Blunya](occasion)
+      - Mate ŋu aƒle [avɔwo](product_category) le [agbɔsɔsɔ](quantity_type) me?
+      - Metsɔ ɖeke le [nu](product_type) siwo [nyo na anyigba](feature) ƒle me
+      - Medi be maƒle nane si ƒe asi [mede dɔla 100 o](price_range)
+      - Mele [elektrɔnikwo](product_category) ƒle ge le [fe didi](payment_term) me
+      - Mehiã be maƒle [sukudɔwɔnuwo](product_category) na [vinyewo](user_type)
+      - Medi be maɖe gbe ɖi na [atikpuiwo](product_category) hena [dɔdɔɖa](service_type)
+      - Mate ŋu aƒle [nu geɖewo](quantity_type) kple [asi ɖiɖi](discount_type)?
+
+      # Twi - General buying intent
+      - Mepɛ sɛ metɔ biribi
+      - Mepɛ sɛ metɔ nneɛma bi
+      - Mehia sɛ metɔ biribi
+      - Merehwehwɛ sɛ metɔ biribi
+      - Mɛpɛ sɛ metɔ biribi
+      - Mepɛ sɛ metɔ
+      - Mehia sɛ metɔ
+      - Merehwehwɛ sɛ metɔ
+      - Mɛpɛ sɛ metɔ
+      - Mepɛ sɛ meyɛ adetɔ
+      - Mehia sɛ meyɛ adetɔ
+      - Metumi atɔ biribi?
+      - Metumi atɔ nneɛma bi?
+
+      # Twi - Specific products
+      - Mepɛ sɛ metɔ [ɔmo](product)
+      - Mepɛ sɛ metɔ [aburo](product)
+      - Mehia sɛ metɔ [fon](product)
+      - Merehwehwɛ sɛ metɔ [kɔmputa](product)
+      - Mɛpɛ sɛ metɔ [ntade](product) [enum](quantity)
+      - Me ani gye sɛ metɔ [headphones](product) a ɛnkɔ boro [sika 50](price)
+      - Mepɛ sɛ menya [dɔn foforɔ](product)
+      - Mehia sɛ menya [adua](product) wɔ [pii](quantity_type) mu
+      - Merehwehwɛ sɛ menya [pon](product) a [shipping a wontua hwee](shipping_type)
+      - Mɛpɛ sɛ menya [akonnwa](product) a ɛyɛ [tuntum](color)
+      - Mepɛ sɛ me order [kotoku](product) [du](quantity) a [ɔmo](product) wɔ mu
+      - Metumi atɔ [Samsung](brand) [fon](product) afiri mo nkyɛn?
+      - Mepɛ sɛ metɔ [nhabamma](product) a [ɛyɛ organic](feature)
+      - Meyɛ krado sɛ metɔ [ataadeɛ](product) [bruu](color) a ne [kɛseɛ yɛ M](size)
+      - Mepɛ sɛ metɔ [kɔmputa](product) [mmienu](quantity) ama me [adwumayɛbea](purpose)
+      - Merehwehwɛ sɛ metɔ [mpaboa](product) a [nsuo ntumi nka](feature)
+      - Mehia sɛ me order [aduane noa nneɛma](product_category) [ntɛm ara](urgency)
+      - Mepɛ sɛ metɔ [akyɛdeɛ](product_type) ama [Buronya](occasion)
+      - Metumi atɔ [ntadeɛ](product_category) wɔ [pii](quantity_type) mu?
+      - Me ani gye sɛ metɔ [nneɛma](product_type) a [ɛyɛ ma ɔman](feature)
+      - Mepɛ sɛ metɔ biribi a [ɛnnuru sika 100](price_range)
+      - Merehwehwɛ sɛ metɔ [electronics](product_category) wɔ [bɔ](payment_term) so
+      - Mehia sɛ metɔ [sukuu nneɛma](product_category) ama me [mmofra](user_type)
+      - Mepɛ sɛ me order [efie mu nneɛma](product_category) a [wɔde bɛba](service_type)
+      - Metumi atɔ [nneɛma pii](quantity_type) a [wɔate so](discount_type)?
+
+      # Dagbani - General buying intent
+      - N niŋdi da bini ayi
+      - N niŋdi da nane ayi
+      - N bɔra da bini ayi
+      - N niŋdi da
+      - N bɔra da
+      - N niŋdi yɛ daa
+      - N bɔra yɛ daa
+      - N ni tooi da bini ayi?
+      - N ni tooi da nane ayi?
+
+      # Dagbani - Specific products
+      - N niŋdi da [mɔli](product)
+      - N niŋdi da [masara](product)
+      - N bɔra da [kaƒomɔ](product)
+      - N niŋdi da [kɔmputa](product)
+      - N niŋdi da [awu](product) [ata](quantity)
+
+  - intent: affirm
+    examples: |
+      # English
+      - yes
+      - yeah
+      - yep
+      - of course
+      - sure
+      - absolutely
+      - definitely
+      - that's right
+      - correct
+      - I agree
+      - I want that
+      - that's what I want
+      - that's for me
+      - yes please
+      - sure thing
+      - indeed
+      - certainly
+      - affirmative
+      - positive
+      - confirmed
+      - okay
+      - ok
+      - alright
+      - all right
+      - sounds good
+      - sounds great
+      - perfect
+      - excellent
+      - wonderful
+      - fantastic
+      - great
+      - good
+      - fine
+      - that works
+      - that's fine
+      - that's good
+      - that's great
+      - that's perfect
+      - that's wonderful
+      - that's excellent
+      - that's fantastic
+      - I confirm
+      - I accept
+      - I approve
+      - go ahead
+      - proceed
+      - continue
+      - carry on
+      - by all means
+      - without a doubt
+      - for sure
+      - you bet
+      - you got it
+      - exactly
+      - precisely
+      - that's correct
+      - that's true
+      - true
+      - right
+      - right on
+      - spot on
+
+      # Hausa
+      - Eh mana
+      - Hakika
+      - Gaskiya ne
+      - Na'am
+      - Tabbas
+      - eh
+      - eh mana
+      - tabbas
+      - lallai
+      - ba matsala
+      - gaskiya ne
+      - haka ne
+      - daidai ne
+      - na yarda
+      - ina so hakan
+      - hakan nake so
+      - wannan ne nawa
+      - eh don Allah
+      - ba matsala ko kadan
+      - hakika
+      - tabbatacce
+      - ingantacce
+      - an tabbatar
+      - to
+      - to dai
+      - madalla
+      - madalla sosai
+      - yayi kyau
+      - yayi kyau sosai
+      - cikakke
+      - kyakkyawa
+      - mai ban mamaki
+      - mai ban sha'awa
+      - babba
+      - mai kyau
+      - Sai anjima
+      - Sai watarana
+      - Allah ya kiyaye
+      - Sai gobe
+      - hakan yayi
+      - hakan yayi kyau
+      - hakan yayi kyau sosai
+      - hakan yayi kyau ƙwarai
+      - hakan cikakke ne
+      - hakan mai ban mamaki ne
+      - hakan kyakkyawa ne
+      - hakan mai ban sha'awa ne
+      - na tabbatar
+      - na yarda
+      - na amince
+      - ci gaba
+      - ci gaba da
+      - ka ci gaba
+      - ki ci gaba
+      - ku ci gaba
+      - ba shakka
+      - tabbas
+      - ka sani
+      - daidai
+      - daidai ne
+      - gaskiya ne
+      - gaskiya
+      - dama
+      - dama dai
+      - dama kuwa
+
+      # Ewe
+      - Ee, menye
+      - Ee, menye be
+      - Ee, menye nu
+      - yoo
+      - yoo, ɛyɛ
+      - yoo, mɛdzra
+      - mɛdzra
+      - mɛdzra, mɛɖe
+      - mɛdzra, mɛɖe be
+      - mɛdzra, ɛyɛ
+      - ɛyɛ
+      - mɛdzra, mɛɖe be
+      - mɛdzra, mɛɖe be
+      - mɛdzra, mɛɖe be
+      - mɛdzra, mɛɖe be
+      - yoo, mɛdzra
+      - mɛdzra, mɛɖe be
+      - vavã
+      - kakaɖe
+      - ɖeɖe
+      - kpeɖoɖo
+      - enyo
+      - enyo ŋutɔ
+      - enyo paa
+      - enyo kpɔ
+      - ese nyuie
+      - ese nyuie ŋutɔ
+      - deblibo
+      - wɔnuku
+      - nukutɔe
+      - nyateƒee
+      - Ɛ̃, nyuie
+      - Nyuie ŋutɔ
+      - Ɛ̃ nyuie nam
+      - enyo
+      - ema wɔ dɔ
+      - ema nyo
+      - ema nyo ŋutɔ
+      - ema nyo kpɔ
+      - ema de blibo
+      - ema wɔ nuku
+      - ema nyo ŋutɔ
+      - ema nyo kpɔ kpɔ
+      - meda ɖase
+      - mexɔe
+      - meda asi ɖe dzi
+      - yi edzi
+      - yi ŋgɔ
+      - yi edzi
+      - yi dzi
+      - le mɔ ɖeka nu
+      - kpeɖeŋutɔ
+      - kakaɖe
+      - nàxɔe
+      - tututu
+      - pɛpɛpɛ
+      - ema sɔ
+      - ema le eteƒe
+      - nyateƒe
+      - eteƒe
+      - sɔ pɛpɛpɛ
+      - le eteƒe tututu
+
+      # Twi
+      - Aane, ɛyɛ nokware
+      - Aane, ɛyɛ paa
+      - Aane, ɛyɛ dɛ
+      - aane
+      - aane, ɛyɛ
+      - aane, ɛyɛ nokware
+      - ɛyɛ nokware
+      - ɛyɛ nokware, mɛpɛ
+      - ɛyɛ nokware, mɛpɛ
+      - ɛyɛ nokware, ɛyɛ
+      - ɛyɛ
+      - mɛpɛ
+      - mɛpɛ
+      - mɛpɛ
+      - mɛpɛ
+      - aane, mɛpɛ
+      - ɛyɛ nokware
+      - ampa
+      - nokware
+      - aane paa
+      - wɔapene so
+      - ɛyɛ me
+      - ɛyɛ yie
+      - ɛyɛ yie paa
+      - ɛyɛ fɛ
+      - ɛte yie
+      - ɛte yie paa
+      - pɛpɛɛpɛ
+      - ɛyɛ fɛfɛɛfɛ
+      - ɛyɛ nwonwa
+      - ɛyɛ hu
+      - kɛse
+      - papa
+      - ɛyɛ
+      - ɛno yɛ
+      - ɛno yɛ yie
+      - ɛno yɛ papa
+      - ɛno yɛ kɛse
+      - ɛno yɛ pɛpɛɛpɛ
+      - ɛno yɛ nwonwa
+      - ɛno yɛ fɛfɛɛfɛ
+      - ɛno yɛ hu
+      - mesi so dua
+      - megye tom
+      - mepene so
+      - kɔ so
+      - toa so
+      - kɔ so
+      - fa so kɔ
+      - ɛkwan biara so
+      - akyinnye biara nni ho
+      - ampa ara
+      - wopɛ bet
+      - woanya
+      - pɛpɛɛpɛ
+      - saa ara na ɛte
+      - ɛyɛ nokware
+      - nokware
+      - ɛyɛ saa
+      - ɛte saa
+      - ɛte saa pɛpɛɛpɛ
+
+  - intent: deny
+    examples: |
+      # English
+      - no
+      - nope
+      - not at all
+      - I don't think so
+      - I don't want to
+      - I don't need that
+      - I don't agree
+      - I disagree
+      - never
+      - absolutely not
+      - no thanks
+      - no thank you
+      - that's not what I want
+      - that's not for me
+      - negative
+      - not really
+      - I don't think that's right
+      - that's incorrect
+      - that's wrong
+      - false
+      - not true
+      - I decline
+      - I refuse
+      - I reject
+      - no way
+      - not a chance
+      - forget it
+      - not happening
+      - I don't want it
+      - I'm not interested
+      - count me out
+      - I'll pass
+      - not for me
+      - I don't like that
+      - that doesn't work for me
+      - I don't approve
+      - I object
+      - I oppose
+      - definitely not
+      - certainly not
+      - of course not
+      - by no means
+      - not in the least
+      - not at all
+      - I don't buy it
+      - I'm not convinced
+      - I doubt it
+      - unlikely
+      - impossible
+      - can't be
+      - won't work
+      - bad idea
+      - I don't support that
+      - I'm against it
+      - not my thing
+      - not my style
+      - doesn't suit me
+      - I'd rather not
+      - I prefer not to
+      - let's not
+      - maybe later
+      - another time
+      - rain check
+
+      # Hausa
+      - A'a, ba haka ba
+      - Da'a, ba zan iya ba
+      - Sam, ba
+      - Ban yarda ba
+      - a'a
+      - a'a, ba haka ba
+      - sam ba
+      - ban yi tunanin haka ba
+      - bana son yin hakan
+      - bana bukatar hakan
+      - ban yarda ba
+      - ban yarda ba
+      - har abada
+      - sam ba
+      - a'a, na gode
+      - a'a, na gode
+      - ba wannan nake so ba
+      - wannan ba nawa bane
+      - mara kyau
+      - ba gaskiya ba
+      - ban yi tunanin hakan daidai ne ba
+      - wannan ba daidai ba ne
+      - wannan kuskure ne
+      - ƙarya
+      - ba gaskiya ba ne
+      - na ƙi
+      - na ƙi
+      - na ƙi
+      - ba zai yiwu ba
+      - ba wata dama
+      - ka manta
+      - ba zai faru ba
+      - ba na son shi
+      - ba ni da sha'awa
+      - kada ku ƙidaya ni
+      - zan wuce
+      - ba nawa ba ne
+      - ba na son hakan
+      - wannan bai yi mini ba
+      - ban amince ba
+      - ina ƙin yarda
+      - ina adawa
+      - lalle ba
+      - tabbas ba
+      - ba shakka ba
+      - ba ta wata hanya ba
+      - ko kaɗan
+      - ko kaɗan
+      - ban yarda ba
+      - ban gamsu ba
+      - ina shakka
+      - da wuya
+      - ba zai yiwu ba
+      - ba zai iya zama ba
+      - ba zai yi aiki ba
+      - mummunan ra'ayi
+      - ba na goyon bayan hakan
+      - ina adawa da shi
+      - ba nawa ba ne
+      - ba salon na ba ne
+      - bai dace da ni ba
+      - na fi son kada
+      - na fi son kada in yi
+      - kada mu yi
+      - watakila daga baya
+      - wani lokaci
+      - sauran lokaci
+
+      # Ewe
+      - Menye o, menye be
+      - Menye nu o, menye nu be
+      - ao
+      - ao, o
+      - ooo
+      - meɖe be o
+      - menye be mɛdzra o
+      - menye be mɛdzra o
+      - menye be mɛdzra o
+      - menye be mɛdzra o
+      - menye be mɛdzra o
+      - ooo
+      - ao, medekuku
+      - ao, medekuku
+      - menye be mɛdzra o
+      - menye be mɛdzra o
+      - mademadzudzɔ
+      - menye nyateƒe o
+      - nyemebu be ema sɔ o
+      - ema mesɔ o
+      - ema mede o
+      - aʋatso
+      - menye nyateƒe o
+      - megbe
+      - megbe nɛ
+      - megbe ɖe edzi
+      - gbeɖe
+      - mɔ aɖeke meli o
+      - ŋlɔ be ɖi
+      - mava eme o
+      - nyemelɔ̃e o
+      - nyemetsɔ ɖeke le eme o
+      - migabu mɛ o
+      - mato eme
+      - menye tanye o
+      - nyemelɔ̃ ema o
+      - ema mewɔ dɔ nam o
+      - nyemelɔ̃ ɖe edzi o
+      - metsi tsitre ɖe eŋu
+      - metsi tsitre ɖe eŋu
+      - kakaɖe ao
+      - vavã ao
+      - gbeɖegbeɖe ao
+      - le mɔ aɖeke nu o
+      - kura o
+      - kura o
+      - nyemexɔe se o
+      - ɖikeke mele menye o
+      - meke ɖi le eŋu
+      - ɖewohĩ
+      - mate ŋu o
+      - mate ŋu anye o
+      - mawɔ dɔ o
+      - susu gbegblẽ
+      - nyemedo alɔ ɖe edzi o
+      - metsi tsitre ɖe eŋu
+      - menye tanye o
+      - menye nye atsyã o
+      - medze ŋunye o
+      - malɔ̃ be nyemawɔe o
+      - medi be nyemawɔe o
+      - mina míagawɔe o
+      - ɖewohĩ emegbe
+      - ɣeyiɣi bubu
+      - míagawɔe emegbe
+
+      # Twi
+      - Daabi, menpɛ
+      - Daabi, ɛnyɛ saa
+      - daabi
+      - daabi
+      - daabi koraa
+      - menka saa
+      - menpɛ sɛ meyɛ saa
+      - menhia saa
+      - menpene so
+      - menpene so
+      - daabi koraa
+      - daabi koraa
+      - daabi, meda wo ase
+      - daabi, meda wo ase
+      - ɛnyɛ saa na mepɛ
+      - ɛnyɛ me dea
+      - ɔyɛ bɔne
+      - ɛnyɛ nokware
+      - mensusu sɛ ɛyɛ saa
+      - ɛnyɛ saa
+      - ɛyɛ mfomso
+      - atoro
+      - ɛnyɛ nokware
+      - mepo
+      - mekame
+      - mepo
+      - ɛrennyɛ yie da
+      - ɔkwan biara nni hɔ
+      - werɛ fi
+      - ɛrensii da
+      - mempɛ
+      - menni anigye wom
+      - nkan me firi mu
+      - mɛtwene
+      - ɛnyɛ me dea
+      - mempɛ saa
+      - ɛnyɛ adwuma ma me
+      - mempene so
+      - mekasa tia
+      - metia
+      - dabi dabi
+      - ampa ara dabi
+      - gye di sɛ dabi
+      - ɛkwan biara so
+      - koraa ara
+      - koraa ara
+      - mennye nni
+      - wontumi annye me nnwene
+      - mewɔ akyinnyegye
+      - ɛnyɛ saa
+      - ɛrentumi nsii
+      - ɛrentumi nyɛ saa
+      - ɛrenyɛ adwuma
+      - adwene bɔne
+      - memfa me ho nhyɛ mu
+      - metia
+      - ɛnyɛ me dea
+      - ɛnyɛ me kwan
+      - ɛmfata me
+      - mepɛ sɛ mennyɛ
+      - mepɛ sɛ mennyɛ saa
+      - momma yennnyɛ
+      - ebia akyire yi
+      - berɛ foforɔ
+      - yɛbɛhyia bio
+
+  - intent: out_of_scope
+    examples: |
+      # English
+      - What's the time?
+      - Tell me a joke
+      - Who is the president?
+      - What's the weather?
+      - Can you sing?
+      - Do you love me?
+      - What's your favorite color?
+      - How old are you?
+      - Where do you live?
+      - Can you dance?
+      - What's the meaning of life?
+      - Can you cook?
+      - Do you have feelings?
+      - What's your name?
+      - Are you human?
+      - Can you drive?
+      - What's the capital of France?
+      - How tall are you?
+      - Do you sleep?
+      - What's your favorite food?
+      - Can you play games?
+      - Do you have friends?
+      - What's the weather like?
+      - Can you predict the future?
+      - Do you dream?
+      - What's your favorite movie?
+      - Can you write poetry?
+      - Do you have a family?
+      - What's the stock market doing?
+      - Can you solve math problems?
+
+      # Hausa
+      - Menene sunan shugaban kasa?
+      - Menene yanayin yau?
+      - Wacece uwargidan shugaban kasa?
+      - Wane ne ministan lafiya?
+      - Za ka iya rera waƙa?
+      - Kana sona?
+      - Wane launi kake so?
+      - Shekarun ka nawa ne?
+      - A ina kake zaune?
+      - Za ka iya rawa?
+      - Menene ma'anar rayuwa?
+      - Za ka iya dafa abinci?
+      - Kana da ji?
+      - Menene sunanka?
+      - Kai mutum ne?
+      - Za ka iya tuƙi mota?
+      - Menene babban birnin Faransa?
+      - Tsawonka nawa ne?
+      - Kana barci?
+      - Wane abinci kake so?
+      - Za ka iya yin wasanni?
+      - Kana da abokai?
+      - Yaya yanayi yake?
+      - Za ka iya hasashen gaba?
+      - Kana mafarki?
+      - Wane fim kake so?
+      - Za ka iya rubuta waƙa?
+      - Kana da iyali?
+      - Me kasuwar hannayen jari ke yi?
+      - Za ka iya warware matsalolin lissafi?
+
+      # Ewe
+      - Nukae nye president?
+      - Nukae nye asime?
+      - Nukae nye fia?
+      - Nukae nye dɔwɔla?
+      - Àte ŋu adzi ha?
+      - Èlɔ̃m?
+      - Amadede ka nèlɔ̃na wu?
+      - Ƒe nenie nèxɔ?
+      - Afikae nèle?
+      - Àte ŋu aɖu ɣe?
+      - Nukae nye agbe ƒe gɔmesese?
+      - Àte ŋu aɖa nu?
+      - Seselelãme le asiwò?
+      - Wò ŋkɔ ɖe?
+      - Amegbetɔe nènye?
+      - Àte ŋu aku ʋu?
+      - Nukae nye France ƒe fiadu?
+      - Wò kɔkɔme ɖe?
+      - Èdɔa alɔ̃?
+      - Nuɖuɖu ka nèlɔ̃na wu?
+      - Àte ŋu aƒe fefe?
+      - Xɔlɔ̃wo le asiwò?
+      - Aleke yame le?
+      - Àte ŋu agblɔ etsɔ me nya?
+      - Èkua drɔ̃e?
+      - Sinima ka nèlɔ̃na wu?
+      - Àte ŋu aŋlɔ hakpanya?
+      - Ƒome le asiwò?
+      - Nukae asitsatsa ƒe asi le wɔm?
+      - Àte ŋu awɔ akɔnta ƒe kuxiwo?
+
+      # Twi
+      - Hena na ɔyɛ president?
+      - Hena na ɔyɛ ɔhene?
+      - Hena na ɔyɛ ɔbenfo?
+      - Hena na ɔyɛ ɔdɔfo?
+      - Wobɛtumi ato dwom?
+      - Wodɔ me?
+      - Kɔla bɛn na wopɛ?
+      - Woadi mfe sɛn?
+      - Ɛhe na wote?
+      - Wobɛtumi asa?
+      - Dɛn ne asetra mu nteaseɛ?
+      - Wobɛtumi anoa aduane?
+      - Wowɔ nkate?
+      - Wo din de sɛn?
+      - Woyɛ onipa?
+      - Wobɛtumi aka kar?
+      - Dɛn ne France ahenkuro?
+      - Wo tenten yɛ sɛn?
+      - Woda?
+      - Aduane bɛn na wopɛ?
+      - Wobɛtumi adi agorɔ?
+      - Wowɔ nnamfo?
+      - Ɛwiem te sɛn?
+      - Wobɛtumi ahyɛ daakye ho nkɔm?
+      - Woso dae?
+      - Sini bɛn na wopɛ?
+      - Wobɛtumi atwerɛ anwensɛm?
+      - Wowɔ abusua?
+      - Dɛn na dwetire gua reyɛ?
+      - Wobɛtumi adi akontabu nsɛm?
+
+  - intent: restart
+    examples: |
+      # English
+      - restart
+      - start over
+      - begin again
+      - reset
+      - clear conversation
+      - start fresh
+      - let's start over
+      - can we start over?
+      - I want to start over
+      - let's begin again
+      - restart the conversation
+      - reset the chat
+      - clear the chat
+      - start from scratch
+      - let's start from the beginning
+      - can we start from the beginning?
+      - I want to start from the beginning
+      - let's restart
+      - can we restart?
+      - I want to restart
+      - new conversation
+      - fresh start
+      - clean slate
+      - wipe the slate clean
+      - let's try again
+      - can we try again?
+      - I want to try again
+      - start anew
+      - begin an
+
+      # Hausa
+      - fara daga farko
+      - sake fara
+      - fara daga farko
+      - sake saita
+      - share tattaunawa
+      - fara da sabon
+      - bari mu fara daga farko
+      - za mu iya fara daga farko?
+      - ina son fara daga farko
+      - bari mu sake fara
+      - sake fara tattaunawa
+      - sake saita hirar
+      - share hirar
+      - fara daga asali
+      - bari mu fara daga farko
+      - za mu iya fara daga farko?
+      - ina son fara daga farko
+      - bari mu sake fara
+      - za mu iya sake fara?
+      - ina son sake fara
+      - sabuwar tattaunawa
+      - sabon farko
+      - tsaftace allon
+      - share allon
+      - bari mu sake gwada
+      - za mu iya sake gwada?
+      - ina son sake gwada
+      - fara da sabon
+      - fara da sabon
+
+      # Ewe
+      - gbugbɔ dze egɔme
+      - gbugbɔ dze fia
+      - gbugbɔ dze eŋu
+      - gbugbɔ ɖo
+      - tutu nuƒoƒo la ɖa
+      - dze egɔme yeye
+      - mina míagbugbɔ adze egɔme
+      - míate ŋu agbugbɔ adze egɔme?
+      - medi be magbugbɔ adze egɔme
+      - mina míagbugbɔ adze eŋu
+      - gbugbɔ dze nuƒoƒo la gɔme
+      - gbugbɔ ɖo dzeɖoɖo la
+      - tutu dzeɖoɖo la ɖa
+      - dze egɔme tso gɔmedzedze
+      - mina míadze egɔme tso gɔmedzedze
+      - míate ŋu adze egɔme tso gɔmedzedze?
+      - medi be madze egɔme tso gɔmedzedze
+      - mina míagbugbɔ adze egɔme
+      - míate ŋu agbugbɔ adze egɔme?
+      - medi be magbugbɔ adze egɔme
+      - nuƒoƒo yeye
+      - gɔmedzedze yeye
+      - akpa vɔvɔ
+      - tutu akpa la ɖa
+      - mina míagadze agbagba
+      - míate ŋu agadze agbagba?
+      - medi be magadze agbagba
+      - dze egɔme yeye
+      - dze eŋu yeye
+
+      # Twi
+      - san firi aseɛ
+      - firi aseɛ bio
+      - hyɛ aseɛ bio
+      - san hyɛ aseɛ
+      - yi nkɔmmɔdie no
+      - hyɛ aseɛ foforɔ
+      - momma yɛn san firi aseɛ
+      - yɛbɛtumi asan afiri aseɛ?
+      - mepɛ sɛ me san firi aseɛ
+      - momma yɛn san hyɛ aseɛ
+      - san hyɛ nkɔmmɔdie no aseɛ
+      - san hyɛ kasa no aseɛ
+      - yi kasa no
+      - firi mfitiaseɛ
+      - momma yɛn firi mfitiaseɛ
+      - yɛbɛtumi afiri mfitiaseɛ?
+      - mepɛ sɛ me firi mfitiaseɛ
+      - momma yɛn san hyɛ aseɛ
+      - yɛbɛtumi asan ahyɛ aseɛ?
+      - mepɛ sɛ me san hyɛ aseɛ
+      - nkɔmmɔdie foforɔ
+      - mfitiaseɛ foforɔ
+      - slate fitaa
+      - yi slate no ho
+      - momma yɛn san sɔ hwɛ
+      - yɛbɛtumi asan asɔ ahwɛ?
+      - mepɛ sɛ me san sɔ hwɛ
+      - hyɛ aseɛ foforɔ
+      - hyɛ aseɛ foforɔ
+
+  - intent: negotiate
+    examples: |
+      # English
+      - Can you give me a better price?
+      - Is that the best you can do?
+      - Can you lower the price?
+      - I think that's too expensive
+      - That's more than I wanted to pay
+      - Can we negotiate on the price?
+      - Is there any room for negotiation?
+      - Can you do a better deal?
+      - I was hoping for a lower price
+      - That's above my budget
+      - Can you offer a discount?
+      - Is there a discount available?
+      - Can you come down on the price?
+      - That's not what I was expecting to pay
+      - I can't afford that price
+      - Can you do [50ghs](price) instead?
+      - How about [100ghs](price)?
+      - I'll give you [200ghs](price) for it
+      - Would you take [75ghs](price)?
+      - I'm willing to pay [150ghs](price)
+      - Can you do [10%](discount) off?
+      - Is there a [bulk](quantity_type) discount?
+      - Can I get a better price if I buy [multiple](quantity_type)?
+      - What's your best price?
+      - I'll buy it if you can do [300ghs](price)
+      - That's too high, can you go lower?
+      - I was thinking more like [250ghs](price)
+      - Can you match your competitor's price?
+      - I saw it elsewhere for [less](price_comparison)
+      - If I buy [today](time), can you give me a better price?
+      - I'll pay [cash](payment_method) for a better price
+      - Can you throw in [free shipping](shipping_type)?
+      - I'll take [two](quantity) if you give me a discount
+      - What's the lowest you can go?
+      - Is the price [firm](price_attribute) or [negotiable](price_attribute)?
+      - Can we meet in the [middle](price_negotiation_strategy)?
+      - I'll [walk away](negotiation_tactic) if we can't agree on a better price
+      - Let's make a [deal](negotiation_term)
+      - I'm ready to [buy now](purchase_timing) if the price is right
+      - Can you do better than that?
+      - That's not a fair price
+      - I know the [market value](price_reference) is lower
+      - I'm a [regular customer](customer_type), can you give me a special price?
+      - If I [refer](referral) others, can I get a discount?
+
+      # Hausa
+      - Za ka iya ba ni farashi mafi kyau?
+      - Shin wannan ne mafi kyawun da za ka iya yi?
+      - Za ka iya rage farashin?
+      - Na yi tunanin wannan ya yi tsada sosai
+      - Wannan ya fi abin da nake son biya
+      - Za mu iya tattaunawa akan farashin?
+      - Akwai wata dama don tattaunawa?
+      - Za ka iya yin ciniki mafi kyau?
+      - Na yi fata in sami farashi mafi ƙaranci
+      - Wannan ya fi kasafin kuɗina
+      - Za ka iya ba da rangwame?
+      - Akwai rangwame?
+      - Za ka iya sauka akan farashin?
+      - Ba wannan nake tsammani zan biya ba
+      - Ba zan iya biyan wannan farashi ba
+      - Za ka iya [dala 50](price) a maimakon?
+      - Yaya game da [dala 100](price)?
+      - Zan ba ka [dala 200](price) dominsa
+      - Za ka karɓi [dala 75](price)?
+      - Ina shirye don biyan [dala 150](price)
+      - Za ka iya rage [kashi 10](discount)?
+      - Akwai rangwamen [yawa](quantity_type)?
+      - Zan iya samun farashi mafi kyau idan na sayi [da yawa](quantity_type)?
+      - Menene mafi kyawun farashin ka?
+      - Zan saya idan za ka iya [dala 300](price)
+      - Wannan ya yi tsada sosai, za ka iya sauka?
+      - Na yi tunanin kamar [dala 250](price)
+      - Za ka iya daidaita farashin abokin hammayar ka?
+      - Na ga shi a wani wuri da [ƙasa](price_comparison)
+      - Idan na saya [yau](time), za ka iya ba ni farashi mafi kyau?
+      - Zan biya [tsabar kuɗi](payment_method) don farashi mafi kyau
+      - Za ka iya ƙara [jigilar kyauta](shipping_type)?
+      - Zan ɗauki [biyu](quantity) idan ka ba ni rangwame
+      - Menene mafi ƙarancin da za ka iya sauka?
+      - Shin farashin [daidai ne](price_attribute) ko [ana iya tattaunawa](price_attribute)?
+      - Za mu iya haɗuwa a [tsakiya](price_negotiation_strategy)?
+      - Zan [tafi](negotiation_tactic) idan ba za mu yarda akan farashi mafi kyau ba
+      - Bari mu yi [yarjejeniya](negotiation_term)
+      - Na shirya don [saya yanzu](purchase_timing) idan farashin ya dace
+      - Za ka iya yin mafi kyau fiye da haka?
+      - Wannan ba farashi na gaskiya ba ne
+      - Na san [ƙimar kasuwa](price_reference) ta ƙasa
+      - Ni [abokin ciniki ne na kullum](customer_type), za ka iya ba ni farashi na musamman?
+      - Idan na [ba da shawarar](referral) wasu, zan iya samun rangwame?
+
+      # Ewe
+      - Àte ŋu ana asi nyui wum?
+      - Esia nye nyuitɔ si nàte ŋu awɔa?
+      - Àte ŋu aɖe asi la ɖe anyi?
+      - Mebu be esia xɔ asi akpa
+      - Esia wu nu si medi be maxe
+      - Míate ŋu aɖo asi la ŋu?
+      - Ðe mɔnukpɔkpɔ aɖe li na asiɖoɖo ŋua?
+      - Àte ŋu awɔ nudzadzra nyui wu?
+      - Menɔ mɔ kpɔm na asi si le ɖe anyi wu
+      - Esia wu nye gaɖoɖo
+      - Àte ŋu ana asi ɖiɖi?
+      - Ðe asi ɖiɖi aɖe li?
+      - Àte ŋu aɖi ɖe asi la ŋu?
+      - Menye esia menɔ mɔ kpɔm be maxe o
+      - Nyemate ŋu axe asi ma o
+      - Àte ŋu awɔ [dɔla 50](price) ɖe eteƒe?
+      - Aleke wòanɔ ne enye [dɔla 100](price)?
+      - Mana wò [dɔla 200](price) ɖe eta
+      - Àxɔ [dɔla 75](price)?
+      - Mele klalo be maxe [dɔla 150](price)
+      - Àte ŋu aɖe [eƒe akpa 10](discount) ɖa?
+      - Ðe asi ɖiɖi aɖe li na [agbɔsɔsɔ](quantity_type)?
+      - Mate ŋu akpɔ asi nyui wu ne meƒle [nu geɖewo](quantity_type)?
+      - Asi ka nye wò asi nyuitɔ?
+      - Maƒlee ne àte ŋu awɔ [dɔla 300](price)
+      - Esia kɔ akpa, àte ŋu aɖi ɖe anyi?
+      - Menɔ bubum be anɔ abe [dɔla 250](price) ene
+      - Àte ŋu asɔ kple wò hohoetɔ ƒe asi?
+      - Mekpɔe le afi bubu kple [si le ɖe anyi wu](price_comparison)
+      - Ne meƒlee [egbe](time), àte ŋu ana asi nyui wum?
+      - Maxe [ga](payment_method) na asi nyui wu
+      - Àte ŋu atsɔ [dɔdɔɖa femaxe](shipping_type) akpe ɖe eŋu?
+      - Maxɔ [eve](quantity) ne èna asi ɖiɖim
+      - Asi ka nye ɖeɖi ɖe anyi si nàte ŋu ayi?
+      - Ðe asi la [sẽ](price_attribute) alo [woate ŋu aɖo eŋu](price_attribute)?
+      - Míate ŋu ado go le [titina](price_negotiation_strategy)?
+      - Ma[dzo](negotiation_tactic) ne míate ŋu alɔ̃ ɖe asi nyui wu dzi o
+      - Mina míawɔ [nubabla](negotiation_term)
+      - Mele klalo na [ƒleƒle fifia](purchase_timing) ne asi la sɔ
+      - Àte ŋu awɔ nyui wu ema?
+      - Esia menye asi dzɔdzɔe o
+      - Menya be [asi si le asime](price_reference) le ɖe anyi wu
+      - [Nuƒlela si vana edziedzi](customer_type) menye, àte ŋu ana asi tɔxɛ aɖem?
+      - Ne me[fia](referral) ame bubuwo, mate ŋu akpɔ asi ɖiɖi?
+
+      # Twi
+      - Wobɛtumi ama me boɔ pa?
+      - Ɛno ne nea wobɛtumi ayɛ paa?
+      - Wobɛtumi ate boɔ no ase?
+      - Mesusu sɛ ɛyɛ den dodo
+      - Ɛboro nea na mepɛ sɛ metua
+      - Yɛbɛtumi akasa afa boɔ no ho?
+      - Ɔkwan bi wɔ hɔ ma nkɔmmɔdie?
+      - Wobɛtumi ayɛ adwadiden pa?
+      - Na mewɔ anidasoɔ sɛ boɔ no bɛyɛ fann
+      - Ɛboro me sika a masiesie
+      - Wobɛtumi ate so?
+      - Te so bi wɔ hɔ?
+      - Wobɛtumi ate boɔ no ase?
+      - Ɛnyɛ nea na merehwɛ anim sɛ metua
+      - Merentumi ntua saa boɔ no
+      - Wobɛtumi ayɛ [sika 50](price) mmom?
+      - Ɛbɛyɛ dɛn sɛ [sika 100](price)?
+      - Mɛma wo [sika 200](price) ama no
+      - Wobɛgye [sika 75](price)?
+      - Mewɔ krado sɛ mɛtua [sika 150](price)
+      - Wobɛtumi ate so [ɔha mu du](discount)?
+      - Te so bi wɔ hɔ ma [pii](quantity_type)?
+      - Mɛtumi anya boɔ pa sɛ metɔ [pii](quantity_type)?
+      - Wo boɔ pa ne ɛyɛ dɛn?
+      - Mɛtɔ sɛ wobɛtumi ayɛ [sika 300](price)
+      - Ɛyɛ den dodo, wobɛtumi ate ase?
+      - Na mesusu biribi te sɛ [sika 250](price)
+      - Wobɛtumi ayɛ wo akafoɔ boɔ?
+      - Mehunuu wɔ baabi foforɔ sɛ [ɛyɛ mmerɛw](price_comparison)
+      - Sɛ metɔ [ɛnnɛ](time) a, wobɛtumi ama me boɔ pa?
+      - Mɛtua [sika](payment_method) ama boɔ pa
+      - Wobɛtumi aka [shipping a wontua hwee](shipping_type) ho?
+      - Mɛfa [mmienu](quantity) sɛ wote so ma me a
+      - Boɔ bɛn ne ɛyɛ fann koraa a wobɛtumi akɔ?
+      - Boɔ no [gyina hɔ](price_attribute) anaa [wobɛtumi akasa afa ho](price_attribute)?
+      - Yɛbɛtumi ahyia wɔ [mfinimfini](price_negotiation_strategy)?
+      - Mɛ[kɔ](negotiation_tactic) sɛ yɛrentumi mpene boɔ pa bi so a
+      - Momma yɛnyɛ [adwadiden](negotiation_term)
+      - Mewɔ krado sɛ mɛ[tɔ seesei](purchase_timing) sɛ boɔ no yɛ a
+      - Wobɛtumi ayɛ nea ɛyɛ pa kyɛn saa?
+      - Ɛnyɛ boɔ a ɛfata
+      - Menim sɛ [dwetire gua mu boɔ](price_reference) yɛ fann
+      - Me yɛ [ɔtɔfoɔ a metɔ daa](customer_type), wobɛtumi ama me boɔ soronko?
+      - Sɛ me[kyerɛ](referral) afoforɔ a, mɛtumi anya te so?
+
+  - intent: contact_support
+    examples: |
+      # English
+      - I need [help](help_type)
+      - Can you help me?
+      - I have a [question](help_type)
+      - I'm confused
+      - How does this work?
+      - I don't understand
+      - Can you explain?
+      - I need [assistance](help_type)
+      - Help me please
+      - I need some [help](help_type)
+      - Can you assist me?
+      - I have a [problem](help_type)
+      - I'm lost
+      - What should I do?
+      - What are your features?
+      - What can you assist with?
+      - Can you tell me what you do?
+      - What services do you offer?
+      - How can you help me?
+      - What are you for?
+      - I don't know what to do
+      - I need some [guidance](help_type)
+      - Can you guide me?
+      - I need [support](help_type)
+      - I need some [support](help_type)
+      - Can you support me?
+      - I need [help](help_type) 
+      - can you assist me? 
+      - how do I use this [shop](service_type)? 
+      - what can you do? 
+      - I'm lost 
+      - show me options 
+      - I need [guidance](help_type) 
+      - please help 
+      - help me find something
+      - assist me please
+      - I'm having [trouble](help_type)
+      - I'm having [difficulty](help_type)
+      - I'm having a hard time
+      - I'm struggling
+      - I'm having [issues](help_type)
+      - I'm having [problems](help_type)
+      - I'm having [challenges](help_type)
+      - I'm facing [difficulties](help_type)
+      - I'm facing [challenges](help_type)
+      - I'm facing [problems](help_type)
+      - I'm facing [issues](help_type)
+      - I'm encountering [problems](help_type)
+      - I'm encountering [difficulties](help_type)
+      - I'm encountering [challenges](help_type)
+      - I'm encountering [issues](help_type)
+      - How do I [buy](action_type) a [product](product)?
+      - Can you help me [find](action_type) a [phone](product)?
+      - I need help with [payment](help_topic)
+      - I'm confused about [shipping](help_topic)
+      - How do I track my [order](help_topic)?
+      - Can you explain the [return policy](help_topic)?
+      - I need assistance with [product selection](help_topic)
+      - Help me understand the [pricing](help_topic)
+
+      # Hausa
+      - Don Allah taimaka min
+      - Ina bukatar [taimako](help_type) yanzu
+      - Wani zai iya taimaka min?
+      - Ina neman [taimako](help_type)
+      - Ina bukatar [shawara](help_type)
+      - ina buƙatar [taimako](help_type)
+      - za ka taimaka?
+      - ta yaya zan yi amfani?
+      - me za ka iya yi?
+      - na baci
+      - Ina bukatar [taimako](help_type)
+      - Ina bukatar taimako da wannan
+      - Ina bukatar taimako da wannan [kaya](product)
+      - Ina bukatar taimako da wannan [abu](product)
+      - Ina bukatar taimako da wannan [lamari](help_type)
+      - Ina bukatar taimako da wannan [matsala](help_type)
+      - Ina bukatar taimako da wannan [tambaya](help_type)
+      - Ina bukatar taimako da wannan [magana](help_type)
+      - Ina bukatar taimako da wannan [al'amari](help_type)
+      - Ina bukatar taimako da wannan [batun](help_type)
+      - Ina bukatar taimako da wannan [bayanin](help_type)
+      - Ina bukatar taimako da wannan [shawarar](help_type)
+      - Ina bukatar taimako da wannan [hanyar](help_type)
+      - Ina bukatar taimako da wannan [dabarar](help_type)
+      - Ina bukatar taimako da wannan [dabaran](help_type)
+      - Ina bukatar taimako da wannan [dabarun](help_type)
+      - Ina bukatar taimako da wannan [dabarorin](help_type)
+      - Ina bukatar taimako da wannan [dabarori](help_type)
+      - Ina bukatar taimako da wannan [dabaroran](help_type)
+      - Ina bukatar taimako da wannan [dabaroranku](help_type)
+      - Ina fama da [matsala](help_type)
+      - Ina fama da [wahala](help_type)
+      - Ina fama da [wuya](help_type)
+      - Ina fama da [tsanani](help_type)
+      - Ina fama da [rikitarwa](help_type)
+      - Ina fama da [rudani](help_type)
+      - Ina fama da [rikicewar hankali](help_type)
+      - Ina fama da [rashin fahimta](help_type)
+      - Ina fama da [rashin sani](help_type)
+      - Ina fama da [rashin ilimi](help_type)
+      - Ina fama da [rashin masaniya](help_type)
+      - Ina fama da [rashin basira](help_type)
+      - Ina fama da [rashin hikima](help_type)
+      - Ina fama da [rashin hangen nesa](help_type)
+      - Ina fama da [rashin tunani](help_type)
+      - Ta yaya zan [saya](action_type) [kaya](product)?
+      - Za ka iya taimaka min in [samo](action_type) [waya](product)?
+      - Ina bukatar taimako game da [biyan kuɗi](help_topic)
+      - Na ruɗe game da [jigilar kaya](help_topic)
+      - Ta yaya zan bi sawun [oda na](help_topic)?
+      - Za ka iya bayyana [manufar mayarwa](help_topic)?
+      - Ina bukatar taimako game da [zaɓin kaya](help_topic)
+      - Taimaka min in fahimci [farashin](help_topic)
+
+      # Ewe
+      - Mebu [kpekpeɖeŋu](help_type)
+      - Mebu kpekpeɖeŋu na mi
+      - Mebu kpekpeɖeŋu na wo
+      - Mebu kpekpeɖeŋu na miawoe
+      - mèɖe ɖe wɔwɔla
+      - wòle nɔ ame?
+      - fiaɖe sia me yevɔ?
+      - míanya be yèɖo?
+      - mekpɔ anyi
+      - Mehiã [kpekpeɖeŋu](help_type)
+      - Mehiã kpekpeɖeŋu kple esia
+      - Mehiã kpekpeɖeŋu kple [nu](product) sia
+      - Mehiã kpekpeɖeŋu kple nu sia aɖe
+      - Mehiã kpekpeɖeŋu kple [nya](help_type) sia
+      - Mehiã kpekpeɖeŋu kple [kuxi](help_type) sia
+      - Mehiã kpekpeɖeŋu kple [biabia](help_type) sia
+      - Mehiã kpekpeɖeŋu kple [nuƒoƒo](help_type) sia
+      - Mehiã kpekpeɖeŋu kple [nyadzɔdzɔ](help_type) sia
+      - Mehiã kpekpeɖeŋu kple [tanya](help_type) sia
+      - Mehiã kpekpeɖeŋu kple [nyatakakawo](help_type) sia
+      - Mehiã kpekpeɖeŋu kple [aɖaŋuɖoɖo](help_type) sia
+      - Mehiã kpekpeɖeŋu kple [mɔ](help_type) sia
+      - Mehiã kpekpeɖeŋu kple [ɖoɖo](help_type) sia
+      - Mehiã kpekpeɖeŋu kple [ɖoɖowo](help_type) sia
+      - Mehiã kpekpeɖeŋu kple [ɖoɖowo](help_type) sia
+      - Mehiã kpekpeɖeŋu kple [ɖoɖowo](help_type) sia
+      - Mehiã kpekpeɖeŋu kple [ɖoɖowo](help_type) sia
+      - Mehiã kpekpeɖeŋu kple [ɖoɖowo](help_type) sia
+      - Mehiã kpekpeɖeŋu kple [ɖoɖowo](help_type) sia
+      - Mele fu kpem
+      - Mele fu kpem kple esia
+      - Mele fu kpem kple [nu](product) sia
+      - Mele fu kpem kple nu sia aɖe
+      - Mele fu kpem kple [nya](help_type) sia
+      - Mele fu kpem kple [kuxi](help_type) sia
+      - Mele fu kpem kple [biabia](help_type) sia
+      - Mele fu kpem kple [nuƒoƒo](help_type) sia
+      - Mele fu kpem kple [nyadzɔdzɔ](help_type) sia
+      - Mele fu kpem kple [tanya](help_type) sia
+      - Mele fu kpem kple [nyatakakawo](help_type) sia
+      - Mele fu kpem kple [aɖaŋuɖoɖo](help_type) sia
+      - Mele fu kpem kple [mɔ](help_type) sia
+      - Mele fu kpem kple [ɖoɖo](help_type) sia
+      - Mele fu kpem kple [ɖoɖowo](help_type) sia
+      - Aleke ma[ƒle](action_type) [nu](product)?
+      - Àte ŋu akpe ɖe ŋunye ma[di](action_type) [kaƒomɔ](product)?
+      - Mehiã kpekpeɖeŋu le [fexexe](help_topic) ŋu
+      - Nyemenya nu tso [dɔdɔɖa](help_topic) ŋu o
+      - Aleke makpɔ nye [ɖoɖo](help_topic) ƒe nɔnɔme?
+      - Àte ŋu aɖe [nugbugbɔɖoɖo ƒe ɖoɖo](help_topic) me nam?
+      - Mehiã kpekpeɖeŋu le [nutiatia](help_topic) ŋu
+      - Kpe ɖe ŋunye mase [asixɔxɔ](help_topic) gɔme
+
+      # Twi
+      - Mesrɛ [mmoa](help_type)
+      - Mesrɛ boa me
+      - Mesrɛ boa me na wo
+      - Mesrɛ boa me na mo
+      - mehia [mmoa](help_type)
+      - wobɛboa me?
+      - sɛɛ na metumi de di dwuma?
+      - dɛn na wubetumi ayɛ?
+      - me ho akyere me
+      - Mehia [mmoa](help_type)
+      - Mehia mmoa wɔ wei ho
+      - Mehia mmoa wɔ [biribi](product) yi ho
+      - Mehia mmoa wɔ biribi wei yi ho
+      - Mehia mmoa wɔ [asɛm](help_type) yi ho
+      - Mehia mmoa wɔ [ɔhaw](help_type) yi ho
+      - Mehia mmoa wɔ [nsɛmmisa](help_type) yi ho
+      - Mehia mmoa wɔ [kasa](help_type) yi ho
+      - Mehia mmoa wɔ [asɛm](help_type) yi ho
+      - Mehia mmoa wɔ [asɛm titiriw](help_type) yi ho
+      - Mehia mmoa wɔ [nsɛm](help_type) yi ho
+      - Mehia mmoa wɔ [afotuo](help_type) yi ho
+      - Mehia mmoa wɔ [kwan](help_type) yi ho
+      - Mehia mmoa wɔ [nhyehyɛe](help_type) yi ho
+      - Mehia mmoa wɔ [nhyehyɛe](help_type) yi ho
+      - Mehia mmoa wɔ [nhyehyɛe](help_type) yi ho
+      - Mehia mmoa wɔ [nhyehyɛe](help_type) yi ho
+      - Mehia mmoa wɔ [nhyehyɛe](help_type) yi ho
+      - Mehia mmoa wɔ [nhyehyɛe](help_type) yi ho
+      - Mehia mmoa wɔ [nhyehyɛe](help_type) yi ho
+      - Merehyia [ɔhaw](help_type)
+      - Merehyia ɔhaw wɔ wei ho
+      - Merehyia ɔhaw wɔ [biribi](product) yi ho
+      - Merehyia ɔhaw wɔ biribi wei yi ho
+      - Merehyia ɔhaw wɔ [asɛm](help_type) yi ho
+      - Merehyia ɔhaw wɔ [ɔhaw](help_type) yi ho
+      - Merehyia ɔhaw wɔ [nsɛmmisa](help_type) yi ho
+      - Merehyia ɔhaw wɔ [kasa](help_type) yi ho
+      - Merehyia ɔhaw wɔ [asɛm](help_type) yi ho
+      - Merehyia ɔhaw wɔ [asɛm titiriw](help_type) yi ho
+      - Merehyia ɔhaw wɔ [nsɛm](help_type) yi ho
+      - Merehyia ɔhaw wɔ [afotuo](help_type) yi ho
+      - Merehyia ɔhaw wɔ [kwan](help_type) yi ho
+      - Merehyia ɔhaw wɔ [nhyehyɛe](help_type) yi ho
+      - Merehyia ɔhaw wɔ [nhyehyɛe](help_type) yi ho
+      - Ɛyɛ dɛn na me[tɔ](action_type) [biribi](product)?
+      - Wobɛtumi aboa me ma me[hwehwɛ](action_type) [fon](product)?
+      - Mehia mmoa wɔ [sika tuadie](help_topic) ho
+      - Me ho akyere me wɔ [shipping](help_topic) ho
+      - Ɛyɛ dɛn na mehwɛ me [order](help_topic) akyi?
+      - Wobɛtumi akyerɛkyerɛ [nneɛma a wɔde san ba ho nhyehyɛeɛ](help_topic) mu?
+      - Mehia mmoa wɔ [nneɛma a mɛpaw](help_topic) ho
+      - Boa me ma mente [boɔ](help_topic) no ase
+
+      # English
+      - I need to speak to customer service
+      - Can I talk to a human?
+      - I want to speak to a representative
+      - Connect me with support
+      - I need help from a real person
+      - Is there a customer service number?
+      - How do I contact support?
+      - I need to talk to someone
+      - Can I speak to a manager?
+      - I need human assistance
+      - I want to talk to a real person
+      - Can you connect me with customer service?
+      - I need to speak with a representative
+      - How can I reach your support team?
+      - I need to get in touch with your team
+      - Is there a way to speak to someone directly?
+      - I need to contact a human agent
+      - Can I get a phone number for support?
+      - I want to email your support team
+      - How do I reach out to your company?
+      - I need to file a complaint
+      - I want to speak to someone in charge
+      - Can I talk to a supervisor?
+      - I need to escalate this issue
+      - I want to talk to your manager
+      - How do I get human help?
+      - Can you give me contact information?
+      - I need to speak to someone who can help
+      - Is there a support email?
+      - How can I contact your office?
+      - I need help
+      - help
+      - help me
+      - I need some help
+      - please help me
+      - can you help?
+      - I need assistance
+      - I need support
+      - support me
+      - emergency
+
+      # Hausa
+      - Ina bukatar magana da hidimar abokan ciniki
+      - Zan iya magana da mutum?
+      - Ina son magana da wakilin
+      - Ka haɗa ni da tallafi
+      - Ina bukatar taimako daga mutum na gaske
+      - Akwai lambar hidimar abokan ciniki?
+      - Ta yaya zan tuntuɓi tallafi?
+      - Ina bukatar magana da wani
+      - Zan iya magana da mai gudanarwa?
+      - Ina bukatar taimakon mutum
+      - Ina son magana da mutum na gaske
+      - Za ka iya haɗa ni da hidimar abokan ciniki?
+      - Ina bukatar magana da wakili
+      - Ta yaya zan iya samun ƙungiyar tallafin ku?
+      - Ina bukatar tuntuɓar ƙungiyar ku
+      - Akwai hanyar magana da wani kai tsaye?
+      - Ina bukatar tuntuɓar wakili na mutum
+      - Zan iya samun lambar waya don tallafi?
+      - Ina son aika imel ga ƙungiyar tallafin ku
+      - Ta yaya zan tuntuɓi kamfanin ku?
+      - Ina bukatar shigar da kuka
+      - Ina son magana da wanda yake da alhakin
+      - Zan iya magana da mai lura?
+      - Ina bukatar ɗaga wannan matsala
+      - Ina son magana da mai gudanarwar ku
+      - Ta yaya zan sami taimakon mutum?
+      - Za ka iya ba ni bayanin tuntuɓi?
+      - Ina bukatar magana da wanda zai iya taimakawa
+      - Akwai imel na tallafi?
+      - Ta yaya zan tuntuɓi ofishin ku?
+      - Ina bukatar taimako
+      - Taimako
+      - Taimaka mini
+      - Ina bukatar wani taimako
+      - Don Allah taimaka
+
+      # Ewe
+      - Mehiã be maƒo nu kple dɔdzikpɔla
+      - Mate ŋu aƒo nu kple amegbetɔ?
+      - Medi be maƒo nu kple teƒenɔla
+      - Tsɔm ka kpekpeɖeŋutɔ
+      - Mehiã kpekpeɖeŋu tso amegbetɔ vavã gbɔ
+      - Ðe dɔdzikpɔla ƒe kaƒomɔdzesi aɖe li?
+      - Aleke mate ŋu aka asi kpekpeɖeŋutɔ?
+      - Mehiã be maƒo nu kple ame aɖe
+      - Mate ŋu aƒo nu kple dɔdzikpɔla?
+      - Mehiã amegbetɔ ƒe kpekpeɖeŋu
+      - Medi be maƒo nu kple amegbetɔ vavã
+      - Àte ŋu atsɔm aka dɔdzikpɔla?
+      - Mehiã be maƒo nu kple teƒenɔla
+      - Aleke mate ŋu aɖo mia ƒe kpekpeɖeŋu hatsotso?
+      - Mehiã be maka asi mia ƒe hatsotso
+      - Ðe mɔ aɖe li be maƒo nu kple ame aɖe tẽe?
+      - Mehiã be maka asi amegbetɔ dɔwɔla
+      - Mate ŋu akpɔ kaƒomɔdzesi aɖe na kpekpeɖeŋu?
+      - Medi be maɖo email na mia ƒe kpekpeɖeŋu hatsotso
+      - Aleke mate ŋu aka asi mia ƒe dɔwɔƒe?
+      - Mehiã be maŋlɔ nutsotso
+      - Medi be maƒo nu kple ame si le dɔa nu
+      - Mate ŋu aƒo nu kple dzikpɔla?
+      - Mehiã be makɔ kuxi sia ɖe dzi
+      - Medi be maƒo nu kple mia ƒe dɔdzikpɔla
+      - Aleke mate ŋu akpɔ amegbetɔ ƒe kpekpeɖeŋu?
+      - Àte ŋu anam kasiɖeŋu nyatakakawo?
+      - Mehiã be maƒo nu kple ame si ate ŋu akpe ɖe ŋunye
+      - Ðe kpekpeɖeŋu email aɖe li?
+      - Aleke mate ŋu aka asi mia ƒe dɔwɔƒe?
+      - Mehiã kpekpeɖeŋu
+      - Kpekpeɖeŋu
+      - Bó nàboá me?
+      - Mehiã kpekpeɖeŋu aɖe
+      - Taflatse, míeaɖo kpekpeɖeŋu
+
+      # Twi
+      - Mehia sɛ me ne ɔtɔfoɔ som dwumadie kasa
+      - Metumi ne onipa akasa?
+      - Mepɛ sɛ me ne ananmusifoɔ kasa
+      - Fa me ka mmoa
+      - Mehia mmoa firi onipa ankasa
+      - Ɔtɔfoɔ som dwumadie nɔma bi wɔ hɔ?
+      - Ɛyɛ dɛn na metumi ne mmoa di nkitaho?
+      - Mehia sɛ me ne obi kasa
+      - Metumi ne ɔhwɛfoɔ akasa?
+      - Mehia onipa mmoa
+      - Mepɛ sɛ me ne onipa ankasa kasa
+      - Wobɛtumi de me aka ɔtɔfoɔ som dwumadie?
+      - Mehia sɛ me ne ananmusifoɔ kasa
+      - Ɛyɛ dɛn na metumi adu mo mmoa kuo no?
+      - Mehia sɛ me ne mo kuo di nkitaho
+      - Ɔkwan bi wɔ hɔ a metumi ne obi akasa tee?
+      - Mehia sɛ me ne onipa dwumadie di nkitaho
+      - Metumi anya fon nɔma bi ama mmoa?
+      - Mepɛ sɛ metwerɛ email kɔma mo mmoa kuo no
+      - Ɛyɛ dɛn na metumi ne mo adwuma no di nkitaho?
+      - Mehia sɛ metwerɛ anwiinwii
+      - Mepɛ sɛ me ne obi a ɔhwɛ so kasa
+      - Metumi ne ɔhwɛfoɔ akasa?
+      - Mehia sɛ mema saa asɛm yi kɔ soro
+      - Mepɛ sɛ me ne mo panin kasa
+      - Ɛyɛ dɛn na menya onipa mmoa?
+      - Wobɛtumi ama me nkitaho ho nsɛm?
+      - Mehia sɛ me ne obi a ɔbɛtumi aboa me kasa
+      - Mmoa email bi wɔ hɔ?
+      - Ɛyɛ dɛn na metumi ne mo ɔfese di nkitaho?
+      - Mehia mmoa
+      - Mmoa
+      - Boa me
+      - Mesrɛ boa me
+      - Mehia mmoa bi
+
+  - intent: complaint
+    examples: |
+      # English
+      - I have a problem with my order
+      - I'm not satisfied with the product
+      - The item I received is damaged
+      - This is not what I ordered
+      - I want to make a complaint
+      - I'm unhappy with the service
+      - The quality is poor
+      - I didn't receive my order
+      - My order is incomplete
+      - The product doesn't work
+      - I received the wrong item
+      - The delivery was late
+      - I want a refund
+      - This is unacceptable
+      - I'm disappointed with my purchase
+      - The product broke after one use
+      - I was charged incorrectly
+      - The description was misleading
+      - I want to return this
+      - The customer service was terrible
+      - I've been waiting too long
+      - This is not as advertised
+      - I'm having issues with your website
+      - The app is not working
+      - I can't complete my purchase
+      - My account has problems
+      - I'm experiencing technical difficulties
+      - The shipping cost was too high
+      - I never received a confirmation
+      - My discount wasn't applied
+
+      # Hausa
+      - Ina da matsala da oda na
+      - Ban gamsu da kayan ba
+      - Kayan da na karɓa ya lalace
+      - Wannan ba shi ne na oda ba
+      - Ina son yin kuka
+      - Ban jin daɗin hidimar ba
+      - Ingancin ba shi da kyau
+      - Ban karɓi oda na ba
+      - Oda na ba cikakke ba ne
+      - Kayan ba ya aiki
+      - Na karɓi kayan da ba daidai ba
+      - Isarwar ta yi jinkiri
+      - Ina son a mayar mini da kuɗina
+      - Wannan ba abin karɓa ba ne
+      - Na yi baƙin ciki da sayayya na
+      - Kayan ya karye bayan amfani ɗaya
+      - An caje ni ba daidai ba
+      - Bayanan ya ruɗe mutane
+      - Ina son mayar da wannan
+      - Hidimar abokan ciniki ta yi muni
+      - Na daɗe ina jira sosai
+      - Wannan ba kamar yadda aka tallata ba ne
+      - Ina fama da matsaloli da yanar gizon ku
+      - Manhajan ba ya aiki
+      - Ba zan iya cika sayayya na ba
+      - Asusuna yana da matsaloli
+      - Ina fuskantar matsalolin fasaha
+      - Kuɗin jigilar kaya ya yi tsada sosai
+      - Ban taɓa karɓar tabbaci ba
+      - Ba a yi amfani da rangwame na ba
+
+      # Ewe
+      - Kuxi aɖe le asinye le nye ɖoɖo ŋu
+      - Nyemedze [nu](product) la ŋu o
+      - [Nu](product) si mexɔ la gbã
+      - Menye esia meɖe gbe ɖi na o
+      - Medi be maƒo nya anyi
+      - Nyemedze subɔsubɔ la ŋu o
+      - Ŋutete la mele nyuie o
+      - Nyemexɔ nye ɖoɖo o
+      - Nye ɖoɖo mede blibo o
+      - [Nu](product) la mele dɔ wɔm o
+      - Mexɔ [nu](product) si mesɔ o
+      - Dɔdɔɖa la he ɣeyiɣi
+      - Medi be woaɖo ga la ɖe megbe nam
+      - Womate ŋu axɔ esia o
+      - Mekpɔ dziɖeleameƒo le nye nuƒleƒle ŋu
+      - [Nu](product) la gbã le zaza ɖeka megbe
+      - Woxe fe nam le mɔ si mesɔ o nu
+      - Numeɖeɖe la kplɔ ame trae
+      - Medi be magbugbɔ esia aɖo ɖe megbe
+      - Dɔdzikpɔla ƒe subɔsubɔ la vɔ̃ ŋutɔ
+      - Menɔ lalalam wòdidi akpa
+      - Esia mele abe ale si wogblɔe le gbeƒãɖeɖea me ene o
+      - Kuxi aɖewo le dzɔm ɖe ŋunye le miaƒe nyatakakadzraɖoƒe la ŋu
+      - Dɔwɔnu la mele dɔ wɔm o
+      - Nyemate ŋu awu nye nuƒleƒle nu o
+      - Kuxi aɖewo le nye akɔnta ŋu
+      - Mele mɔ̃ kpem le gbegblẽ ƒe nyawo me
+      - Dɔdɔɖa ƒe home la kɔkɔ akpa
+      - Nyemexɔ kpeɖoɖo aɖeke kpɔ o
+      - Womeɖe nye asi ɖiɖi ɖa o
+
+      # Twi
+      - Mewɔ ɔhaw bi wɔ me order ho
+      - Mani nnye me ho wɔ [adeɛ](product) no ho
+      - [Adeɛ](product) a menya no abubu
+      - Ɛnyɛ yei na me order
+      - Mepɛ sɛ metwerɛ anwiinwii
+      - Mani nnye me ho wɔ som no ho
+      - Ne su nyɛ
+      - Mennya me order no
+      - Me order no nwie
+      - [Adeɛ](product) no nyɛ adwuma
+      - Menya [adeɛ](product) foforɔ
+      - Delivery no bɛkyɛɛ
+      - Mepɛ sɛ me nya me sika bio
+      - Yei deɛ wontumi nnye ntom
+      - Me werɛ aho wɔ me tɔ no ho
+      - [Adeɛ](product) no bubuu berɛ a mede dii dwuma baako pɛ
+      - Wɔgyee me sika wɔ kwan a ɛnyɛ
+      - Nkyerɛkyerɛmu no daadaa me
+      - Mepɛ sɛ mede yei san ba
+      - Ɔtɔfoɔ som dwumadie no yɛ bɔne paa
+      - Matwɛn akyɛ dodo
+      - Ɛnyɛ sɛdeɛ wɔyɛɛ ho amanneɛbɔ no
+      - Merehyia nsɛm wɔ mo website no ho
+      - App no nyɛ adwuma
+      - Merentumi nwie me tɔ no
+      - Me account no wɔ nsɛm
+      - Merehyia mfidie nsɛm
+      - Shipping no boɔ yɛ den dodo
+      - Mennya nsiesie bi da
+      - Wɔamfa me te so no anto dwuma
+
+  - intent: who_are_you
+    examples: |
+      # English
+      - who are you?
+      - what are you?
+      - what's your name?
+      - tell me about yourself
+      - introduce yourself
+      - what do you do?
+      - what can you help me with?
+      - what are your capabilities?
+      - how do you work?
+      - what's your purpose?
+      - are you a bot?
+      - are you human?
+      - are you AI?
+      - what kind of assistant are you?
+      - who created you?
+      - how were you made?
+      - what company are you from?
+      - what's your role?
+      - what services do you provide?
+      - how can you assist me?
+      - what's your function?
+      - what are you designed to do?
+      - tell me who you are
+      - I want to know more about you
+      - explain what you are
+      - give me information about you
+      - what should I know about you?
+      - who am I talking to?
+      - identify yourself
+      - what's your identity?
+
+      # Hausa
+      - wanene kai?
+      - menene kai?
+      - menene sunanka?
+      - gaya mini game da kanka
+      - gabatar da kanka
+      - menene kake yi?
+      - menene za ka iya taimaka mini da shi?
+      - menene iyawarku?
+      - ta yaya kake aiki?
+      - menene manufarka?
+      - kai bot ne?
+      - kai mutum ne?
+      - kai AI ne?
+      - wane irin mataimaki ne kai?
+      - wa ya kirkire ka?
+      - ta yaya aka yi ka?
+      - wace kamfani ce kake daga ciki?
+      - menene matsayinka?
+      - wane ayyuka kake bayarwa?
+      - ta yaya za ka iya taimaka mini?
+      - menene aikinka?
+      - menene aka tsara ka don yi?
+      - gaya mini wanene kai
+      - ina son sanin ƙarin bayani game da kai
+      - bayyana menene kai
+      - ba ni bayani game da kai
+      - menene ya kamata in sani game da kai?
+      - wanene nake magana da shi?
+      - gabatar da kanka
+      - menene asalinka?
+
+      # Ewe
+      - ameka nènye?
+      - nukae nènye?
+      - wò ŋkɔ ɖe?
+      - gblɔ nu tso ɖokuiwò ŋu nam
+      - ɖe ɖokuiwò fia
+      - nukae nèwɔna?
+      - nukae nàte ŋu akpe ɖe ŋunye le?
+      - wò ŋutetewo ɖe?
+      - aleke nèwɔa dɔ?
+      - nukae nye wò taɖodzinu?
+      - bot nènye?
+      - amegbetɔe nènye?
+      - AI nènye?
+      - kpekpeɖeŋutɔ ka ƒomevi nènye?
+      - ameka wɔ wò?
+      - aleke wowɔ wò?
+      - dɔwɔƒe ka nètso?
+      - nukae nye wò dɔdeasi?
+      - subɔsubɔ kawo nèwɔna?
+      - aleke nàte ŋu akpe ɖe ŋunye?
+      - nukae nye wò dɔwɔwɔ?
+      - nukae wowɔ wò be nàwɔ?
+      - gblɔ ameka nènye nam
+      - medi be manya nu geɖe tso ŋuwò
+      - ɖe nukae nènye me nam
+      - na nyatakakawo tso ŋuwò nam
+      - nukae wòle be manya tso ŋuwò?
+      - ameka mele nu ƒom kplii?
+      - ɖe ɖokuiwò fia
+      - nukae nye wò amenyenye?
+
+      # Twi
+      - hena ne wo?
+      - dɛn ne wo?
+      - wo din de sɛn?
+      - ka wo ho asɛm kyerɛ me
+      - kyerɛkyerɛ wo ho
+      - dɛn na woyɛ?
+      - dɛn na wobɛtumi aboa me ayɛ?
+      - dɛn na wobɛtumi ayɛ?
+      - ɛyɛ dɛn na woyɛ adwuma?
+      - dɛn ne wo botaeɛ?
+      - woyɛ bot?
+      - woyɛ onipa?
+      - woyɛ AI?
+      - ɔboafoɔ bɛn na woyɛ?
+      - hena na ɔyɛɛ wo?
+      - ɛyɛ dɛn na wɔyɛɛ wo?
+      - adwuma bɛn na wofiri mu?
+      - dɛn ne wo dwuma?
+      - som bɛn na wode ma?
+      - ɛyɛ dɛn na wobɛtumi aboa me?
+      - dɛn ne wo dwumadie?
+      - dɛn na wɔyɛɛ wo sɛ wobɛyɛ?
+      - ka hena ne wo kyerɛ me
+      - mepɛ sɛ mehu wo ho nsɛm pii
+      - kyerɛkyerɛ dɛn ne wo mu
+      - ma me wo ho nsɛm
+      - dɛn na ɛsɛ sɛ menim fa wo ho?
+      - hena na me ne no rekasa?
+      - kyerɛkyerɛ wo ho
+      - dɛn ne wo suban?
+
+  - intent: login
+    examples: |
+      # English
+      - I want to login
+      - login to my account
+      - sign in
+      - access my account
+      - how do I login
+      - open my account
+      - I need to login
+      - connect to my account
+      - can you authenticate my account
+      - can you authentify my account
+      - I want to authenticate
+      - I want to authentify
+      - help me login
+      - help me sign in
+      - I need to authenticate
+      - I need to authentify
+      - how can I authenticate
+      - how can I authentify
+      - authenticate my account
+      - authentify my account
+      - verify my account
+      - validate my account
+      - connect me
+      - let me in
+      - access my profile
+      - I want to access my account
+      - I want to get into my account
+      - I want to log into my account
+      - I want to sign into my account
+      - I want to connect to my account
+      - I want to authenticate my account
+      - I want to authentify my account
+
+      # Twi
+      - Me pɛ sɛ me login
+      - login kɔ m'account mu
+      - bue m'account
+      - ɛkwan bɛn so na metumi afa so akɔ m'account mu
+      - mepɛ sɛ me kɔ m'account mu
+      - boa me ma me nhyɛ m'account mu
+      - boa me ma me nkɔ m'account mu
+      - hwɛ m'account ma me
+      - ma me nkɔ m'account mu
+      - ma me ntumi nkɔ m'account mu
+
+      # Hausa
+      - Ina son shiga
+      - shiga cikin asusuna
+      - bude asusuna
+      - yaya zan shiga cikin asusuna
+      - ina son shiga cikin asusuna
+      - taimaka min in shiga
+      - taimaka min in bude asusuna
+      - duba asusuna dominina
+      - bari in shiga
+      - bari in bude asusuna
+
+      # Ewe
+      - Medi be mage ɖe eme
+      - ge ɖe nye account me
+      - ʋu nye account
+      - aleke mate ŋu age ɖe nye account me
+      - medi be mage ɖe nye account me
+      - kpe ɖe ŋunye mage ɖe eme
+      - kpe ɖe ŋunye maʋu nye account
+      - kpɔ nye account nam
+      - na mage ɖe eme
+      - na maʋu nye account
+
+  - intent: signup
+    examples: |
+      # English
+      - I want to sign up
+      - create an account
+      - register
+      - how do I register
+      - I want to create an account
+      - become a member
+
+      # Twi
+      - Me pɛ sɛ me yɛ account
+      - yɛ account
+      - register
+      - ɛkwan bɛn so na metumi ayɛ account
+      - mepɛ sɛ me yɛ account
+
+      # Hausa
+      - Ina son yin rijista
+      - ƙirƙiri asusu
+      - yin rijista
+      - yaya zan yi rijista
+      - ina son ƙirƙiri asusu
+
+      # Ewe
+      - Medi be mawɔ account
+      - wɔ account
+      - ŋlɔ ŋkɔ
+      - aleke mate ŋu aŋlɔ ŋkɔ
+      - medi be mawɔ account
+
+  - intent: open_seller_app
+    examples: |
+      # English
+      - open seller app
+      - I want to access the seller app
+      - seller application
+      - seller space
+      - how can I access my seller space
+      - open my seller account
+
+      # Twi
+      - Bue ɔtɔnfoɔ app no
+      - Me pɛ sɛ me kɔ ɔtɔnfoɔ app no mu
+      - ɔtɔnfoɔ application
+      - ɔtɔnfoɔ baabi
+      - ɛkwan bɛn so na metumi akɔ m'ɔtɔnfoɔ baabi
+      - bue me ɔtɔnfoɔ account
+
+      # Hausa
+      - Bude app ɗin mai sayarwa
+      - Ina son shiga app ɗin mai sayarwa
+      - manhajjar mai sayarwa
+      - wurin mai sayarwa
+      - yaya zan shiga wurin mai sayarwa
+      - bude asusuna na mai sayarwa
+
+      # Ewe
+      - Ʋu dzrala ƒe app
+      - Medi be mage ɖe dzrala ƒe app me
+      - dzrala ƒe dɔwɔƒe
+      - dzrala ƒe teƒe
+      - aleke mate ŋu age ɖe dzrala ƒe teƒe
+      - ʋu nye dzrala ƒe account
+
+  - intent: open_buyer_app
+    examples: |
+      # English
+      - open buyer app
+      - I want to access the buyer app
+      - buyer application
+      - buyer space
+      - how can I access my buyer space
+      - open my buyer account
+
+      # Twi
+      - Bue ɔtɔfoɔ app no
+      - Me pɛ sɛ me kɔ ɔtɔfoɔ app no mu
+      - ɔtɔfoɔ application
+      - ɔtɔfoɔ baabi
+      - ɛkwan bɛn so na metumi akɔ m'ɔtɔfoɔ baabi
+      - bue me ɔtɔfoɔ account
+
+      # Hausa
+      - Bude app ɗin mai saye
+      - Ina son shiga app ɗin mai saye
+      - manhajjar mai saye
+      - wurin mai saye
+      - yaya zan shiga wurin mai saye
+      - bude asusuna na mai saye
+
+      # Ewe
+      - Ʋu ƒlela ƒe app
+      - Medi be mage ɖe ƒlela ƒe app me
+      - ƒlela ƒe dɔwɔƒe
+      - ƒlela ƒe teƒe
+      - aleke mate ŋu age ɖe ƒlela ƒe teƒe
+      - ʋu nye ƒlela ƒe account
+
+  - intent: open_delivery_app
+    examples: |
+      # English
+      - open delivery app
+      - I want to access the delivery app
+      - delivery application
+      - delivery space
+      - how can I access my delivery space
+      - open my delivery account
+
+      # Twi
+      - Bue nneɛma delivery app no
+      - Me pɛ sɛ me kɔ nneɛma delivery app no mu
+      - nneɛma delivery application
+      - nneɛma delivery baabi
+      - ɛkwan bɛn so na metumi akɔ me nneɛma delivery baabi
+      - bue me nneɛma delivery account
+
+      # Hausa
+      - Bude app ɗin isar da kaya
+      - Ina son shiga app ɗin isar da kaya
+      - manhajjar isar da kaya
+      - wurin isar da kaya
+      - yaya zan shiga wurin isar da kaya
+      - bude asusuna na isar da kaya
+
+      # Ewe
+      - Ʋu nutsɔla ƒe app
+      - Medi be mage ɖe nutsɔla ƒe app me
+      - nutsɔla ƒe dɔwɔƒe
+      - nutsɔla ƒe teƒe
+      - aleke mate ŋu age ɖe nutsɔla ƒe teƒe
+      - ʋu nye nutsɔla ƒe account
+
+  - intent: sell
+    examples: |
+      # English - General selling intent
+      - I want to sell something
+      - I want to sell
+      - I need to sell something
+      - I'm looking to sell something
+      - I would like to sell something
+      - I want to offer something for sale
+      - I need to offer something for sale
+      - I'm looking to offer something for sale
+      - I would like to offer something for sale
+      - I want to put something up for sale
+      - I want to list something
+      - I need to list something
+      - I'm looking to list something
+      - I would like to list something
+      - I have something to sell
+      - I need to sell
+      - I'm looking to sell
+      - I would like to sell
+      - Can I sell something?
+      - Can I list something?
+      - Can I offer something for sale?
+
+      # English - Specific products
+      - I want to sell [rice](product)
+      - I want to offer [maize](product) for sale
+      - I need to sell my [phone](product)
+      - I'm looking to sell [a computer](product)
+      - I would like to sell [5](quantity) [shirts](product)
+      - I'm interested in selling [headphones](product) for [50ghs](price)
+      - I want to put up [a watch](product) for sale
+      - I need to put up [beans](product) in [bulk](quantity_type) for sale
+      - I'm looking to put up [a table](product) with [free delivery](delivery_type)
+      - I would like to put up [chairs](product) in [black](color) for sale
+      - I have [10](quantity) [bags](product) of [rice](product) to sell
+      - Can I sell my [used](condition) [laptop](product) here?
+      - I want to list my [Samsung](brand) [TV](product) for sale
+      - I'm selling [handmade](feature) [jewelry](product)
+      - I need to sell [furniture](product_category) [urgently](urgency)
+      - Looking to sell [electronics](product_category) at [wholesale](price_type) prices
+      - I want to sell [organic](feature) [vegetables](product) from my [farm](source)
+      - Can I sell [multiple items](quantity_type) at once?
+      - I'm offering [free delivery](delivery_type) on all my [products](product_type)
+      - I want to sell [brand new](condition) [clothes](product_category)
+      - I have [rare](feature) [books](product) to sell
+      - Looking to sell my [car](product) for [cash only](payment_method)
+      - I want to list [imported](feature) [goods](product_type)
+      - Can I sell [services](product_type) on this platform?
+      - I'm selling items at [negotiable](price_attribute) prices
+
+      # Hausa - General selling intent
+      - Ina son sayar da wani abu
+      - Ina son sayarwa
+      - Ina bukatar sayar da wani abu
+      - Ina neman sayar da wani abu
+      - Zan so in sayar da wani abu
+      - Ina son bayar da wani abu don sayarwa
+      - Ina bukatar bayar da wani abu don sayarwa
+      - Ina son saka wani abu don sayarwa
+      - Ina bukatar saka wani abu don sayarwa
+      - Ina son jera wani abu
+      - Ina bukatar jera wani abu
+      - Ina da wani abu don sayarwa
+      - Ina bukatar sayarwa
+      - Ina neman sayarwa
+      - Zan iya sayar da wani abu?
+      - Zan iya jera wani abu?
+
+      # Hausa - Specific products
+      - Ina so in sayar da [shinkafa](product)
+      - Ina son bayar da [masara](product) don sayarwa
+      - Ina bukatar sayar da [wayata](product)
+      - Ina neman sayarwa [kwamfyuta](product)
+      - Zan so in sayar da [riguna](product) [biyar](quantity)
+      - Ina sha'awar sayar da [belun kunne](product) akan [dala 50](price)
+      - Ina son saka [agogo](product) don sayarwa
+      - Ina bukatar saka [wake](product) a [yawa](quantity_type) don sayarwa
+      - Ina neman saka [tebur](product) tare da [isarwa kyauta](delivery_type)
+      - Zan so in saka [kujeru](product) masu [baƙi](color) don sayarwa
+      - Ina da [buhuna](product) [goma](quantity) na [shinkafa](product) don sayarwa
+      - Zan iya sayar da [kwamfyuta ta](product) [da aka yi amfani](condition) a nan?
+      - Ina son jera [talabijin na](product) [Samsung](brand) don sayarwa
+      - Ina sayar da [kayan ado](product) [na hannu](feature)
+      - Ina bukatar sayar da [kayan gida](product_category) [cikin gaggawa](urgency)
+      - Ina neman sayar da [kayan lantarki](product_category) a farashin [sayar da yawa](price_type)
+      - Ina son sayar da [kayan lambu](product) [na halitta](feature) daga [gonata](source)
+      - Zan iya sayar da [abubuwa da yawa](quantity_type) lokaci guda?
+      - Ina bayar da [isarwa kyauta](delivery_type) akan duk [kayana](product_type)
+      - Ina son sayar da [tufafi](product_category) [sababbi](condition)
+      - Ina da [littattafai](product) [da ba a saba gani ba](feature) don sayarwa
+      - Ina neman sayar da [motata](product) don [tsabar kuɗi kawai](payment_method)
+      - Ina son jera [kayan](product_type) [da aka shigo](feature)
+      - Zan iya sayar da [ayyuka](product_type) a wannan dandali?
+      - Ina sayar da kaya a farashin [da za a tattauna](price_attribute)
+
+      # Ewe - General selling intent
+      - Medi be made nu aɖe
+      - Medi be made nane
+      - Mehiã be made nu aɖe
+      - Mele nu dim be made nu aɖe
+      - Madi be made nu aɖe
+      - Medi be made
+      - Mehiã be made
+      - Mele nu dim be made
+      - Madi be made
+      - Medi be matsɔ nu aɖe adzra
+      - Mehiã be matsɔ nu aɖe adzra
+      - Medi be maŋlɔ nu aɖe
+      - Mehiã be maŋlɔ nu aɖe
+      - Nu aɖe le asinye hena dzadzra
+      - Mehiã be made
+      - Mele nu dim be made
+      - Mate ŋu adzra nu aɖe?
+      - Mate ŋu aŋlɔ nu aɖe?
+
+      # Ewe - Specific products
+      - Medi be made [mɔli](product)
+      - Medi be made [bli](product) na dzadzra
+      - Mehiã be made nye [kaƒomɔ](product)
+      - Mele nu dim be made [kɔmputa](product)
+      - Madi be made [awu](product) [atɔ̃](quantity)
+      - Metsɔ ɖeke le [headphones](product) dzadzra me le [dɔla 50](price) nu
+      - Medi be matsɔ [gaƒoƒoga](product) adzra
+      - Mehiã be matsɔ [ayi](product) le [agbɔsɔsɔ](quantity_type) me adzra
+      - Mele nu dim be matsɔ [kplɔ̃](product) kple [dɔdɔɖa femaxe](delivery_type)
+      - Madi be matsɔ [zikpuiwo](product) siwo nye [yibɔ](color) adzra
+      - [Kotoku](product) [ewo](quantity) siwo me [mɔli](product) le la le asinye hena dzadzra
+      - Mate ŋu adzra nye [kɔmputa](product) si [wozã](condition) le afisia?
+      - Medi be maŋlɔ nye [Samsung](brand) [TV](product) hena dzadzra
+      - Mele [atsyãnu](product) siwo [wowɔ kple asi](feature) dzram
+      - Mehiã be madzra [atikpuiwo](product_category) [kaba](urgency)
+      - Mele [elektrɔnikwo](product_category) dzra ge le [agbɔsɔsɔ](price_type) ƒe asi nu
+      - Medi be madzra [amagbewo](product) siwo nye [organikwo](feature) tso nye [agble](source) dzi
+      - Mate ŋu adzra [nu geɖewo](quantity_type) zi ɖeka?
+      - Mele [dɔdɔɖa femaxe](delivery_type) nam le nye [nuwo](product_type) katã dzi
+      - Medi be madzra [avɔwo](product_category) [yeyewo](condition)
+      - [Agbalẽ](product) [demasea](feature) aɖewo le asinye hena dzadzra
+      - Mele nye [ʋu](product) dzra ge na [ga ɖeɖe ko](payment_method)
+      - Medi be maŋlɔ [nu](product_type) siwo [wotsɔ tso duta](feature)
+      - Mate ŋu adzra [subɔsubɔwo](product_type) le mɔ sia dzi?
+      - Mele nuwo dzram le asi siwo [woate ŋu aɖo ŋu](price_attribute) nu
+
+      # Twi - General selling intent
+      - Mepɛ sɛ metɔn biribi
+      - Mepɛ sɛ metɔn
+      - Mehia sɛ metɔn biribi
+      - Merehwehwɛ sɛ metɔn biribi
+      - Mɛpɛ sɛ metɔn biribi
+      - Mepɛ sɛ mɛma biribi atɔn
+      - Mehia sɛ mɛma biribi atɔn
+      - Mepɛ sɛ mede biribi to hɔ atɔn
+      - Mehia sɛ mede biribi to hɔ atɔn
+      - Mepɛ sɛ mede biribi to list so
+      - Mehia sɛ mede biribi to list so
+      - Mewɔ biribi sɛ metɔn
+      - Mehia sɛ metɔn
+      - Merehwehwɛ sɛ metɔn
+      - Metumi atɔn biribi?
+      - Metumi ade biribi to list so?
+
+      # Twi - Specific products
+      - Mepɛ sɛ metɔn [ɔmo](product)
+      - Mepɛ sɛ mɛma [aburo](product) atɔn
+      - Mehia sɛ metɔn me [fon](product)
+      - Merehwehwɛ sɛ metɔn [kɔmputa](product)
+      - Mɛpɛ sɛ metɔn [ntade](product) [enum](quantity)
+      - Me ani gye sɛ metɔn [headphones](product) [sika 50](price)
+      - Mepɛ sɛ mede [dɔn](product) to hɔ atɔn
+      - Mehia sɛ mede [adua](product) to hɔ wɔ [pii](quantity_type) mu atɔn
+      - Merehwehwɛ sɛ mede [pon](product) a [wɔde bɛba kwa](delivery_type) to hɔ
+      - Mɛpɛ sɛ mede [akonnwa](product) a ɛyɛ [tuntum](color) to hɔ atɔn
+      - Mewɔ [kotoku](product) [du](quantity) a [ɔmo](product) wɔ mu sɛ metɔn
+      - Metumi atɔn me [kɔmputa](product) a [madi dwuma](condition) wɔ ha?
+      - Mepɛ sɛ mede me [Samsung](brand) [TV](product) to hɔ atɔn
+      - Meretɔn [agudeɛ](product) a [wɔde nsa ayɛ](feature)
+      - Mehia sɛ metɔn [efie mu nneɛma](product_category) [ntɛm ara](urgency)
+      - Merehwehwɛ sɛ metɔn [electronics](product_category) wɔ [wholesale](price_type) boɔ mu
+      - Mepɛ sɛ metɔn [nhabamma](product) a [ɛyɛ organic](feature) a efiri me [afuo](source) so
+      - Metumi atɔn [nneɛma pii](quantity_type) prɛko pɛ?
+      - Merebɔ [free delivery](delivery_type) wɔ me [nneɛma](product_type) nyinaa so
+      - Mepɛ sɛ metɔn [ntadeɛ](product_category) [foforɔ koraa](condition)
+      - Mewɔ [nwoma](product) [a ɛho yɛ na](feature) sɛ metɔn
+      - Merehwehwɛ sɛ metɔn me [kar](product) gye [sika kɛkɛ](payment_method)
+      - Mepɛ sɛ mede [nneɛma](product_type) a [wɔde firi aburokyire aba](feature) to hɔ
+      - Metumi atɔn [nnwuma](product_type) wɔ saa beaeɛ yi?
+      - Meretɔn nneɛma wɔ boɔ a [wobɛtumi akasa afa ho](price_attribute) mu
+
+      # Dagbani - General selling intent
+      - N niŋdi kɔhi bini ayi
+      - N niŋdi kɔhi nane ayi
+      - N bɔra kɔhi bini ayi
+      - N niŋdi kɔhi
+      - N bɔra kɔhi
+      - N niŋdi yɛ kɔhim
+      - N bɔra yɛ kɔhim
+      - N ni tooi kɔhi bini ayi?
+      - N ni tooi kɔhi nane ayi?
+
+      # Dagbani - Specific products
+      - N niŋdi kɔhi [mɔli](product)
+      - N niŋdi kɔhi [masara](product)
+      - N bɔra kɔhi [kaƒomɔ](product)
+      - N niŋdi kɔhi [kɔmputa](product)
+      - N niŋdi kɔhi [awu](product) [ata](quantity)
+
+  - intent: affirm

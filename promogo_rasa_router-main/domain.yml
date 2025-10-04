@@ -1,0 +1,217 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - thank
+  - who_are_you
+  - buy
+  - sell
+  - product_search
+  - product_inquiry
+  - negotiate
+  - affirm
+  - deny
+  - out_of_scope
+  - restart
+  - inform
+  - price_inquiry
+  - product_recommendation
+  - payment_method
+  - contact_support
+  - complaint
+  - signup
+  - login
+  - open_seller_app
+  - open_buyer_app
+  - open_delivery_app
+
+entities:
+  - product
+  - quantity
+  - price
+  - color
+  - condition
+  - location
+  - payment_method
+  - feature
+  - material
+  - size
+  - brand
+  - purpose
+  - price_range
+  - user_type
+  - shipping_type
+  - delivery_type
+  - discount_type
+  - fee_type
+  - price_attribute
+  - product_type
+  - product_category
+  - product_variant
+  - payment_term
+  - quantity_type
+  - quantity_unit
+  - service_type
+  - tax_type
+  - time
+  - assistance_type
+  - help_type
+  - help_topic
+  - attribute
+  - availability
+  - accessory_type
+  - policy_type
+  - price_type
+  - price_comparison
+  - price_negotiation_strategy
+  - negotiation_tactic
+  - negotiation_term
+  - purchase_timing
+  - price_reference
+  - customer_type
+  - referral
+  - recipient
+  - occasion
+  - source
+  - action_type
+  - contact_method
+  - urgency
+  - device_type
+  - topic
+
+slots:
+  product:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: product
+      - type: from_text
+        conditions:
+          - active_loop: purchase_form
+            requested_slot: product
+          - active_loop: sales_form
+            requested_slot: product
+
+  quantity:
+    type: float
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: quantity
+
+  payment_method:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: payment_method
+
+  price:
+    type: float
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: price
+      - type: from_text
+        conditions:
+          - active_loop: sales_form
+            requested_slot: price
+
+  condition:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: condition
+      - type: from_text
+        conditions:
+          - active_loop: sales_form
+            requested_slot: condition
+
+  location:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: location
+      - type: from_text
+        conditions:
+          - active_loop: sales_form
+            requested_slot: location
+
+  language:
+    type: categorical
+    values:
+      - en
+      - ha
+      - ee
+      - tw
+      - dagbani
+    mappings:
+      - type: custom
+
+  color:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: color
+
+  conversation_state:
+    type: categorical
+    values:
+      - greeting
+      - product_selection
+      - price_setting
+      - condition_selection
+      - location_selection
+      - completed
+    initial_value: greeting
+    mappings:
+      - type: custom
+
+  requested_slot:
+    type: text
+    mappings:
+      - type: custom
+
+forms:
+  purchase_form:
+    required_slots:
+      - product
+
+  sales_form:
+    required_slots:
+      - product
+      - price
+      - condition
+      - location
+
+actions:
+  - action_multilingual_response
+  - action_default_fallback
+  - action_restart
+  - action_detect_language
+  - action_reset_slots
+  - action_process_purchase
+  - action_process_sale
+  - action_ask_purchase_form_product
+  - action_ask_sales_form_product
+  - action_ask_sales_form_price
+  - action_ask_sales_form_condition
+  - action_ask_sales_form_location
+  - action_search_products
+  - action_redirect_signup
+  - action_redirect_login
+  - action_contact_support
+  - action_open_seller_app
+  - action_open_buyer_app
+  - action_open_delivery_app
+  - validate_purchase_form
+  - validate_sales_form
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: false

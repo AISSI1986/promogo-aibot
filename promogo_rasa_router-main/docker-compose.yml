@@ -1,0 +1,42 @@
+services:
+  rasa:
+    build: .
+    ports:
+      - "5005:5005"
+    volumes:
+      - ./:/app
+      - ./models:/app/models
+    command: run --enable-api --cors "*" --debug
+    environment:
+      - TZ=UTC
+      - PYTHONUNBUFFERED=1
+      - RASA_TELEMETRY_ENABLED=false
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5005/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  rasa-actions:
+    build: .
+    volumes:
+      - ./:/app
+      - ./models:/app/models
+    command: run actions
+    environment:
+      - TZ=UTC
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped
+    depends_on:
+      - rasa
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5055/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+volumes:
+  models:

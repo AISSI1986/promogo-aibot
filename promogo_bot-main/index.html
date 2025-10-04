@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promogo Assistant</title>
+    <link rel="icon" href="assets/icons/logo.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <div class="chat-app">
+            <div class="app-header">
+                <div class="logo-container">
+                    <div class="logo-icon">
+                        <img src="assets/icons/logo.svg" alt="Promogo" class="logo">
+                    </div>
+                    <h1 class="app-title">Promogo</h1>
+                </div>
+                <div class="header-controls">
+                    <div class="language-selector">
+                        <div class="selected-language" id="selectedLanguage">
+                            <span class="flag">🇬🇧</span>
+                            <span class="language-name">English</span>
+                            <svg class="dropdown-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div class="language-dropdown" id="languageDropdown">
+                            <div class="language-option selected" data-value="en">
+                                <span class="flag">🇬🇧</span>
+                                <span class="language-name">English</span>
+                            </div>
+                            <div class="language-option" data-value="ha">
+                                <span class="flag">🇳🇬</span>
+                                <span class="language-name">Hausa</span>
+                            </div>
+                            <div class="language-option" data-value="ee">
+                                <span class="flag">🇬🇭</span>
+                                <span class="language-name">Eʋegbe</span>
+                            </div>
+                            <div class="language-option" data-value="tw">
+                                <span class="flag">🇬🇭</span>
+                                <span class="language-name">Twi</span>
+                            </div>
+                            <!-- <div class="language-option" data-value="ga">
+                                <span class="flag">🇬🇭</span>
+                                <span class="language-name">Ga</span>
+                            </div> -->
+                        </div>
+                    </div>
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                        <svg class="sun-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/>
+                            <path d="M12 2V4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M12 20V22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M4 12L2 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M22 12L20 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M19.7782 4.22183L18.364 5.63604" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M5.63608 18.364L4.22187 19.7782" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M19.7782 19.7782L18.364 18.364" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M5.63608 5.63604L4.22187 4.22183" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                        <svg class="moon-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <button class="toggle-input-btn" id="toggleInputBtn" aria-label="Toggle text input">
+                        <svg class="keyboard-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3 8H21C21.5523 8 22 8.44772 22 9V17C22 17.5523 21.5523 18 21 18H3C2.44772 18 2 17.5523 2 17V9C2 8.44772 2.44772 8 3 8Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M5 11H7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M9 11H11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M13 11H15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M17 11H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M5 14H7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M9 14H15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M17 14H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <button class="help-button d-none" id="helpButton" aria-label="Help">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                            <path d="M12 17H12.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M9.09 9C9.3251 8.33167 9.78915 7.76811 10.4 7.40913C11.0108 7.05016 11.7289 6.91894 12.4272 7.03871C13.1255 7.15849 13.7588 7.52152 14.2151 8.06353C14.6713 8.60553 14.9211 9.29152 14.92 10C14.92 12 11.92 13 11.92 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="chat-container">
+                <div class="messages-container" id="messagesContainer">
+                    <!-- Messages will appear here -->
+                </div>
+
+                <div class="input-container">
+                    <div class="recording-status" id="recordingStatus">
+                        <span class="status-text">Ready to listen</span>
+                    </div>
+                    
+                    <div class="input-controls">
+                        <div class="text-input-container hidden" id="textInputContainer">
+                            <input type="text" id="textInput" placeholder="Type a message..." aria-label="Type a message">
+                            <button id="sendButton" class="send-button" aria-label="Send">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M18.3333 1.66667L9.16667 10.8333" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M18.3333 1.66667L12.5 18.3333L9.16667 10.8333L1.66667 7.5L18.3333 1.66667Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                        
+                        <button id="recordButton" class="record-button" aria-label="Record">
+                            <div class="mic-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 1C10.3431 1 9 2.34315 9 4V12C9 13.6569 10.3431 15 12 15C13.6569 15 15 13.6569 15 12V4C15 2.34315 13.6569 1 12 1Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M19 10V12C19 16.4183 15.4183 20 11 20M5 10V12C5 16.4183 8.58172 20 13 20M12 20V23" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M8 23H16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <div class="recording-waves" id="recordingWaves">
+                                <span class="wave"></span>
+                                <span class="wave"></span>
+                                <span class="wave"></span>
+                                <span class="wave"></span>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="help-panel" id="helpPanel">
+                <div class="help-header">
+                    <h2>How to use Promogo</h2>
+                    <button class="close-button" id="closeHelpButton" aria-label="Close">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="help-content">
+                    <div class="help-section">
+                        <h3>Talk with the assistant</h3>
+                        <ol>
+                            <li>Select your language from the dropdown menu</li>
+                            <li>Click the microphone button to speak</li>
+                            <li>Click the keyboard icon to type your message</li>
+                            <li>Listen to the response or read it in the chat</li>
+                        </ol>
+                    </div>
+                    <div class="help-section">
+                        <h3>Available languages</h3>
+                        <div class="language-list">
+                            <div class="language-item"><span class="flag">🇬🇧</span> English</div>
+                            <div class="language-item"><span class="flag">🇳🇬</span> Hausa</div>
+                            <div class="language-item"><span class="flag">🇬🇭</span> Eʋegbe</div>
+                            <div class="language-item"><span class="flag">🇬🇭</span> Twi</div>
+                            <!-- <div class="language-item"><span class="flag">🇬🇭</span> Ga</div> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="help-footer">
+                    <button id="demoButton" class="demo-button">Enable demo mode</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="welcome-overlay" id="welcomeOverlay">
+        <div class="welcome-content">
+            <div class="welcome-logo">
+                <img src="assets/icons/logo.svg" alt="Promogo" class="welcome-logo-img">
+            </div>
+            <h2 class="welcome-title">Welcome to Promogo</h2>
+            <p class="welcome-subtitle">Your multilingual AI assistant</p>
+            <div class="welcome-features">
+                <div class="welcome-feature">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span>4 African languages</span>
+                </div>
+                <div class="welcome-feature">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 1C10.3431 1 9 2.34315 9 4V12C9 13.6569 10.3431 15 12 15C13.6569 15 15 13.6569 15 12V4C15 2.34315 13.6569 1 12 1Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M19 10V12C19 16.4183 15.4183 20 11 20M5 10V12C5 16.4183 8.58172 20 13 20M12 20V23" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span>Voice interaction</span>
+                </div>
+                <div class="welcome-feature">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M21 15C21 15.5304 20.7893 16.0391 20.4142 16.4142C20.0391 16.7893 19.5304 17 19 17H7L3 21V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H19C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V15Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span>Natural conversation</span>
+                </div>
+            </div>
+            <button class="welcome-button" id="startChatButton">
+                <span>Start Conversation</span>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10 3L8.59 4.41 13.17 9H3v2h10.17l-4.58 4.59L10 17l7-7-7-7z" fill="currentColor"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

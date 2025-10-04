@@ -1,0 +1,143 @@
+version: "3.1"
+
+rules:
+  # Règle pour le redémarrage
+  - rule: Redémarrer la conversation
+    steps:
+      - intent: restart
+      - action: action_restart
+
+  # Règle pour le fallback
+  - rule: Fallback
+    steps:
+      - intent: nlu_fallback
+      - action: action_default_fallback
+
+  # Règle pour salutation
+  - rule: Salutation
+    steps:
+      - intent: greet
+      - action: action_multilingual_response
+
+  # Règle pour au revoir
+  - rule: Au revoir
+    steps:
+      - intent: goodbye
+      - action: action_multilingual_response
+
+  # Règle pour remerciement
+  - rule: Remerciement
+    steps:
+      - intent: thank
+      - action: action_multilingual_response
+
+  # Règle pour qui es-tu
+  - rule: Qui es-tu
+    steps:
+      - intent: who_are_you
+      - action: action_multilingual_response
+
+  # Règle pour hors sujet
+  - rule: Hors sujet
+    steps:
+      - intent: out_of_scope
+      - action: action_multilingual_response
+
+  # Règle pour la recherche de produit
+  - rule: Recherche de produit
+    steps:
+      - intent: product_search
+      - action: action_multilingual_response
+
+  - rule: Ouvrir l'application vendeur
+    steps:
+      - intent: open_seller_app
+      - action: action_open_seller_app
+
+  - rule: Ouvrir l'application acheteur
+    steps:
+      - intent: open_buyer_app
+      - action: action_open_buyer_app
+
+  - rule: Ouvrir l'application de livraison
+    steps:
+      - intent: open_delivery_app
+      - action: action_open_delivery_app
+
+  - rule: Redirection vers l'inscription
+    steps:
+      - intent: signup
+      - action: action_redirect_signup
+
+  - rule: Redirection vers la connexion
+    steps:
+      - intent: login
+      - action: action_redirect_login
+
+  - rule: Contacter le support
+    steps:
+      - intent: contact_support
+      - action: action_contact_support
+
+  - rule: Répondre à la négation
+    steps:
+      - intent: deny
+      - action: action_multilingual_response
+
+  - rule: Répondre à une plainte
+    steps:
+      - intent: complaint
+      - action: action_multilingual_response
+
+  - rule: Répondre à une demande de méthode de paiement
+    steps:
+      - intent: payment_method
+      - action: action_multilingual_response
+
+  - rule: Répondre à une demande de prix
+    steps:
+      - intent: price_inquiry
+      - action: action_multilingual_response
+
+  - rule: Répondre à une demande de recommandation de produit
+    steps:
+      - intent: product_recommendation
+      - action: action_multilingual_response
+
+  # Nouvelles règles pour l'achat avec formulaire - DIRECTEMENT sans action_multilingual_response
+  - rule: Activer le formulaire d'achat
+    steps:
+      - intent: buy
+      - action: purchase_form
+      - active_loop: purchase_form
+      - slot_was_set:
+          - requested_slot: product
+
+  - rule: Soumettre le formulaire d'achat
+    condition:
+      - active_loop: purchase_form
+    steps:
+      - action: purchase_form
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - action: action_search_products
+
+  # Nouvelles règles pour la vente avec formulaire - DIRECTEMENT sans action_multilingual_response
+  - rule: Activer le formulaire de vente
+    steps:
+      - intent: sell
+      - action: sales_form
+      - active_loop: sales_form
+      - slot_was_set:
+          - requested_slot: product
+
+  - rule: Soumettre le formulaire de vente
+    condition:
+      - active_loop: sales_form
+    steps:
+      - action: sales_form
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - action: action_process_sale
