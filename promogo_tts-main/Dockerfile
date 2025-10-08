@@ -1,4 +1,4 @@
-FROM python:3.9-slim
+FROM python:3.8-slim
 
 WORKDIR /app
 
@@ -24,7 +24,7 @@ COPY app.py .
 RUN mkdir -p /root/.cache/huggingface
 
 # Expose the port the app runs on
-EXPOSE 8000
+EXPOSE 5007
 
 # Command to run the application
-CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "5007"]

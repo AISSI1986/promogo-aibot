@@ -1,4 +1,4 @@
-FROM python:3.9-slim
+FROM python:3.8-slim
 
 WORKDIR /app
 
@@ -34,7 +34,7 @@ RUN pip install https://github.com/kpu/kenlm/archive/master.zip
 COPY . .
 
 # Exposer le port
-EXPOSE 9000
+EXPOSE 5006
 
 # Commande par défaut
-CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "9000"]
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "5006"]

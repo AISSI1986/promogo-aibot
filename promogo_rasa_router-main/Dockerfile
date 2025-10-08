@@ -1,4 +1,4 @@
-FROM python:3.9-slim
+FROM python:3.8-slim
 
 WORKDIR /app
 
@@ -23,6 +23,8 @@ RUN mkdir -p models/embeddings
 
 # Copy the rest of the application
 COPY . .
+
+EXPOSE 5005
 
 # Create a non-root user and switch to it
 RUN useradd -m -u 1000 rasa
