@@ -7,6 +7,4 @@ transformers>=4.30.2
 soundfile
 librosa
 numpy
-pyctcdecode
-kenlm
 protobuf
