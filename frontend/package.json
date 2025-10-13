@@ -5,7 +5,8 @@
     "main": "app.js",
     "scripts": {
         "start": "serve",
-        "dev": "serve"
+        "dev": "serve",
+        "build": "echo 'Static frontend - no build needed'"
     },
     "keywords": [
         "chat",
