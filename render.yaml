@@ -19,8 +19,8 @@ services:
     name: promogo-rasa
     env: python
     plan: free
-    buildCommand: cd rasa && python3.11 -m pip install -r requirements.txt --break-system-packages
-    startCommand: cd rasa && python3.11 app.py
+    buildCommand: cd rasa && pip install -r requirements.txt --break-system-packages
+    startCommand: cd rasa && python app.py
     envVars:
       - key: RASA_ACTIONS_URL
         value: https://promogo-rasa-actions.onrender.com
@@ -30,21 +30,21 @@ services:
     name: promogo-rasa-actions
     env: python
     plan: free
-    buildCommand: cd rasa && python3.11 -m pip install -r requirements.txt --break-system-packages
-    startCommand: cd rasa && python3.11 actions_app.py
+    buildCommand: cd rasa && pip install -r requirements.txt --break-system-packages
+    startCommand: cd rasa && python actions_app.py
 
   # Speech-to-Text Service
   - type: web
     name: promogo-stt
     env: python
     plan: free
-    buildCommand: cd stt && python3.11 -m pip install -r requirements.txt --break-system-packages
-    startCommand: cd stt && python3.11 app.py
+    buildCommand: cd stt && pip install -r requirements.txt --break-system-packages
+    startCommand: cd stt && python app.py
 
   # Text-to-Speech Service
   - type: web
     name: promogo-tts
     env: python
     plan: free
-    buildCommand: cd tts && python3.11 -m pip install -r requirements.txt --break-system-packages
-    startCommand: cd tts && python3.11 app.py
+    buildCommand: cd tts && pip install -r requirements.txt --break-system-packages
+    startCommand: cd tts && python app.py
