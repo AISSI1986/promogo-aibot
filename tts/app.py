@@ -469,4 +469,6 @@ async def debug_info():
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("app:app", host="0.0.0.0", port=5007, reload=True)
+    import os
+    port = int(os.environ.get("PORT", 5007))
+    uvicorn.run("app:app", host="0.0.0.0", port=port, reload=True)

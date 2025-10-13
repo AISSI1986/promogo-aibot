@@ -768,4 +768,6 @@ async def clear_cache():
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("app:app", host="0.0.0.0", port=5006, reload=True)
+    import os
+    port = int(os.environ.get("PORT", 5006))
+    uvicorn.run("app:app", host="0.0.0.0", port=port, reload=True)
