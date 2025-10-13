@@ -4,22 +4,18 @@ services:
   frontend:
     build:
       context: .
-      dockerfile: promogo-aibot/promogo_bot-main/Dockerfile
+      dockerfile: frontend/Dockerfile
     ports:
       - "3000:3000"
     environment:
       - REACT_APP_RASA_URL=http://rasa:5005
       - REACT_APP_STT_URL=http://stt:5006
       - REACT_APP_TTS_URL=http://tts:5007
-    depends_on:
-      - rasa
-      - stt
-      - tts
 
   rasa:
     build:
       context: .
-      dockerfile: promogo-aibot/promogo_rasa_router-main/Dockerfile
+      dockerfile: rasa/Dockerfile
     ports:
       - "5005:5005"
     environment:
@@ -30,7 +26,7 @@ services:
   rasa-actions:
     build:
       context: .
-      dockerfile: promogo-aibot/promogo_rasa_router-main/Dockerfile
+      dockerfile: rasa/Dockerfile
     command: rasa run actions --port 5055
     ports:
       - "5055:5055"
@@ -38,17 +34,13 @@ services:
   stt:
     build:
       context: .
-      dockerfile: promogo-aibot/promogo_stt-main/Dockerfile
+      dockerfile: stt/Dockerfile
     ports:
       - "5006:5006"
 
   tts:
     build:
       context: .
-      dockerfile: promogo-aibot/promogo_tts-main/Dockerfile
+      dockerfile: tts/Dockerfile
     ports:
       - "5007:5007"
-
-networks:
-  default:
-    name: promogo-network
