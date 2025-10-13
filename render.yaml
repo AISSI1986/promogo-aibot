@@ -37,14 +37,14 @@ services:
   - type: web
     name: promogo-stt
     env: python
-    plan: starter
-    buildCommand: cd stt && pip install -r requirements.txt --break-system-packages
-    startCommand: cd stt && python app.py
+    plan: free
+    buildCommand: cd stt && pip install -r simple_requirements.txt --break-system-packages
+    startCommand: cd stt && python simple_app.py
 
   # Text-to-Speech Service
   - type: web
     name: promogo-tts
     env: python
-    plan: starter
-    buildCommand: cd tts && pip install -r requirements.txt --break-system-packages
-    startCommand: cd tts && python app.py
+    plan: free
+    buildCommand: cd tts && pip install -r simple_requirements.txt --break-system-packages
+    startCommand: cd tts && python simple_app.py
