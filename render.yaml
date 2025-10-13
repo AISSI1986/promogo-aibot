@@ -19,6 +19,7 @@ services:
     name: promogo-rasa
     env: python
     plan: free
+    pythonVersion: 3.11
     buildCommand: cd rasa && pip install -r requirements.txt
     startCommand: cd rasa && rasa run --enable-api --cors "*" --port 5005
     envVars:
@@ -30,6 +31,7 @@ services:
     name: promogo-rasa-actions
     env: python
     plan: free
+    pythonVersion: 3.11
     buildCommand: cd rasa && pip install -r requirements.txt
     startCommand: cd rasa && rasa run actions --port 5055
 
@@ -38,6 +40,7 @@ services:
     name: promogo-stt
     env: python
     plan: free
+    pythonVersion: 3.11
     buildCommand: cd stt && pip install -r requirements.txt
     startCommand: cd stt && python app.py
 
@@ -46,5 +49,6 @@ services:
     name: promogo-tts
     env: python
     plan: free
+    pythonVersion: 3.11
     buildCommand: cd tts && pip install -r requirements.txt
     startCommand: cd tts && python app.py
