@@ -1,0 +1,50 @@
+services:
+  # Frontend Service
+  - type: web
+    name: promogo-frontend
+    env: node
+    plan: free
+    buildCommand: cd frontend && npm install && npm run build
+    startCommand: cd frontend && npx serve -s build -l 3000
+    envVars:
+      - key: REACT_APP_RASA_URL
+        value: https://promogo-rasa.onrender.com
+      - key: REACT_APP_STT_URL
+        value: https://promogo-stt.onrender.com
+      - key: REACT_APP_TTS_URL
+        value: https://promogo-tts.onrender.com
+
+  # Rasa Main Service
+  - type: web
+    name: promogo-rasa
+    env: python
+    plan: free
+    buildCommand: cd rasa && pip install -r requirements.txt
+    startCommand: cd rasa && rasa run --enable-api --cors "*" --port 5005
+    envVars:
+      - key: RASA_ACTIONS_URL
+        value: https://promogo-rasa-actions.onrender.com
+
+  # Rasa Actions Service
+  - type: web
+    name: promogo-rasa-actions
+    env: python
+    plan: free
+    buildCommand: cd rasa && pip install -r requirements.txt
+    startCommand: cd rasa && rasa run actions --port 5055
+
+  # Speech-to-Text Service
+  - type: web
+    name: promogo-stt
+    env: python
+    plan: free
+    buildCommand: cd stt && pip install -r requirements.txt
+    startCommand: cd stt && python app.py
+
+  # Text-to-Speech Service
+  - type: web
+    name: promogo-tts
+    env: python
+    plan: free
+    buildCommand: cd tts && pip install -r requirements.txt
+    startCommand: cd tts && python app.py

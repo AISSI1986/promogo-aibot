@@ -6,7 +6,7 @@ this.apiEndpoints = {
 
 // Chatbot communication
 async function sendMessage(message) {
-  const response = await fetch(`${RASA_URL}/webhooks/rest/webhook`, {
+  const response = await fetch(`${this.apiEndpoints.rasa}/webhooks/rest/webhook`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
@@ -22,7 +22,7 @@ async function convertSpeechToText(audioBlob) {
   const formData = new FormData();
   formData.append('audio', audioBlob);
   
-  const response = await fetch(`${STT_URL}/transcribe`, {
+  const response = await fetch(`${this.apiEndpoints.stt}/transcribe`, {
     method: 'POST',
     body: formData
   });
@@ -31,7 +31,7 @@ async function convertSpeechToText(audioBlob) {
 
 // Text-to-Speech
 async function convertTextToSpeech(text) {
-  const response = await fetch(`${TTS_URL}/synthesize`, {
+  const response = await fetch(`${this.apiEndpoints.tts}/synthesize`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ text })
