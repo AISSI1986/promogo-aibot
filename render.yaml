@@ -20,7 +20,7 @@ services:
     env: python
     plan: free
     buildCommand: cd rasa && python3.11 -m pip install -r requirements.txt --break-system-packages
-    startCommand: cd rasa && python3.11 -m rasa run --enable-api --cors "*" --port 5005
+    startCommand: cd rasa && python3.11 app.py
     envVars:
       - key: RASA_ACTIONS_URL
         value: https://promogo-rasa-actions.onrender.com
@@ -31,7 +31,7 @@ services:
     env: python
     plan: free
     buildCommand: cd rasa && python3.11 -m pip install -r requirements.txt --break-system-packages
-    startCommand: cd rasa && python3.11 -m rasa run actions --port 5055
+    startCommand: cd rasa && python3.11 actions_app.py
 
   # Speech-to-Text Service
   - type: web
