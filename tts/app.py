@@ -202,12 +202,48 @@ def load_models():
     loading_complete = True
     logger.info("Model loading completed")
 
+def load_single_model(language):
+    """Load a single TTS model on demand"""
+    global models, models_status, tokenizers
+    
+    if language in models:
+        return  # Already loaded
+    
+    if language not in LANGUAGE_MODELS:
+        raise ValueError(f"Language {language} not supported")
+    
+    try:
+        info = LANGUAGE_MODELS[language]
+        model_name = info["model"]
+        
+        logger.info(f"Loading {language} model on demand: {model_name}")
+        
+        if info["type"] == "kokoro" and language == "en":
+            # Load Kokoro for English
+            from kokoro import KPipeline
+            kokoro_pipeline = KPipeline(lang_code='a')  # 'a' for en
+            models["en"] = "kokoro_loaded"
+            models_status["en"] = "loaded"
+            logger.info("Kokoro loaded successfully for en")
+        elif info["type"] == "mms":
+            # Load MMS model
+            tokenizer, model = load_vits_model(model_name)
+            tokenizers[language] = tokenizer
+            models[language] = model
+            models_status[language] = "loaded"
+            logger.info(f"Model for {language} loaded successfully")
+        else:
+            raise ValueError(f"Unknown model type for {language}")
+            
+    except Exception as e:
+        logger.error(f"Failed to load {language} model: {str(e)}")
+        models_status[language] = f"error: {str(e)}"
+        raise e
+
 @app.on_event("startup")
 async def startup_event():
-    """Start model loading in background"""
-    thread = threading.Thread(target=load_models)
-    thread.daemon = True
-    thread.start()
+    """Initialize without loading models to save memory"""
+    logger.info("TTS service started - models will be loaded on demand")
 
 @app.get("/", 
     summary="API Information", 
@@ -250,17 +286,15 @@ async def synthesize_speech(request: TextToSpeechRequest):
             detail=f"Language '{language}' not supported. Available: {list(LANGUAGE_MODELS.keys())}"
         )
     
-    # Check if model is loaded
+    # Load model on demand if not already loaded
     if language not in models:
-        if language in models_status and "error" in models_status[language]:
+        logger.info(f"Loading model for {language} on demand")
+        try:
+            load_single_model(language)
+        except Exception as e:
             raise HTTPException(
                 status_code=500,
-                detail=f"Model for {language} failed to load: {models_status[language]}"
-            )
-        else:
-            raise HTTPException(
-                status_code=503,
-                detail=f"Model for {language} is still loading. Please try again later."
+                detail=f"Failed to load model for {language}: {str(e)}"
             )
     
     try:

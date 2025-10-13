@@ -37,7 +37,7 @@ services:
   - type: web
     name: promogo-stt
     env: python
-    plan: free
+    plan: starter
     buildCommand: cd stt && pip install -r requirements.txt --break-system-packages
     startCommand: cd stt && python app.py
 
@@ -45,6 +45,6 @@ services:
   - type: web
     name: promogo-tts
     env: python
-    plan: free
+    plan: starter
     buildCommand: cd tts && pip install -r requirements.txt --break-system-packages
     startCommand: cd tts && python app.py
