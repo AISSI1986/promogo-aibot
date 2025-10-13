@@ -1,7 +1,8 @@
-// In your frontend app.js
-const RASA_URL = process.env.REACT_APP_RASA_URL || 'http://localhost:5005';
-const STT_URL = process.env.REACT_APP_STT_URL || 'http://localhost:5006';
-const TTS_URL = process.env.REACT_APP_TTS_URL || 'http://localhost:5007';
+this.apiEndpoints = {
+  stt: process.env.REACT_APP_STT_URL || "http://localhost:5006/transcribe",
+  rasa: process.env.REACT_APP_RASA_URL || "http://localhost:5005/webhooks/rest/webhook",
+  tts: process.env.REACT_APP_TTS_URL || "http://localhost:5007/synthesize/",
+}
 
 // Chatbot communication
 async function sendMessage(message) {
