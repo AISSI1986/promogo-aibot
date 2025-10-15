@@ -321,4 +321,4 @@ async def detect_language(audio: UploadFile = File(...)):
 if __name__ == "__main__":
     import uvicorn
     port = int(os.environ.get("PORT", 5006))
-    uvicorn.run("hf_api_app:app", host="0.0.0.0", port=port, reload=True)
+    uvicorn.run("app:app", host="0.0.0.0", port=port, reload=True)
