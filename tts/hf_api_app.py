@@ -38,9 +38,16 @@ class TextToSpeechResponse(BaseModel):
     audio_url: Optional[str] = None
     error: Optional[str] = None
 
-# Language to model mapping
+# Language to model mapping - Optimized for Promogo's target languages
+# Primary languages: English, Hausa, Twi, Ewe
 LANGUAGE_MODELS = {
-    "en": "facebook/mms-tts-eng",
+    # Primary languages for Promogo (your preferred languages)
+    "en": "facebook/mms-tts-eng",      # English - High quality
+    "ha": "facebook/mms-tts-hau",      # Hausa - Native African language (Nigeria)
+    "tw": "facebook/mms-tts-twi",      # Twi - Ghanaian language
+    "ee": "facebook/mms-tts-ewe",      # Ewe - Ghanaian language
+    
+    # Additional supported languages
     "fr": "facebook/mms-tts-fra", 
     "es": "facebook/mms-tts-spa",
     "de": "facebook/mms-tts-deu",
@@ -50,18 +57,25 @@ LANGUAGE_MODELS = {
     "zh": "facebook/mms-tts-cmn",
     "ja": "facebook/mms-tts-jpn",
     "ko": "facebook/mms-tts-kor",
-    "ha": "facebook/mms-tts-hau",  # Hausa
-    "ee": "facebook/mms-tts-ewe",  # Ewe
-    "tw": "facebook/mms-tts-twi",  # Twi
 }
+
+# Primary languages for Promogo
+PRIMARY_LANGUAGES = ["en", "ha", "tw", "ee"]
 
 @app.get("/")
 async def root():
     return {
         "message": "Promogo TTS API (Hugging Face)",
         "status": "running",
+        "primary_languages": PRIMARY_LANGUAGES,
         "supported_languages": list(LANGUAGE_MODELS.keys()),
-        "note": "Using Hugging Face Inference API for high-quality TTS"
+        "primary_language_info": {
+            "en": "English (🇬🇧)",
+            "ha": "Hausa (🇳🇬)", 
+            "tw": "Twi (🇬🇭)",
+            "ee": "Ewe (🇬🇭)"
+        },
+        "note": "Optimized for English, Hausa, Twi, and Ewe using Hugging Face Inference API"
     }
 
 @app.get("/health")

@@ -36,9 +36,16 @@ class TranscriptionRequest(BaseModel):
     language: Optional[str] = None
     model: Optional[str] = None
 
-# Language to model mapping for STT
+# Language to model mapping for STT - Optimized for Promogo's target languages
+# Primary languages: English, Hausa, Twi, Ewe
 LANGUAGE_MODELS = {
-    "en": "facebook/wav2vec2-base-960h",
+    # Primary languages for Promogo (your preferred languages)
+    "en": "facebook/wav2vec2-base-960h",           # English - High quality
+    "ha": "facebook/wav2vec2-large-xlsr-53-hausa", # Hausa - Native African language (Nigeria)
+    "tw": "facebook/wav2vec2-large-xlsr-53-twi",   # Twi - Ghanaian language
+    "ee": "facebook/wav2vec2-large-xlsr-53-ewe",   # Ewe - Ghanaian language
+    
+    # Additional supported languages
     "fr": "facebook/wav2vec2-large-xlsr-53-french",
     "es": "facebook/wav2vec2-large-xlsr-53-spanish", 
     "de": "facebook/wav2vec2-large-xlsr-53-german",
@@ -48,10 +55,10 @@ LANGUAGE_MODELS = {
     "zh": "facebook/wav2vec2-large-xlsr-53-chinese-zh-cn",
     "ja": "facebook/wav2vec2-large-xlsr-53-japanese",
     "ko": "facebook/wav2vec2-large-xlsr-53-korean",
-    "ha": "facebook/wav2vec2-large-xlsr-53-hausa",  # Hausa
-    "ee": "facebook/wav2vec2-large-xlsr-53-ewe",   # Ewe
-    "tw": "facebook/wav2vec2-large-xlsr-53-twi",   # Twi
 }
+
+# Primary languages for Promogo
+PRIMARY_LANGUAGES = ["en", "ha", "tw", "ee"]
 
 # Multilingual models that can handle multiple languages
 MULTILINGUAL_MODELS = {
@@ -65,9 +72,16 @@ async def root():
     return {
         "message": "Promogo STT API (Hugging Face)",
         "status": "running",
+        "primary_languages": PRIMARY_LANGUAGES,
         "supported_languages": list(LANGUAGE_MODELS.keys()),
         "multilingual_models": list(MULTILINGUAL_MODELS.keys()),
-        "note": "Using Hugging Face Inference API for high-quality STT"
+        "primary_language_info": {
+            "en": "English (🇬🇧)",
+            "ha": "Hausa (🇳🇬)", 
+            "tw": "Twi (🇬🇭)",
+            "ee": "Ewe (🇬🇭)"
+        },
+        "note": "Optimized for English, Hausa, Twi, and Ewe using Hugging Face Inference API"
     }
 
 @app.get("/health")
