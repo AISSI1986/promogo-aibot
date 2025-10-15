@@ -207,11 +207,16 @@ async function processAudio(audioBlob) {
     // Convert speech to text
     const formData = new FormData();
     formData.append('audio', audioBlob);
+    formData.append('language', currentLanguage);
     
     const sttResponse = await fetch(apiEndpoints.stt, {
       method: 'POST',
       body: formData
     });
+    
+    if (!sttResponse.ok) {
+      throw new Error(`STT API error: ${sttResponse.status}`);
+    }
     
     const sttData = await sttResponse.json();
     const transcribedText = sttData.text || 'Could not transcribe audio';
@@ -231,6 +236,10 @@ async function processAudio(audioBlob) {
       })
     });
     
+    if (!rasaResponse.ok) {
+      throw new Error(`Chatbot API error: ${rasaResponse.status}`);
+    }
+    
     const rasaData = await rasaResponse.json();
     
     // Add bot response
@@ -247,7 +256,7 @@ async function processAudio(audioBlob) {
   } catch (error) {
     console.error('Error processing audio:', error);
     recordingStatus.textContent = 'Error processing audio';
-    addMessage('bot', 'Sorry, there was an error processing your audio. Please try again.');
+    addMessage('bot', `Sorry, there was an error processing your audio: ${error.message}. Please try again.`);
   }
 }
 

@@ -38,13 +38,19 @@ services:
     name: promogo-stt
     env: python
     plan: free
-    buildCommand: cd stt && pip install -r simple_requirements.txt --break-system-packages
-    startCommand: cd stt && python simple_app.py
+    buildCommand: cd stt && pip install -r hf_requirements.txt --break-system-packages
+    startCommand: cd stt && python hf_api_app.py
+    envVars:
+      - key: HUGGINGFACE_TOKEN
+        value: your_huggingface_token_here
 
   # Text-to-Speech Service
   - type: web
     name: promogo-tts
     env: python
     plan: free
-    buildCommand: cd tts && pip install -r simple_requirements.txt --break-system-packages
-    startCommand: cd tts && python simple_app.py
+    buildCommand: cd tts && pip install -r hf_requirements.txt --break-system-packages
+    startCommand: cd tts && python hf_api_app.py
+    envVars:
+      - key: HUGGINGFACE_TOKEN
+        value: your_huggingface_token_here
