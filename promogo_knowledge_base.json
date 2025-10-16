@@ -1,0 +1,175 @@
+{
+  "company_overview": {
+    "name": "PROMOGO GHANA LTD",
+    "description": "Your product promotion platform, open and available everywhere in Accra",
+    "location": "Accra, Ghana",
+    "contact": {
+      "address": "Accra",
+      "phone": "+233596782334",
+      "email": "contact@promogo.ga"
+    }
+  },
+  "products": [
+    {
+      "name": "Spinning cardio bike indoor",
+      "price": "₵2,700.00",
+      "category": "Sports & Outdoor",
+      "description": "Indoor cardio exercise bike for fitness and health"
+    },
+    {
+      "name": "3D HOLOGRAM DISPLAYER FAN",
+      "price": "₵900.00",
+      "category": "Electronics",
+      "description": "3D holographic display fan for visual effects"
+    },
+    {
+      "name": "Chandelier fan light",
+      "price": "₵1,900.00",
+      "category": "Home, appliances & kitchen",
+      "description": "Decorative chandelier fan with lighting"
+    },
+    {
+      "name": "Luxury Chandelier fan light",
+      "price": "₵2,200.00",
+      "category": "Home, appliances & kitchen",
+      "description": "Premium luxury chandelier fan with advanced lighting"
+    },
+    {
+      "name": "Game android smart projector 4k",
+      "price": "₵1,290.00",
+      "category": "Electronics",
+      "description": "4K Android smart projector for gaming and entertainment"
+    },
+    {
+      "name": "Screwdriver and drill toolbox Professional",
+      "price": "₵1,200.00",
+      "category": "Home, appliances & kitchen",
+      "description": "Professional toolbox with screwdrivers and drill accessories"
+    },
+    {
+      "name": "Self priming grain grinder",
+      "price": "₵6,400.00",
+      "category": "Agriculture & Food",
+      "description": "Self-priming grain grinding machine for agricultural use"
+    },
+    {
+      "name": "Rice Milling machine corn Grinder Multifunctional",
+      "price": "₵12,600.00",
+      "category": "Agriculture & Food",
+      "description": "Multifunctional rice milling and corn grinding machine"
+    },
+    {
+      "name": "Smart TV android 64 inch LG Wisdom",
+      "price": "₵6,200.00",
+      "category": "Electronics",
+      "description": "64-inch LG Wisdom Android Smart TV with advanced features"
+    }
+  ],
+  "categories": [
+    {
+      "name": "Tickets and travel",
+      "url": "https://promoghana.com/category/tickets-and-travel"
+    },
+    {
+      "name": "Electronics",
+      "url": "https://promoghana.com/category/electronics"
+    },
+    {
+      "name": "Phones & Gadgets",
+      "url": "https://promoghana.com/category/phones-&-gadgets"
+    },
+    {
+      "name": "Sports & Outdoor",
+      "url": "https://promoghana.com/category/sports-&-outdoor"
+    },
+    {
+      "name": "Fashion",
+      "url": "https://promoghana.com/category/fashion"
+    },
+    {
+      "name": "Vehicles and machinery",
+      "url": "https://promoghana.com/category/vehicles-and-machinery"
+    },
+    {
+      "name": "Made In Africa",
+      "url": "https://promoghana.com/category/made-in-africa"
+    },
+    {
+      "name": "Home, appliances & kitchen",
+      "url": "https://promoghana.com/category/home,-appliances-&-kitchen"
+    },
+    {
+      "name": "Health & Beauty",
+      "url": "https://promoghana.com/category/health-&-beauty"
+    },
+    {
+      "name": "Agriculture & Food",
+      "url": "https://promoghana.com/category/agriculture-&-food"
+    },
+    {
+      "name": "Hotel",
+      "url": "https://promoghana.com/category/hotel"
+    },
+    {
+      "name": "Restaurant",
+      "url": "https://promoghana.com/category/restaurant"
+    }
+  ],
+  "brands": [
+    "China Mall",
+    "Tecno",
+    "Nasco",
+    "Hisense",
+    "Innoventia",
+    "SAMSUNG",
+    "APPLE",
+    "NESTLE",
+    "TOYOTA",
+    "BENZ"
+  ],
+  "services": [
+    "Product promotion platform",
+    "E-commerce marketplace",
+    "Vendor services",
+    "Fast delivery across Ghana",
+    "Safe payment processing",
+    "7 days return policy",
+    "100% authentic products"
+  ],
+  "policies": {
+    "return_policy": "7 Days Return Policy",
+    "authenticity": "100% Authentic Products",
+    "delivery": "Fast Delivery all across the country",
+    "payment": "Safe Payment processing",
+    "terms_conditions": "Terms and Conditions available on website",
+    "privacy_policy": "Privacy Policy available on website",
+    "refund_policy": "Refund Policy available on website",
+    "cancellation_policy": "Cancellation Policy available on website"
+  },
+  "faq": [
+    {
+      "question": "What is Promogo Ghana?",
+      "answer": "Promogo Ghana LTD is your product promotion platform, open and available everywhere in Accra. We provide e-commerce services with fast delivery across Ghana."
+    },
+    {
+      "question": "What products do you sell?",
+      "answer": "We sell a wide range of products including Electronics, Phones & Gadgets, Sports & Outdoor, Fashion, Vehicles and machinery, Home appliances, Health & Beauty, Agriculture & Food, and more. We have 9+ products available."
+    },
+    {
+      "question": "What is your return policy?",
+      "answer": "We offer a 7 Days Return Policy for all products. We guarantee 100% authentic products and safe payment processing."
+    },
+    {
+      "question": "Do you deliver across Ghana?",
+      "answer": "Yes, we provide fast delivery all across the country. We are based in Accra but serve customers throughout Ghana."
+    },
+    {
+      "question": "What brands do you carry?",
+      "answer": "We carry top brands including China Mall, Tecno, Nasco, Hisense, Innoventia and many more."
+    },
+    {
+      "question": "How can I contact you?",
+      "answer": "You can contact us at +233596782334 or email us at contact@promogo.ga. We are located in Accra."
+    }
+  ]
+}

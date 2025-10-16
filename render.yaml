@@ -24,6 +24,8 @@ services:
     envVars:
       - key: RASA_ACTIONS_URL
         value: https://promogo-rasa-actions.onrender.com
+      - key: OPENAI_API_KEY
+        value: your_openai_api_key_here
 
   # Rasa Actions Service
   - type: web
