@@ -212,7 +212,7 @@ async def transcribe_audio(
         
     except requests.exceptions.RequestException as e:
         logger.error(f"Request error: {str(e)}")
-            raise HTTPException(
+        raise HTTPException(
                 status_code=500, 
             detail=f"Network error: {str(e)}"
             )
@@ -243,7 +243,7 @@ async def transcribe_batch(
                 "filename": audio_file.filename,
                 "result": result
             })
-                    except Exception as e:
+        except Exception as e:
             results.append({
                 "index": i,
                 "filename": audio_file.filename,
@@ -259,7 +259,7 @@ async def transcribe_batch(
 @app.get("/models")
 async def get_available_models():
     """Get information about available models"""
-        return {
+    return {
         "language_specific_models": LANGUAGE_MODELS,
         "recommendations": {
             "for_english": "facebook/wav2vec2-base-960h",
