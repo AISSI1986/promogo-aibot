@@ -1,10 +1,10 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import FileResponse
+from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
 import requests
 import os
-import uuid
+import io
 import logging
 from typing import Optional
 
@@ -84,7 +84,7 @@ async def get_languages():
         "note": "Languages supported by Hugging Face MMS-TTS models"
     }
 
-@app.post("/synthesize/", response_model=TextToSpeechResponse)
+@app.post("/synthesize/", response_class=StreamingResponse)
 async def synthesize_speech(request: TextToSpeechRequest):
     """
     Convert text to speech using Hugging Face Inference API
@@ -132,62 +132,47 @@ async def synthesize_speech(request: TextToSpeechRequest):
         response = requests.post(hf_url, headers=headers, json=payload, timeout=30)
         
         if response.status_code == 200:
-            # Generate unique filename
-            audio_id = str(uuid.uuid4())
-            audio_filename = f"audio_{audio_id}.wav"
-            audio_path = f"/tmp/{audio_filename}"
-            
-            # Save audio file
-            with open(audio_path, "wb") as f:
-                f.write(response.content)
-            
-            logger.info(f"Audio saved successfully: {audio_filename}")
-            
-            return TextToSpeechResponse(
-                success=True,
-                message=f"Successfully synthesized text in {request.language}",
-                audio_url=f"/audio/{audio_filename}"
+            # Return audio directly as a stream
+            return StreamingResponse(
+                io.BytesIO(response.content),
+                media_type="audio/wav",
+                headers={"Content-Disposition": f"attachment; filename=speech_{request.language}.wav"}
             )
             
         elif response.status_code == 503:
             # Model is loading
             logger.warning("Model is loading, please try again in a few seconds")
-            return TextToSpeechResponse(
-                success=False,
-                message="Model is loading, please try again in a few seconds",
-                error="Hugging Face model is initializing"
-                )
+            raise HTTPException(
+                status_code=503,
+                detail="Model is loading, please try again in a few seconds"
+            )
             
         else:
             logger.error(f"Hugging Face API error: {response.status_code} - {response.text}")
-            return TextToSpeechResponse(
-                success=False,
-                message="Failed to synthesize speech",
-                error=f"API error: {response.status_code} - {response.text}"
+            raise HTTPException(
+                status_code=response.status_code,
+                detail=f"Hugging Face API error: {response.text}"
             )
             
     except requests.exceptions.Timeout:
         logger.error("Request timeout to Hugging Face API")
-        return TextToSpeechResponse(
-            success=False,
-            message="Request timeout - please try again",
-            error="API request timed out"
+        raise HTTPException(
+            status_code=504,
+            detail="Request timeout - please try again"
         )
         
     except requests.exceptions.RequestException as e:
         logger.error(f"Request error: {str(e)}")
-        return TextToSpeechResponse(
-            success=False,
-            message="Network error occurred",
-            error=f"Request error: {str(e)}"
+        raise HTTPException(
+            status_code=500,
+            detail=f"Network error: {str(e)}"
         )
         
     except Exception as e:
         logger.error(f"Unexpected error: {str(e)}")
-        return TextToSpeechResponse(
-            success=False,
-            message="An unexpected error occurred",
-            error=f"Internal error: {str(e)}"
+        raise HTTPException(
+            status_code=500,
+            detail=f"Internal error: {str(e)}"
         )
 
 @app.get("/audio/{filename}")

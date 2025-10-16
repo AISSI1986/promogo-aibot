@@ -8,11 +8,11 @@ services:
     startCommand: cd frontend && npx serve -l 3000
     envVars:
       - key: REACT_APP_RASA_URL
-        value: https://promogo-rasa.onrender.com
+        value: https://promogo-rasa.onrender.com/webhooks/rest/webhook
       - key: REACT_APP_STT_URL
-        value: https://promogo-stt.onrender.com
+        value: https://promogo-stt.onrender.com/transcribe
       - key: REACT_APP_TTS_URL
-        value: https://promogo-tts.onrender.com
+        value: https://promogo-tts.onrender.com/synthesize/
 
   # Rasa Main Service
   - type: web
@@ -40,9 +40,9 @@ services:
     plan: free
     buildCommand: cd stt && pip install -r requirements.txt --break-system-packages
     startCommand: cd stt && python app.py
-    #envVars:
-      #- key: HUGGINGFACE_TOKEN
-      #  value: ...
+    envVars:
+      - key: HUGGINGFACE_TOKEN
+        value: your_huggingface_token_here
 
   # Text-to-Speech Service
   - type: web
@@ -51,6 +51,6 @@ services:
     plan: free
     buildCommand: cd tts && pip install -r requirements.txt --break-system-packages
     startCommand: cd tts && python app.py
-    #envVars:
-      #- key: HUGGINGFACE_TOKEN
-      #  value: ...
+    envVars:
+      - key: HUGGINGFACE_TOKEN
+        value: your_huggingface_token_here

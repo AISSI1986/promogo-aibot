@@ -1,8 +1,8 @@
 // Configuration
 const apiEndpoints = {
-  stt: "https://promogo-stt.onrender.com/transcribe",
-  rasa: "https://promogo-rasa.onrender.com/webhooks/rest/webhook",
-  tts: "https://promogo-tts.onrender.com/synthesize/"
+  stt: process.env.REACT_APP_STT_URL || "https://promogo-stt.onrender.com/transcribe",
+  rasa: process.env.REACT_APP_RASA_URL || "https://promogo-rasa.onrender.com/webhooks/rest/webhook",
+  tts: process.env.REACT_APP_TTS_URL || "https://promogo-tts.onrender.com/synthesize/"
 };
 
 // Global variables
