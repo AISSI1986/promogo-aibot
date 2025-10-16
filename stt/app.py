@@ -36,36 +36,19 @@ class TranscriptionRequest(BaseModel):
     language: Optional[str] = None
     model: Optional[str] = None
 
-# Language to model mapping for STT - Optimized for Promogo's target languages
+# Language to model mapping for STT - Only Promogo's target languages
 # Primary languages: English, Hausa, Twi, Ewe
 LANGUAGE_MODELS = {
-    # Primary languages for Promogo (your preferred languages)
     "en": "facebook/wav2vec2-base-960h",           # English - High quality
     "ha": "facebook/wav2vec2-large-xlsr-53-hausa", # Hausa - Native African language (Nigeria)
     "tw": "facebook/wav2vec2-large-xlsr-53-twi",   # Twi - Ghanaian language
     "ee": "facebook/wav2vec2-large-xlsr-53-ewe",   # Ewe - Ghanaian language
-    
-    # Additional supported languages
-    "fr": "facebook/wav2vec2-large-xlsr-53-french",
-    "es": "facebook/wav2vec2-large-xlsr-53-spanish", 
-    "de": "facebook/wav2vec2-large-xlsr-53-german",
-    "it": "facebook/wav2vec2-large-xlsr-53-italian",
-    "pt": "facebook/wav2vec2-large-xlsr-53-portuguese",
-    "ru": "facebook/wav2vec2-large-xlsr-53-russian",
-    "zh": "facebook/wav2vec2-large-xlsr-53-chinese-zh-cn",
-    "ja": "facebook/wav2vec2-large-xlsr-53-japanese",
-    "ko": "facebook/wav2vec2-large-xlsr-53-korean",
 }
 
 # Primary languages for Promogo
 PRIMARY_LANGUAGES = ["en", "ha", "tw", "ee"]
 
-# Multilingual models that can handle multiple languages
-MULTILINGUAL_MODELS = {
-    "multilingual": "facebook/wav2vec2-large-xlsr-53",
-    "xlsr": "facebook/wav2vec2-xlsr-53-espeak-cv-ft",
-    "mms": "facebook/mms-1b-fl102"
-}
+# Only language-specific models are supported
 
 @app.get("/")
 async def root():
@@ -74,14 +57,13 @@ async def root():
         "status": "running",
         "primary_languages": PRIMARY_LANGUAGES,
         "supported_languages": list(LANGUAGE_MODELS.keys()),
-        "multilingual_models": list(MULTILINGUAL_MODELS.keys()),
         "primary_language_info": {
             "en": "English (🇬🇧)",
             "ha": "Hausa (🇳🇬)", 
             "tw": "Twi (🇬🇭)",
-            "ee": "Ewe (🇬🇭)"
+            "ee": "Eʋegbe (🇬🇭)"
         },
-        "note": "Optimized for English, Hausa, Twi, and Ewe using Hugging Face Inference API"
+        "note": "Optimized for English, Hausa, Twi, and Eʋegbe using Hugging Face Inference API"
     }
 
 @app.get("/health")
@@ -111,7 +93,6 @@ async def get_languages():
     return {
         "supported_languages": list(LANGUAGE_MODELS.keys()),
         "language_models": LANGUAGE_MODELS,
-        "multilingual_models": MULTILINGUAL_MODELS,
         "note": "Languages supported by Hugging Face wav2vec2 models"
     }
 
@@ -147,16 +128,14 @@ async def transcribe_audio(
         logger.info(f"Token found, length: {len(hf_token)}")
         
         # Determine model to use
-        if model and model in MULTILINGUAL_MODELS:
-            model_name = MULTILINGUAL_MODELS[model]
-            logger.info(f"Using multilingual model: {model_name}")
-        elif language and language in LANGUAGE_MODELS:
+        if language and language in LANGUAGE_MODELS:
             model_name = LANGUAGE_MODELS[language]
             logger.info(f"Using language-specific model for {language}: {model_name}")
         else:
-            # Default to multilingual model
-            model_name = MULTILINGUAL_MODELS["multilingual"]
-            logger.info(f"Using default multilingual model: {model_name}")
+            # Default to English model
+            model_name = LANGUAGE_MODELS["en"]
+            language = "en"
+            logger.info(f"Using default English model: {model_name}")
         
         # Prepare request to Hugging Face API
         hf_url = f"https://api-inference.huggingface.co/models/{model_name}"
@@ -220,7 +199,7 @@ async def transcribe_audio(
             logger.error(f"Hugging Face API error: {response.status_code} - {response.text}")
             logger.error(f"Full response content: {response.content}")
             raise HTTPException(
-                status_code=500,
+                status_code=500, 
                 detail=f"API error: {response.status_code} - {response.text}"
             )
             
@@ -233,15 +212,15 @@ async def transcribe_audio(
         
     except requests.exceptions.RequestException as e:
         logger.error(f"Request error: {str(e)}")
-        raise HTTPException(
-            status_code=500,
+            raise HTTPException(
+                status_code=500, 
             detail=f"Network error: {str(e)}"
-        )
+            )
         
     except Exception as e:
         logger.error(f"Unexpected error: {str(e)}")
         raise HTTPException(
-            status_code=500,
+            status_code=500, 
             detail=f"Internal error: {str(e)}"
         )
 
@@ -264,15 +243,15 @@ async def transcribe_batch(
                 "filename": audio_file.filename,
                 "result": result
             })
-        except Exception as e:
+                    except Exception as e:
             results.append({
                 "index": i,
                 "filename": audio_file.filename,
                 "error": str(e)
             })
-    
-    return {
-        "success": True,
+        
+        return {
+            "success": True,
         "message": f"Processed {len(audio_files)} audio files",
         "results": results
     }
@@ -280,9 +259,8 @@ async def transcribe_batch(
 @app.get("/models")
 async def get_available_models():
     """Get information about available models"""
-    return {
+        return {
         "language_specific_models": LANGUAGE_MODELS,
-        "multilingual_models": MULTILINGUAL_MODELS,
         "recommendations": {
             "for_english": "facebook/wav2vec2-base-960h",
             "for_multilingual": "facebook/wav2vec2-large-xlsr-53",
@@ -290,57 +268,6 @@ async def get_available_models():
         }
     }
 
-@app.post("/detect_language/")
-async def detect_language(audio: UploadFile = File(...)):
-    """
-    Detect the language of the audio file
-    """
-    try:
-        # Use a multilingual model for language detection
-        model_name = MULTILINGUAL_MODELS["multilingual"]
-        
-        hf_token = os.getenv("HUGGINGFACE_TOKEN")
-        if not hf_token:
-            raise HTTPException(
-                status_code=500, 
-                detail="Hugging Face API token not configured"
-            )
-        
-        hf_url = f"https://api-inference.huggingface.co/models/{model_name}"
-        headers = {
-            "Authorization": f"Bearer {hf_token}"
-        }
-        
-        audio_content = await audio.read()
-        
-        response = requests.post(
-            hf_url,
-            headers=headers,
-            data=audio_content,
-            timeout=30
-        )
-        
-        if response.status_code == 200:
-            result = response.json()
-            # This is a simplified language detection
-            # In practice, you might need a dedicated language detection model
-            return {
-                "success": True,
-                "detected_language": "auto",  # Placeholder
-                "confidence": 0.8,
-                "model_used": model_name
-            }
-        else:
-            raise HTTPException(
-                status_code=500, 
-                detail=f"Language detection failed: {response.status_code}"
-            )
-            
-    except Exception as e:
-        raise HTTPException(
-            status_code=500, 
-            detail=f"Language detection error: {str(e)}"
-        )
 
 if __name__ == "__main__":
     import uvicorn

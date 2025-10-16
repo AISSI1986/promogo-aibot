@@ -39,36 +39,8 @@ PROMOGO_LANGUAGES = {
     }
 }
 
-# Additional supported languages (lower priority)
-ADDITIONAL_LANGUAGES = {
-    "fr": {
-        "name": "French",
-        "flag": "🇫🇷",
-        "country": "France",
-        "tts_model": "facebook/mms-tts-fra",
-        "stt_model": "facebook/wav2vec2-large-xlsr-53-french",
-        "priority": 5
-    },
-    "es": {
-        "name": "Spanish", 
-        "flag": "🇪🇸",
-        "country": "Spain",
-        "tts_model": "facebook/mms-tts-spa",
-        "stt_model": "facebook/wav2vec2-large-xlsr-53-spanish",
-        "priority": 6
-    },
-    "de": {
-        "name": "German",
-        "flag": "🇩🇪", 
-        "country": "Germany",
-        "tts_model": "facebook/mms-tts-deu",
-        "stt_model": "facebook/wav2vec2-large-xlsr-53-german",
-        "priority": 7
-    }
-}
-
-# Combined language configuration
-ALL_LANGUAGES = {**PROMOGO_LANGUAGES, **ADDITIONAL_LANGUAGES}
+# Only primary languages are supported
+ALL_LANGUAGES = PROMOGO_LANGUAGES
 
 # Get primary languages only
 def get_primary_languages():
@@ -107,5 +79,5 @@ def get_language_info(lang_code):
 # Default language
 DEFAULT_LANGUAGE = "en"
 
-# Language display order (primary languages first)
-LANGUAGE_ORDER = ["en", "ha", "tw", "ee", "fr", "es", "de"]
+# Language display order (only primary languages)
+LANGUAGE_ORDER = ["en", "ha", "tw", "ee"]
