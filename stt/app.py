@@ -93,6 +93,18 @@ async def health_check():
         "memory_usage": "minimal"
     }
 
+@app.get("/debug")
+async def debug_info():
+    """Debug endpoint to check environment variables"""
+    hf_token = os.getenv("HUGGINGFACE_TOKEN")
+    return {
+        "token_configured": bool(hf_token),
+        "token_length": len(hf_token) if hf_token else 0,
+        "token_starts_with_hf": hf_token.startswith("hf_") if hf_token else False,
+        "token_preview": f"{hf_token[:10]}..." if hf_token and len(hf_token) > 10 else hf_token,
+        "all_env_vars": {k: v for k, v in os.environ.items() if "HUGGINGFACE" in k}
+    }
+
 @app.get("/languages")
 async def get_languages():
     """Get supported languages and their models"""
