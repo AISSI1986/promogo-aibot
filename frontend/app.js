@@ -132,13 +132,18 @@ async function sendTextMessage() {
     // Remove typing indicator
     typingDiv.remove();
     
-    // Add bot response
+    // Add bot response and convert to speech
     if (data && data.length > 0) {
       data.forEach(msg => {
         addMessage('bot', msg.text);
+        // Convert bot response to speech
+        textToSpeech(msg.text, currentLanguage);
       });
     } else {
-      addMessage('bot', 'Sorry, I didn\'t understand that. Can you try again?');
+      const fallbackMessage = 'Sorry, I didn\'t understand that. Can you try again?';
+      addMessage('bot', fallbackMessage);
+      // Convert fallback message to speech
+      textToSpeech(fallbackMessage, currentLanguage);
     }
     
   } catch (error) {
@@ -201,6 +206,39 @@ function stopRecording() {
   }
 }
 
+// Convert text to speech
+async function textToSpeech(text, language = currentLanguage) {
+  try {
+    const response = await fetch(apiEndpoints.tts, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        text: text,
+        language: language
+      })
+    });
+    
+    if (!response.ok) {
+      throw new Error(`TTS API error: ${response.status}`);
+    }
+    
+    // Get audio blob from response
+    const audioBlob = await response.blob();
+    
+    // Create audio element and play
+    const audio = new Audio();
+    audio.src = URL.createObjectURL(audioBlob);
+    audio.play();
+    
+    return true;
+  } catch (error) {
+    console.error('Error with text-to-speech:', error);
+    return false;
+  }
+}
+
 // Process audio
 async function processAudio(audioBlob) {
   try {
@@ -242,13 +280,18 @@ async function processAudio(audioBlob) {
     
     const rasaData = await rasaResponse.json();
     
-    // Add bot response
+    // Add bot response and convert to speech
     if (rasaData && rasaData.length > 0) {
       rasaData.forEach(msg => {
         addMessage('bot', msg.text);
+        // Convert bot response to speech
+        textToSpeech(msg.text, currentLanguage);
       });
     } else {
-      addMessage('bot', 'Sorry, I didn\'t understand that. Can you try again?');
+      const fallbackMessage = 'Sorry, I didn\'t understand that. Can you try again?';
+      addMessage('bot', fallbackMessage);
+      // Convert fallback message to speech
+      textToSpeech(fallbackMessage, currentLanguage);
     }
     
     recordingStatus.textContent = 'Ready to listen';
