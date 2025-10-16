@@ -42,7 +42,7 @@ services:
     startCommand: cd stt && python app.py
     envVars:
       - key: HUGGINGFACE_TOKEN
-        value: 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
+        value: your_huggingface_token_here
 
   # Text-to-Speech Service
   - type: web
@@ -53,4 +53,4 @@ services:
     startCommand: cd tts && python app.py
     envVars:
       - key: HUGGINGFACE_TOKEN
-        value: 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
+        value: your_huggingface_token_here
