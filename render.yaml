@@ -40,9 +40,9 @@ services:
     plan: free
     buildCommand: cd stt && pip install -r requirements.txt --break-system-packages
     startCommand: cd stt && python app.py
-    envVars:
-      - key: HUGGINGFACE_TOKEN
-        value: your_huggingface_token_here
+    #envVars:
+      #- key: HUGGINGFACE_TOKEN
+      #  value: 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
 
   # Text-to-Speech Service
   - type: web
@@ -51,6 +51,6 @@ services:
     plan: free
     buildCommand: cd tts && pip install -r requirements.txt --break-system-packages
     startCommand: cd tts && python app.py
-    envVars:
-      - key: HUGGINGFACE_TOKEN
-        value: your_huggingface_token_here
+    #envVars:
+      #- key: HUGGINGFACE_TOKEN
+      #  value: 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
