@@ -125,10 +125,13 @@ async def transcribe_audio(
     Convert speech to text using Hugging Face Inference API
     """
     try:
+        logger.info(f"Received transcription request - Language: {language}, Model: {model}, Content-Type: {audio.content_type}")
+        
         # Validate file type
         if not audio.content_type or not audio.content_type.startswith('audio/'):
-            raise HTTPException(
-                status_code=400, 
+            logger.error(f"Invalid file type: {audio.content_type}")
+        raise HTTPException(
+            status_code=400, 
                 detail="Invalid file type. Please upload an audio file."
             )
         
@@ -140,6 +143,8 @@ async def transcribe_audio(
                 status_code=500,
                 detail="Hugging Face API token not configured. Please set HUGGINGFACE_TOKEN environment variable."
             )
+        
+        logger.info(f"Token found, length: {len(hf_token)}")
         
         # Determine model to use
         if model and model in MULTILINGUAL_MODELS:
@@ -164,12 +169,18 @@ async def transcribe_audio(
         
         # Make request to Hugging Face API
         logger.info(f"Making request to Hugging Face API: {hf_url}")
+        logger.info(f"Audio content size: {len(audio_content)} bytes")
+        logger.info(f"Headers: {headers}")
+        
         response = requests.post(
             hf_url, 
             headers=headers, 
             data=audio_content,
             timeout=30
         )
+        
+        logger.info(f"Hugging Face API response status: {response.status_code}")
+        logger.info(f"Hugging Face API response headers: {dict(response.headers)}")
         
         if response.status_code == 200:
             result = response.json()
@@ -207,6 +218,7 @@ async def transcribe_audio(
             
         else:
             logger.error(f"Hugging Face API error: {response.status_code} - {response.text}")
+            logger.error(f"Full response content: {response.content}")
             raise HTTPException(
                 status_code=500,
                 detail=f"API error: {response.status_code} - {response.text}"
@@ -290,7 +302,7 @@ async def detect_language(audio: UploadFile = File(...)):
         hf_token = os.getenv("HUGGINGFACE_TOKEN")
         if not hf_token:
             raise HTTPException(
-                status_code=500,
+                status_code=500, 
                 detail="Hugging Face API token not configured"
             )
         
@@ -320,13 +332,13 @@ async def detect_language(audio: UploadFile = File(...)):
             }
         else:
             raise HTTPException(
-                status_code=500,
+                status_code=500, 
                 detail=f"Language detection failed: {response.status_code}"
             )
             
     except Exception as e:
         raise HTTPException(
-            status_code=500,
+            status_code=500, 
             detail=f"Language detection error: {str(e)}"
         )
 
