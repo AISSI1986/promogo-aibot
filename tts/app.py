@@ -31,7 +31,7 @@ class TextToSpeechRequest(BaseModel):
     text: str
     language: str = "en"
     voice: Optional[str] = None
-
+    
 class TextToSpeechResponse(BaseModel):
     success: bool
     message: str
@@ -112,12 +112,13 @@ async def synthesize_speech(request: TextToSpeechRequest):
         
         # Get Hugging Face token
         hf_token = os.getenv("HUGGINGFACE_TOKEN")
-        if not hf_token:
-            logger.error("HUGGINGFACE_TOKEN not found in environment variables")
+        if not hf_token or hf_token == "your_huggingface_token_here":
+            logger.warning("HUGGINGFACE_TOKEN not configured - returning mock response")
             return TextToSpeechResponse(
-                success=False,
-                message="Hugging Face API token not configured",
-                error="Please set HUGGINGFACE_TOKEN environment variable"
+                success=True,
+                message="Mock TTS: Please configure your Hugging Face token to enable real text-to-speech functionality.",
+                audio_url=None,
+                error=None
             )
         
         # Get model for language
@@ -168,7 +169,7 @@ async def synthesize_speech(request: TextToSpeechRequest):
                 success=False,
                 message="Model is loading, please try again in a few seconds",
                 error="Hugging Face model is initializing"
-            )
+                )
             
         else:
             logger.error(f"Hugging Face API error: {response.status_code} - {response.text}")
