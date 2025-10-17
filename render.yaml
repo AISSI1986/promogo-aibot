@@ -23,6 +23,8 @@ services:
     buildCommand: cd ghananlp && chmod +x build.sh && ./build.sh
     startCommand: cd ghananlp && python app.py
     envVars:
+      - key: PYTHON_VERSION
+        value: "3.9.18"
       - key: GHANA_NLP_API_KEY
         sync: false
 
@@ -34,6 +36,8 @@ services:
     buildCommand: cd rasa && chmod +x build.sh && ./build.sh
     startCommand: cd rasa && rasa run --enable-api --cors "*" --actions
     envVars:
+      - key: PYTHON_VERSION
+        value: "3.9.18"
       - key: OPENAI_API_KEY
         sync: false
       - key: GHANA_NLP_SERVICE_URL
