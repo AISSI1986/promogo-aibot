@@ -22,6 +22,7 @@ services:
     plan: free
     buildCommand: cd ghananlp && pip install -r requirements.txt --break-system-packages
     startCommand: cd ghananlp && python app.py
+    runtime: python-3.10
     envVars:
       - key: GHANA_NLP_API_KEY
         sync: false
@@ -33,6 +34,7 @@ services:
     plan: free
     buildCommand: cd rasa && pip install -r requirements.txt --break-system-packages
     startCommand: cd rasa && rasa run --enable-api --cors "*" --actions
+    runtime: python-3.10
     envVars:
       - key: OPENAI_API_KEY
         sync: false
