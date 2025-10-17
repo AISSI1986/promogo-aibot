@@ -11,10 +11,8 @@ services:
     startCommand: cd frontend && npx serve -l 3000
     envVars:
       - key: REACT_APP_RASA_URL
-        value: https://promogo-rasa.onrender.com/webhooks/rest/webhook
         generateValue: true
       - key: REACT_APP_GHANA_NLP_URL
-        value: https://promogo-ghananlp.onrender.com
         generateValue: true
 
   # GhanaNLP Service - STT, TTS, Translation
@@ -26,7 +24,6 @@ services:
     startCommand: cd ghananlp && python app.py
     envVars:
       - key: GHANA_NLP_API_KEY
-        value: your_ghananlp_api_key_here
         sync: false
 
   # Rasa Service - Chatbot with Embedded Actions
@@ -38,8 +35,6 @@ services:
     startCommand: cd rasa && rasa run --enable-api --cors "*" --actions
     envVars:
       - key: OPENAI_API_KEY
-        value: your_openai_api_key_here
         sync: false
       - key: GHANA_NLP_SERVICE_URL
-        value: https://promogo-ghananlp.onrender.com
         generateValue: true
