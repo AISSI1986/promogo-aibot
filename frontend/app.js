@@ -1,10 +1,7 @@
 // Configuration - Updated for GhanaNLP Integration
 const apiEndpoints = {
   ghananlp: "https://promogo-ghananlp.onrender.com", // GhanaNLP service
-  rasa: "https://promogo-rasa.onrender.com/webhooks/rest/webhook",
-  // Legacy endpoints (will be removed)
-  stt: "https://promogo-stt.onrender.com/transcribe",
-  tts: "https://promogo-tts.onrender.com/synthesize/"
+  rasa: "https://promogo-rasa.onrender.com/webhooks/rest/webhook"
 };
 
 // Global variables
@@ -260,7 +257,7 @@ function stopRecording() {
 // Convert text to speech
 async function textToSpeech(text, language = currentLanguage) {
   try {
-    const response = await fetch(apiEndpoints.tts, {
+    const response = await fetch(`${apiEndpoints.ghananlp}/synthesize`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
