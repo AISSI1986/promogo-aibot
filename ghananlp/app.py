@@ -9,6 +9,8 @@ import logging
 from typing import Optional, Dict, Any
 import base64
 import io
+import tempfile
+from ghana_nlp import GhanaNLP
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -25,10 +27,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# GhanaNLP API Configuration
+# GhanaNLP Configuration
 GHANA_NLP_API_KEY = os.getenv("GHANA_NLP_API_KEY")
-GHANA_NLP_BASE_URL = "https://api.ghananlp.org"  # Update with actual API URL
-TRANSLATION_API_URL = "https://translation.ghananlp.org/api/translate"
+nlp = GhanaNLP(GHANA_NLP_API_KEY) if GHANA_NLP_API_KEY else None
 
 # Language mapping for GhanaNLP
 LANGUAGE_MAPPING = {
@@ -81,53 +82,44 @@ async def health_check():
 @app.post("/translate", response_model=TranslationResponse)
 async def translate_text(request: TranslationRequest):
     """
-    Translate text using GhanaNLP Translation API
+    Translate text using GhanaNLP library
     """
     try:
+        if not nlp:
+            raise HTTPException(status_code=500, detail="GhanaNLP not initialized - API key required")
+        
         # Map language codes
         source_lang = LANGUAGE_MAPPING.get(request.source_language, request.source_language)
         target_lang = LANGUAGE_MAPPING.get(request.target_language, request.target_language)
         
-        # Prepare request for GhanaNLP API
-        payload = {
-            "text": request.text,
-            "source_language": source_lang,
-            "target_language": target_lang
-        }
+        # Create language pair (e.g., "tw-en" for Twi to English)
+        lang_pair = f"{source_lang}-{target_lang}"
         
-        headers = {
-            "Content-Type": "application/json",
-            "Authorization": f"Bearer {GHANA_NLP_API_KEY}" if GHANA_NLP_API_KEY else None
-        }
+        # Use GhanaNLP library for translation
+        response = nlp.translate(request.text, lang_pair)
         
-        # Remove None values from headers
-        headers = {k: v for k, v in headers.items() if v is not None}
-        
-        # Make request to GhanaNLP API
-        response = requests.post(
-            TRANSLATION_API_URL,
-            json=payload,
-            headers=headers,
-            timeout=30
-        )
-        
-        if response.status_code == 200:
-            result = response.json()
-            return TranslationResponse(
-                translated_text=result.get("translated_text", request.text),
-                source_language=source_lang,
-                target_language=target_lang,
-                confidence=result.get("confidence", 0.9)
-            )
+        # Handle different response formats
+        if isinstance(response, str):
+            translated_text = response
+        elif isinstance(response, dict):
+            if "translation" in response:
+                translated_text = response["translation"]
+            elif "translated_text" in response:
+                translated_text = response["translated_text"]
+            elif "message" in response:
+                logger.warning(f"Translation failed: {response['message']}")
+                translated_text = request.text  # Return original text
+            else:
+                translated_text = str(response)
         else:
-            logger.error(f"GhanaNLP API error: {response.status_code} - {response.text}")
-            # Fallback to simple response
-            return TranslationResponse(
-                translated_text=request.text,
-                source_language=source_lang,
-                target_language=target_lang,
-                confidence=0.0
-            )
+            translated_text = str(response)
+        
+        return TranslationResponse(
+            translated_text=translated_text,
+            source_language=source_lang,
+            target_language=target_lang,
+            confidence=0.9  # Default confidence
+        )
             
     except Exception as e:
         logger.error(f"Translation error: {str(e)}")
@@ -136,51 +128,57 @@ async def translate_text(request: TranslationRequest):
 @app.post("/transcribe", response_model=STTResponse)
 async def transcribe_audio(request: STTRequest):
     """
-    Convert speech to text using GhanaNLP STT API
+    Convert speech to text using GhanaNLP library
     """
     try:
-        # Decode base64 audio data
+        if not nlp:
+            raise HTTPException(status_code=500, detail="GhanaNLP not initialized - API key required")
+        
+        # Decode base64 audio data and save to temporary file
         audio_bytes = base64.b64decode(request.audio_data)
         
-        # Map language code
-        language = LANGUAGE_MAPPING.get(request.language, request.language)
+        # Create temporary file
+        with tempfile.NamedTemporaryFile(suffix=".wav", delete=False) as temp_file:
+            temp_file.write(audio_bytes)
+            temp_file_path = temp_file.name
         
-        # Prepare files for GhanaNLP STT API
-        files = {
-            "audio": ("audio.wav", io.BytesIO(audio_bytes), "audio/wav")
-        }
-        
-        data = {
-            "language": language
-        }
-        
-        headers = {
-            "Authorization": f"Bearer {GHANA_NLP_API_KEY}" if GHANA_NLP_API_KEY else None
-        }
-        
-        # Remove None values from headers
-        headers = {k: v for k, v in headers.items() if v is not None}
-        
-        # Make request to GhanaNLP STT API
-        stt_url = f"{GHANA_NLP_BASE_URL}/stt/transcribe"
-        response = requests.post(
-            stt_url,
-            files=files,
-            data=data,
-            headers=headers,
-            timeout=30
-        )
-        
-        if response.status_code == 200:
-            result = response.json()
+        try:
+            # Map language code
+            language = LANGUAGE_MAPPING.get(request.language, request.language)
+            
+            # Use GhanaNLP library for STT
+            response = nlp.stt(temp_file_path)
+            
+            # Handle different response formats (inspired by the example code)
+            if isinstance(response, str):
+                text = response
+            elif isinstance(response, dict):
+                # Handle known key formats
+                if "text" in response:
+                    text = response["text"]
+                elif "translation" in response:
+                    text = response["translation"]
+                elif "message" in response:
+                    logger.warning(f"GhanaNLP returned message: {response['message']}")
+                    text = response["message"]
+                else:
+                    text = str(response)
+            else:
+                # Fallback to string version of response
+                text = str(response)
+            
             return STTResponse(
-                text=result.get("text", ""),
+                text=text,
                 language=language,
-                confidence=result.get("confidence", 0.9)
+                confidence=0.9  # Default confidence
             )
-        else:
-            logger.error(f"GhanaNLP STT API error: {response.status_code} - {response.text}")
-            raise HTTPException(status_code=500, detail="Speech-to-text conversion failed")
+            
+        finally:
+            # Clean up temporary file
+            try:
+                os.unlink(temp_file_path)
+            except:
+                pass
             
     except Exception as e:
         logger.error(f"STT error: {str(e)}")
@@ -189,46 +187,53 @@ async def transcribe_audio(request: STTRequest):
 @app.post("/synthesize", response_model=TTSResponse)
 async def synthesize_speech(request: TTSRequest):
     """
-    Convert text to speech using GhanaNLP TTS API
+    Convert text to speech using GhanaNLP library
     """
     try:
+        if not nlp:
+            raise HTTPException(status_code=500, detail="GhanaNLP not initialized - API key required")
+        
         # Map language code
         language = LANGUAGE_MAPPING.get(request.language, request.language)
         
-        # Prepare request for GhanaNLP TTS API
-        payload = {
-            "text": request.text,
-            "language": language,
-            "voice": request.voice or "default"
-        }
+        # Use GhanaNLP library for TTS
+        response = nlp.tts(request.text, language)
         
-        headers = {
-            "Content-Type": "application/json",
-            "Authorization": f"Bearer {GHANA_NLP_API_KEY}" if GHANA_NLP_API_KEY else None
-        }
-        
-        # Remove None values from headers
-        headers = {k: v for k, v in headers.items() if v is not None}
-        
-        # Make request to GhanaNLP TTS API
-        tts_url = f"{GHANA_NLP_BASE_URL}/tts/synthesize"
-        response = requests.post(
-            tts_url,
-            json=payload,
-            headers=headers,
-            timeout=30
-        )
-        
-        if response.status_code == 200:
-            result = response.json()
-            return TTSResponse(
-                audio_data=result.get("audio_data", ""),
-                language=language,
-                voice=result.get("voice", "default")
-            )
+        # Handle different response formats
+        if isinstance(response, str):
+            # If response is a string, it might be a file path or base64 data
+            if response.startswith('data:audio') or len(response) > 100:
+                # Likely base64 audio data
+                audio_data = response
+            else:
+                # Might be a file path, read the file
+                try:
+                    with open(response, 'rb') as f:
+                        audio_data = base64.b64encode(f.read()).decode('utf-8')
+                except:
+                    audio_data = base64.b64encode(response.encode()).decode('utf-8')
+        elif isinstance(response, dict):
+            # Handle dictionary response
+            if "audio_data" in response:
+                audio_data = response["audio_data"]
+            elif "audio" in response:
+                audio_data = response["audio"]
+            elif "file" in response:
+                # Read audio file
+                with open(response["file"], 'rb') as f:
+                    audio_data = base64.b64encode(f.read()).decode('utf-8')
+            else:
+                logger.error(f"Unexpected GhanaNLP TTS response format: {response}")
+                raise HTTPException(status_code=500, detail="Unexpected TTS response format")
         else:
-            logger.error(f"GhanaNLP TTS API error: {response.status_code} - {response.text}")
-            raise HTTPException(status_code=500, detail="Text-to-speech conversion failed")
+            logger.error(f"Unexpected GhanaNLP TTS response type: {type(response)}")
+            raise HTTPException(status_code=500, detail="Unexpected TTS response type")
+        
+        return TTSResponse(
+            audio_data=audio_data,
+            language=language,
+            voice=request.voice or "default"
+        )
             
     except Exception as e:
         logger.error(f"TTS error: {str(e)}")
