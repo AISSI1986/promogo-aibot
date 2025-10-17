@@ -272,8 +272,17 @@ async function textToSpeech(text, language = currentLanguage) {
       throw new Error(`TTS API error: ${response.status}`);
     }
     
-    // Get audio blob from response
-    const audioBlob = await response.blob();
+    // Get JSON response with base64 audio data
+    const data = await response.json();
+    
+    // Convert base64 to blob
+    const audioData = data.audio_data;
+    const binaryString = atob(audioData);
+    const bytes = new Uint8Array(binaryString.length);
+    for (let i = 0; i < binaryString.length; i++) {
+      bytes[i] = binaryString.charCodeAt(i);
+    }
+    const audioBlob = new Blob([bytes], { type: 'audio/wav' });
     
     // Create audio element and play
     const audio = new Audio();

@@ -260,12 +260,34 @@ def _create_placeholder_audio(text: str, language: str, voice: str = None) -> TT
     """
     Create a placeholder audio response when GhanaNLP is not available
     """
-    # Create a simple WAV file header for silence
-    # This is a minimal WAV file with 1 second of silence
-    wav_header = b'RIFF$\x00\x00\x00WAVEfmt \x10\x00\x00\x00\x01\x00\x01\x00D\xac\x00\x00\x88X\x01\x00\x02\x00\x10\x00data\x00\x00\x00\x00'
-    silence_data = b'\x00' * 8000  # 1 second of silence at 8kHz
+    # Create a proper WAV file with correct header
+    # 44.1kHz, 16-bit, mono, 1 second of silence
+    sample_rate = 44100
+    duration = 1  # 1 second
+    num_samples = sample_rate * duration
     
-    audio_data = base64.b64encode(wav_header + silence_data).decode('utf-8')
+    # WAV header (44 bytes)
+    wav_header = bytearray(44)
+    wav_header[0:4] = b'RIFF'
+    wav_header[4:8] = (36 + num_samples * 2).to_bytes(4, 'little')  # File size - 8
+    wav_header[8:12] = b'WAVE'
+    wav_header[12:16] = b'fmt '
+    wav_header[16:20] = (16).to_bytes(4, 'little')  # fmt chunk size
+    wav_header[20:22] = (1).to_bytes(2, 'little')   # Audio format (PCM)
+    wav_header[22:24] = (1).to_bytes(2, 'little')   # Number of channels
+    wav_header[24:28] = sample_rate.to_bytes(4, 'little')  # Sample rate
+    wav_header[28:32] = (sample_rate * 2).to_bytes(4, 'little')  # Byte rate
+    wav_header[32:34] = (2).to_bytes(2, 'little')   # Block align
+    wav_header[34:36] = (16).to_bytes(2, 'little')  # Bits per sample
+    wav_header[36:40] = b'data'
+    wav_header[40:44] = (num_samples * 2).to_bytes(4, 'little')  # Data size
+    
+    # Create silence data (16-bit samples)
+    silence_data = b'\x00' * (num_samples * 2)
+    
+    # Combine header and data
+    wav_data = bytes(wav_header) + silence_data
+    audio_data = base64.b64encode(wav_data).decode('utf-8')
     
     return TTSResponse(
         audio_data=audio_data,
