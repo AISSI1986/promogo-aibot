@@ -11,9 +11,9 @@ services:
     startCommand: cd frontend && npx serve -l 3000
     envVars:
       - key: REACT_APP_RASA_URL
-        generateValue: true
+        value: "https://promogo-rasa.onrender.com"
       - key: REACT_APP_GHANA_NLP_URL
-        generateValue: true
+        value: "https://promogo-ghananlp.onrender.com"
 
   # GhanaNLP Service - STT, TTS, Translation
   - type: web
@@ -41,4 +41,4 @@ services:
       - key: OPENAI_API_KEY
         sync: false
       - key: GHANA_NLP_SERVICE_URL
-        generateValue: true
+        value: "https://promogo-ghananlp.onrender.com"
