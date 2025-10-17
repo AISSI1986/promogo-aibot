@@ -20,7 +20,7 @@ services:
     name: promogo-ghananlp
     env: python
     plan: free
-    buildCommand: cd ghananlp && pip install -r requirements.txt --break-system-packages
+    buildCommand: cd ghananlp && chmod +x build.sh && ./build.sh
     startCommand: cd ghananlp && python app.py
     envVars:
       - key: GHANA_NLP_API_KEY
@@ -31,7 +31,7 @@ services:
     name: promogo-rasa
     env: python
     plan: free
-    buildCommand: cd rasa && pip install -r requirements.txt --break-system-packages
+    buildCommand: cd rasa && chmod +x build.sh && ./build.sh
     startCommand: cd rasa && rasa run --enable-api --cors "*" --actions
     envVars:
       - key: OPENAI_API_KEY
