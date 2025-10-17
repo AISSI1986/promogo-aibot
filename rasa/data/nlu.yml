@@ -3,7 +3,6 @@ version: "3.1"
 nlu:
   - intent: greet
     examples: |
-      # English
       - hello
       - hi
       - hey
@@ -267,7 +266,6 @@ nlu:
 
   - intent: goodbye
     examples: |
-      # English
       - bye
       - goodbye
       - see you later
@@ -447,7 +445,6 @@ nlu:
 
   - intent: inform
     examples: |
-      # English
       - [rice](product)
       - [maize](product)
       - [phone](product)
@@ -610,7 +607,6 @@ nlu:
 
   - intent: thank
     examples: |
-      # English
       - thanks
       - thank you
       - thanks a lot
@@ -826,7 +822,6 @@ nlu:
 
   - intent: product_search
     examples: |
-      # English
       - show me [sneakers](product)
       - I'm looking for a [red](color) [dress](product)
       - find [smartphones](product) under [200](price)
@@ -985,7 +980,6 @@ nlu:
 
   - intent: product_inquiry
     examples: |
-      # English
       - what's the price of the [iPhone 12](product)?
       - how much is this [jacket](product)?
       - price of the [blue](color) [shirt](product)
@@ -1140,7 +1134,6 @@ nlu:
 
   - intent: product_recommendation
     examples: |
-      # English
       - recommend me a [gift](product_type) for [mom](recipient)
       - what's popular in [electronics](product_category)?
       - best [laptops](product) for [students](user_type)?
@@ -1306,7 +1299,6 @@ nlu:
 
   - intent: price_inquiry
     examples: |
-      # English
       - How much is it?
       - What's the price?
       - How much does it cost?
@@ -1556,7 +1548,6 @@ nlu:
 
   - intent: payment_method
     examples: |
-      # English
       - what payment options do you have? 
       - can I pay with [PayPal](payment_method)? 
       - do you accept [credit cards](payment_method)? 
@@ -1786,7 +1777,6 @@ nlu:
 
   - intent: buy
     examples: |
-      # English - General buying intent without specific products
       - I want to buy something
       - I want to purchase something
       - I need to buy something
@@ -1813,7 +1803,6 @@ nlu:
       - Can I purchase something?
       - Can I order something?
 
-      # English - Specific products
       - I want to buy [rice](product)
       - I want to purchase [maize](product)
       - I need to buy [a phone](product)
@@ -1986,7 +1975,6 @@ nlu:
 
   - intent: affirm
     examples: |
-      # English
       - yes
       - yeah
       - yep
@@ -2087,7 +2075,6 @@ nlu:
       - mai kyau
       - Sai anjima
       - Sai watarana
-      - Allah ya kiyaye
       - Sai gobe
       - hakan yayi
       - hakan yayi kyau
@@ -2245,7 +2232,6 @@ nlu:
 
   - intent: deny
     examples: |
-      # English
       - no
       - nope
       - not at all
@@ -2515,7 +2501,6 @@ nlu:
 
   - intent: out_of_scope
     examples: |
-      # English
       - What's the time?
       - Tell me a joke
       - Who is the president?
@@ -2645,7 +2630,6 @@ nlu:
 
   - intent: restart
     examples: |
-      # English
       - restart
       - start over
       - begin again
@@ -2771,7 +2755,6 @@ nlu:
 
   - intent: negotiate
     examples: |
-      # English
       - Can you give me a better price?
       - Is that the best you can do?
       - Can you lower the price?
@@ -2957,7 +2940,6 @@ nlu:
 
   - intent: contact_support
     examples: |
-      # English
       - I need [help](help_type)
       - Can you help me?
       - I have a [question](help_type)
@@ -3181,7 +3163,6 @@ nlu:
       - Mehia mmoa wɔ [nneɛma a mɛpaw](help_topic) ho
       - Boa me ma mente [boɔ](help_topic) no ase
 
-      # English
       - I need to speak to customer service
       - Can I talk to a human?
       - I want to speak to a representative
@@ -3336,7 +3317,6 @@ nlu:
 
   - intent: complaint
     examples: |
-      # English
       - I have a problem with my order
       - I'm not satisfied with the product
       - The item I received is damaged
@@ -3466,7 +3446,6 @@ nlu:
 
   - intent: who_are_you
     examples: |
-      # English
       - who are you?
       - what are you?
       - what's your name?
@@ -3596,7 +3575,6 @@ nlu:
 
   - intent: login
     examples: |
-      # English
       - I want to login
       - login to my account
       - sign in
@@ -3668,7 +3646,6 @@ nlu:
 
   - intent: signup
     examples: |
-      # English
       - I want to sign up
       - create an account
       - register
@@ -3699,7 +3676,6 @@ nlu:
 
   - intent: open_seller_app
     examples: |
-      # English
       - open seller app
       - I want to access the seller app
       - seller application
@@ -3733,7 +3709,6 @@ nlu:
 
   - intent: open_buyer_app
     examples: |
-      # English
       - open buyer app
       - I want to access the buyer app
       - buyer application
@@ -3767,7 +3742,6 @@ nlu:
 
   - intent: open_delivery_app
     examples: |
-      # English
       - open delivery app
       - I want to access the delivery app
       - delivery application
@@ -3801,7 +3775,6 @@ nlu:
 
   - intent: sell
     examples: |
-      # English - General selling intent
       - I want to sell something
       - I want to sell
       - I need to sell something
@@ -3824,7 +3797,6 @@ nlu:
       - Can I list something?
       - Can I offer something for sale?
 
-      # English - Specific products
       - I want to sell [rice](product)
       - I want to offer [maize](product) for sale
       - I need to sell my [phone](product)
