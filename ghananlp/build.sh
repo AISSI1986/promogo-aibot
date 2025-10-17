@@ -7,7 +7,7 @@ echo "Setting up Python environment for GhanaNLP service..."
 pip install --upgrade pip
 pip install wheel setuptools
 
-# Install requirements
-pip install fastapi>=0.104.1 uvicorn>=0.24.0 requests>=2.31.0 pydantic>=2.5.0 python-multipart>=0.0.6
+# Install requirements from requirements.txt
+pip install -r requirements.txt
 
 echo "Build completed successfully!"
