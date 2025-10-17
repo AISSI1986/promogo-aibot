@@ -10,8 +10,8 @@ python --version
 pip install --upgrade pip
 pip install wheel setuptools
 
-# Try to install Rasa with specific constraint handling
-pip install --no-cache-dir rasa==3.6.0 rasa-sdk==3.6.0
+        # Try to install Rasa with specific constraint handling
+        pip install --no-cache-dir rasa==2.8.34 rasa-sdk==2.8.34
 
 # Install other requirements
 pip install fastapi uvicorn openai>=1.0.0 requests>=2.31.0
