@@ -2,5 +2,5 @@ fastapi
 uvicorn
 openai>=1.0.0
 requests>=2.31.0
-rasa==1.10.2
-rasa-sdk==1.10.2
+rasa==1.7.0
+rasa-sdk==1.7.0
