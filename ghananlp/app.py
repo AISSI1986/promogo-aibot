@@ -29,7 +29,14 @@ app.add_middleware(
 
 # GhanaNLP Configuration
 GHANA_NLP_API_KEY = os.getenv("GHANA_NLP_API_KEY")
-nlp = GhanaNLP(GHANA_NLP_API_KEY) if GHANA_NLP_API_KEY else None
+logger.info(f"GhanaNLP API Key present: {bool(GHANA_NLP_API_KEY)}")
+
+try:
+    nlp = GhanaNLP(GHANA_NLP_API_KEY) if GHANA_NLP_API_KEY else None
+    logger.info(f"GhanaNLP initialized: {nlp is not None}")
+except Exception as e:
+    logger.error(f"Failed to initialize GhanaNLP: {str(e)}")
+    nlp = None
 
 # Language mapping for GhanaNLP
 LANGUAGE_MAPPING = {
@@ -77,7 +84,12 @@ async def root():
 
 @app.get("/health")
 async def health_check():
-    return {"status": "healthy", "service": "ghananlp"}
+    return {
+        "status": "healthy", 
+        "service": "ghananlp",
+        "api_key_present": bool(GHANA_NLP_API_KEY),
+        "nlp_initialized": nlp is not None
+    }
 
 @app.post("/translate", response_model=TranslationResponse)
 async def translate_text(request: TranslationRequest):
@@ -190,14 +202,21 @@ async def synthesize_speech(request: TTSRequest):
     Convert text to speech using GhanaNLP library
     """
     try:
+        logger.info(f"TTS request: text='{request.text[:50]}...', language='{request.language}'")
+        
         if not nlp:
+            logger.error("GhanaNLP not initialized - API key required")
             raise HTTPException(status_code=500, detail="GhanaNLP not initialized - API key required")
         
         # Map language code
         language = LANGUAGE_MAPPING.get(request.language, request.language)
+        logger.info(f"Mapped language: {request.language} -> {language}")
         
         # Use GhanaNLP library for TTS
+        logger.info("Calling nlp.tts()...")
         response = nlp.tts(request.text, language)
+        logger.info(f"GhanaNLP TTS response type: {type(response)}")
+        logger.info(f"GhanaNLP TTS response: {str(response)[:200]}...")
         
         # Handle different response formats
         if isinstance(response, str):
@@ -205,15 +224,21 @@ async def synthesize_speech(request: TTSRequest):
             if response.startswith('data:audio') or len(response) > 100:
                 # Likely base64 audio data
                 audio_data = response
+                logger.info("Using response as base64 audio data")
             else:
                 # Might be a file path, read the file
                 try:
+                    logger.info(f"Trying to read file: {response}")
                     with open(response, 'rb') as f:
                         audio_data = base64.b64encode(f.read()).decode('utf-8')
-                except:
+                    logger.info("Successfully read audio file")
+                except Exception as file_error:
+                    logger.warning(f"Could not read file {response}: {file_error}")
                     audio_data = base64.b64encode(response.encode()).decode('utf-8')
+                    logger.info("Using response as text (encoded)")
         elif isinstance(response, dict):
             # Handle dictionary response
+            logger.info(f"Processing dict response with keys: {list(response.keys())}")
             if "audio_data" in response:
                 audio_data = response["audio_data"]
             elif "audio" in response:
@@ -229,6 +254,7 @@ async def synthesize_speech(request: TTSRequest):
             logger.error(f"Unexpected GhanaNLP TTS response type: {type(response)}")
             raise HTTPException(status_code=500, detail="Unexpected TTS response type")
         
+        logger.info("TTS request completed successfully")
         return TTSResponse(
             audio_data=audio_data,
             language=language,
@@ -236,7 +262,7 @@ async def synthesize_speech(request: TTSRequest):
         )
             
     except Exception as e:
-        logger.error(f"TTS error: {str(e)}")
+        logger.error(f"TTS error: {str(e)}", exc_info=True)
         raise HTTPException(status_code=500, detail=f"Text-to-speech failed: {str(e)}")
 
 @app.get("/languages")
