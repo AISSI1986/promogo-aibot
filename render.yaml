@@ -9,50 +9,32 @@ services:
     envVars:
       - key: REACT_APP_RASA_URL
         value: https://promogo-rasa.onrender.com/webhooks/rest/webhook
-      - key: REACT_APP_STT_URL
-        value: https://promogo-stt.onrender.com/transcribe
-      - key: REACT_APP_TTS_URL
-        value: https://promogo-tts.onrender.com/synthesize/
+      - key: REACT_APP_GHANA_NLP_URL
+        value: https://promogo-ghananlp.onrender.com
 
-  # Rasa Main Service
+  # GhanaNLP Service
+  - type: web
+    name: promogo-ghananlp
+    env: python
+    plan: free
+    buildCommand: cd ghananlp && pip install -r requirements.txt --break-system-packages
+    startCommand: cd ghananlp && python app.py
+    envVars:
+      - key: GHANA_NLP_API_KEY
+        value: your_ghananlp_api_key_here
+
+  # Rasa Service (with embedded actions)
   - type: web
     name: promogo-rasa
     env: python
     plan: free
     buildCommand: cd rasa && pip install -r requirements.txt --break-system-packages
-    startCommand: cd rasa && python app.py
+    startCommand: cd rasa && rasa run --enable-api --cors "*" --actions
     envVars:
-      - key: RASA_ACTIONS_URL
-        value: https://promogo-rasa-actions.onrender.com
       - key: OPENAI_API_KEY
         value: your_openai_api_key_here
+      - key: GHANA_NLP_SERVICE_URL
+        value: https://promogo-ghananlp.onrender.com
 
-  # Rasa Actions Service
-  - type: web
-    name: promogo-rasa-actions
-    env: python
-    plan: free
-    buildCommand: cd rasa && pip install -r requirements.txt --break-system-packages
-    startCommand: cd rasa && python actions_app.py
-
-  # Speech-to-Text Service
-  - type: web
-    name: promogo-stt
-    env: python
-    plan: free
-    buildCommand: cd stt && pip install -r requirements.txt --break-system-packages
-    startCommand: cd stt && python app.py
-    envVars:
-      - key: HUGGINGFACE_TOKEN
-        value: your_huggingface_token_here
-
-  # Text-to-Speech Service
-  - type: web
-    name: promogo-tts
-    env: python
-    plan: free
-    buildCommand: cd tts && pip install -r requirements.txt --break-system-packages
-    startCommand: cd tts && python app.py
-    envVars:
-      - key: HUGGINGFACE_TOKEN
-        value: your_huggingface_token_here
+  # Note: STT and TTS services are now handled by GhanaNLP service
+  # Legacy services removed to reduce costs and complexity

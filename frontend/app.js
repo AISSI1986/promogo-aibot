@@ -1,7 +1,9 @@
-// Configuration
+// Configuration - Updated for GhanaNLP Integration
 const apiEndpoints = {
-  stt: "https://promogo-stt.onrender.com/transcribe",
+  ghananlp: "https://promogo-ghananlp.onrender.com", // GhanaNLP service
   rasa: "https://promogo-rasa.onrender.com/webhooks/rest/webhook",
+  // Legacy endpoints (will be removed)
+  stt: "https://promogo-stt.onrender.com/transcribe",
   tts: "https://promogo-tts.onrender.com/synthesize/"
 };
 
@@ -10,6 +12,16 @@ let isRecording = false;
 let mediaRecorder = null;
 let audioChunks = [];
 let currentLanguage = 'en';
+
+// Language configuration
+const languageConfig = {
+    'en': { name: 'English', flag: '🇬🇧', code: 'en' },
+    'ha': { name: 'Hausa', flag: '🇳🇬', code: 'ha' },
+    'tw': { name: 'Twi', flag: '🇬🇭', code: 'tw' },
+    'ee': { name: 'Eʋegbe', flag: '🇬🇭', code: 'ee' },
+    'ga': { name: 'Ga', flag: '🇬🇭', code: 'ga' },
+    'dagbani': { name: 'Dagbani', flag: '🇬🇭', code: 'dagbani' }
+};
 
 // DOM elements
 const startChatButton = document.getElementById('startChatButton');
@@ -23,9 +35,17 @@ const textInputContainer = document.getElementById('textInputContainer');
 const recordingStatus = document.getElementById('recordingStatus');
 const recordingWaves = document.getElementById('recordingWaves');
 
+// Language selector elements
+const selectedLanguage = document.getElementById('selectedLanguage');
+const languageDropdown = document.getElementById('languageDropdown');
+const languageSelector = document.querySelector('.language-selector');
+
 // Initialize the app
 document.addEventListener('DOMContentLoaded', function() {
   console.log('Promogo app initialized');
+  
+  // Initialize language selector
+  initializeLanguageSelector();
   
   // Event listeners
   if (startChatButton) {
@@ -71,22 +91,24 @@ function startConversation() {
 }
 
 // Add message to chat
-function addMessage(sender, text, isAudio = false) {
+function addMessage(sender, text, isAudio = false, language = null) {
   const messageDiv = document.createElement('div');
   messageDiv.className = `message ${sender}-message`;
   
   if (isAudio) {
     messageDiv.innerHTML = `
       <div class="message-content">
-        <audio controls>
+        <audio controls class="audio-player">
           <source src="${text}" type="audio/wav">
           Your browser does not support the audio element.
         </audio>
       </div>
     `;
   } else {
+    const languageInfo = language ? `<div class="message-language">${languageConfig[language]?.name || language}</div>` : '';
     messageDiv.innerHTML = `
       <div class="message-content">
+        ${languageInfo}
         <span class="message-text">${text}</span>
       </div>
     `;
@@ -101,11 +123,31 @@ function addMessage(sender, text, isAudio = false) {
 // Send text message
 async function sendTextMessage() {
   const message = textInput.value.trim();
-  if (!message) return;
+  if (!message) {
+    // Show validation feedback
+    textInput.style.borderColor = 'var(--error)';
+    textInput.placeholder = 'Please enter a message...';
+    setTimeout(() => {
+      textInput.style.borderColor = '';
+      textInput.placeholder = 'Type a message...';
+    }, 2000);
+    return;
+  }
   
-  // Add user message
-  addMessage('user', message);
+    // Add user message with language info
+    addMessage('user', message, false, currentLanguage);
   textInput.value = '';
+  
+  // Disable send button and show loading state
+  sendButton.disabled = true;
+  sendButton.innerHTML = `
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="loading-spinner">
+      <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="2" fill="none" stroke-dasharray="31.416" stroke-dashoffset="31.416">
+        <animate attributeName="stroke-dasharray" dur="2s" values="0 31.416;15.708 15.708;0 31.416" repeatCount="indefinite"/>
+        <animate attributeName="stroke-dashoffset" dur="2s" values="0;-15.708;-31.416" repeatCount="indefinite"/>
+      </circle>
+    </svg>
+  `;
   
   // Show typing indicator
   const typingDiv = document.createElement('div');
@@ -135,13 +177,13 @@ async function sendTextMessage() {
     // Add bot response and convert to speech
     if (data && data.length > 0) {
       data.forEach(msg => {
-        addMessage('bot', msg.text);
+        addMessage('bot', msg.text, false, currentLanguage);
         // Convert bot response to speech
         textToSpeech(msg.text, currentLanguage);
       });
     } else {
       const fallbackMessage = 'Sorry, I didn\'t understand that. Can you try again?';
-      addMessage('bot', fallbackMessage);
+      addMessage('bot', fallbackMessage, false, currentLanguage);
       // Convert fallback message to speech
       textToSpeech(fallbackMessage, currentLanguage);
     }
@@ -149,7 +191,16 @@ async function sendTextMessage() {
   } catch (error) {
     console.error('Error sending message:', error);
     typingDiv.remove();
-    addMessage('bot', 'Sorry, there was an error connecting to the chatbot. Please try again.');
+    addMessage('bot', 'Sorry, there was an error connecting to the chatbot. Please try again.', false, currentLanguage);
+  } finally {
+    // Restore send button
+    sendButton.disabled = false;
+    sendButton.innerHTML = `
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M18.3333 1.66667L9.16667 10.8333" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M18.3333 1.66667L12.5 18.3333L9.16667 10.8333L1.66667 7.5L18.3333 1.66667Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    `;
   }
 }
 
@@ -189,7 +240,7 @@ async function startRecording() {
     
   } catch (error) {
     console.error('Error starting recording:', error);
-    addMessage('bot', 'Sorry, I couldn\'t access your microphone. Please check your permissions.');
+    addMessage('bot', 'Sorry, I couldn\'t access your microphone. Please check your permissions.', false, currentLanguage);
   }
 }
 
@@ -247,20 +298,20 @@ async function processAudio(audioBlob) {
     formData.append('audio', audioBlob);
     formData.append('language', currentLanguage);
     
-    const sttResponse = await fetch(apiEndpoints.stt, {
+    const sttResponse = await fetch(`${apiEndpoints.ghananlp}/transcribe`, {
       method: 'POST',
       body: formData
     });
     
     if (!sttResponse.ok) {
-      throw new Error(`STT API error: ${sttResponse.status}`);
+      throw new Error(`GhanaNLP STT API error: ${sttResponse.status}`);
     }
     
     const sttData = await sttResponse.json();
     const transcribedText = sttData.text || 'Could not transcribe audio';
     
-    // Add transcribed message
-    addMessage('user', `🎤 ${transcribedText}`);
+    // Add transcribed message with language info
+    addMessage('user', `🎤 ${transcribedText}`, false, currentLanguage);
     
     // Send to chatbot
     const rasaResponse = await fetch(apiEndpoints.rasa, {
@@ -283,13 +334,13 @@ async function processAudio(audioBlob) {
     // Add bot response and convert to speech
     if (rasaData && rasaData.length > 0) {
       rasaData.forEach(msg => {
-        addMessage('bot', msg.text);
+        addMessage('bot', msg.text, false, currentLanguage);
         // Convert bot response to speech
         textToSpeech(msg.text, currentLanguage);
       });
     } else {
       const fallbackMessage = 'Sorry, I didn\'t understand that. Can you try again?';
-      addMessage('bot', fallbackMessage);
+      addMessage('bot', fallbackMessage, false, currentLanguage);
       // Convert fallback message to speech
       textToSpeech(fallbackMessage, currentLanguage);
     }
@@ -299,7 +350,7 @@ async function processAudio(audioBlob) {
   } catch (error) {
     console.error('Error processing audio:', error);
     recordingStatus.textContent = 'Error processing audio';
-    addMessage('bot', `Sorry, there was an error processing your audio: ${error.message}. Please try again.`);
+    addMessage('bot', `Sorry, there was an error processing your audio: ${error.message}. Please try again.`, false, currentLanguage);
   }
 }
 
@@ -385,7 +436,7 @@ async function convertSpeechToText(audioBlob) {
   const formData = new FormData();
   formData.append('audio', audioBlob);
   
-  const response = await fetch(apiEndpoints.stt, {
+  const response = await fetch(`${apiEndpoints.ghananlp}/transcribe`, {
     method: 'POST',
     body: formData
   });
@@ -393,10 +444,113 @@ async function convertSpeechToText(audioBlob) {
 }
 
 async function convertTextToSpeech(text) {
-  const response = await fetch(apiEndpoints.tts, {
+  const response = await fetch(`${apiEndpoints.ghananlp}/synthesize`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ text })
+    body: JSON.stringify({ 
+      text: text,
+      language: currentLanguage 
+    })
   });
   return response.blob();
+}
+
+// Language Selector Functions
+function initializeLanguageSelector() {
+  if (!selectedLanguage || !languageDropdown || !languageSelector) {
+    console.warn('Language selector elements not found');
+    return;
+  }
+
+  // Set initial language
+  updateSelectedLanguage(currentLanguage);
+
+  // Add click event to selected language
+  selectedLanguage.addEventListener('click', toggleLanguageDropdown);
+
+  // Add click events to language options
+  const languageOptions = languageDropdown.querySelectorAll('.language-option');
+  languageOptions.forEach(option => {
+    option.addEventListener('click', function() {
+      const languageCode = this.getAttribute('data-value');
+      selectLanguage(languageCode);
+    });
+  });
+
+  // Close dropdown when clicking outside
+  document.addEventListener('click', function(event) {
+    if (!languageSelector.contains(event.target)) {
+      closeLanguageDropdown();
+    }
+  });
+}
+
+function toggleLanguageDropdown() {
+  if (languageSelector.classList.contains('open')) {
+    closeLanguageDropdown();
+  } else {
+    openLanguageDropdown();
+  }
+}
+
+function openLanguageDropdown() {
+  languageSelector.classList.add('open');
+  languageDropdown.style.display = 'block';
+}
+
+function closeLanguageDropdown() {
+  languageSelector.classList.remove('open');
+  languageDropdown.style.display = 'none';
+}
+
+function selectLanguage(languageCode) {
+  if (languageConfig[languageCode]) {
+    currentLanguage = languageCode;
+    updateSelectedLanguage(languageCode);
+    updateLanguageOptions(languageCode);
+    closeLanguageDropdown();
+    
+    // Update recording status text based on language
+    updateRecordingStatusText();
+    
+    console.log(`Language changed to: ${languageConfig[languageCode].name}`);
+  }
+}
+
+function updateSelectedLanguage(languageCode) {
+  const config = languageConfig[languageCode];
+  if (config && selectedLanguage) {
+    const flagElement = selectedLanguage.querySelector('.flag');
+    const nameElement = selectedLanguage.querySelector('.language-name');
+    
+    if (flagElement) flagElement.textContent = config.flag;
+    if (nameElement) nameElement.textContent = config.name;
+  }
+}
+
+function updateLanguageOptions(selectedLanguageCode) {
+  const languageOptions = languageDropdown.querySelectorAll('.language-option');
+  languageOptions.forEach(option => {
+    const languageCode = option.getAttribute('data-value');
+    if (languageCode === selectedLanguageCode) {
+      option.classList.add('selected');
+    } else {
+      option.classList.remove('selected');
+    }
+  });
+}
+
+function updateRecordingStatusText() {
+  const statusText = recordingStatus.querySelector('.status-text');
+  if (statusText) {
+    const statusMessages = {
+      'en': 'Ready to listen',
+      'ha': 'Shirye don sauraro',
+      'tw': 'Ase sɛ wote',
+      'ee': 'Kpe ɖe nàte ŋu',
+      'ga': 'Kpe ɖe nàte ŋu',
+      'dagbani': 'Shirya ni a wum'
+    };
+    statusText.textContent = statusMessages[currentLanguage] || statusMessages['en'];
+  }
 }

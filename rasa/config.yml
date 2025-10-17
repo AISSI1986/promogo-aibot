@@ -3,10 +3,10 @@
 recipe: default.v1
 
 # The assistant project unique identifier
-assistant_id: promogorasarouter
+assistant_id: promogo_ghananlp_router
 
 # Language configuration
-language: "xx" # 'xx' enables multilingual processing
+language: "xx" # 'xx' enables multilingual processing with GhanaNLP
 
 # NLU pipeline
 pipeline:

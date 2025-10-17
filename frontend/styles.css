@@ -169,9 +169,10 @@ input {
     gap: 0.75rem;
 }
 
-/* Sélecteur de langue */
+/* Enhanced Language Selector */
 .language-selector {
     position: relative;
+    min-width: 140px;
 }
 
 .language-selector.disabled {
@@ -185,28 +186,38 @@ input {
     align-items: center;
     gap: 0.5rem;
     padding: 0.5rem 0.75rem;
-    background-color: var(--input);
+    background-color: var(--card);
+    border: 1px solid var(--border);
     border-radius: var(--radius);
     cursor: pointer;
-    transition: background-color var(--transition-fast);
+    transition: all var(--transition-fast);
     user-select: none;
+    width: 100%;
+    justify-content: space-between;
 }
 
 .selected-language:hover {
-    background-color: var(--border);
+    background-color: var(--input);
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px var(--ring);
 }
 
 .flag {
     font-size: 1.25rem;
+    flex-shrink: 0;
 }
 
 .language-name {
     font-size: 0.875rem;
     font-weight: 500;
+    flex: 1;
+    text-align: left;
 }
 
 .dropdown-arrow {
     transition: transform var(--transition-fast);
+    flex-shrink: 0;
+    color: var(--card-foreground);
 }
 
 .language-selector.open .dropdown-arrow {
@@ -217,9 +228,7 @@ input {
     position: absolute;
     top: calc(100% + 0.5rem);
     right: 0;
-    /* Aligner à droite */
-    min-width: 180px;
-    /* Largeur minimale pour afficher le nom */
+    min-width: 200px;
     background-color: var(--card);
     border-radius: var(--radius);
     box-shadow: var(--shadow-lg);
@@ -227,6 +236,8 @@ input {
     overflow: hidden;
     z-index: 20;
     display: none;
+    max-height: 250px;
+    overflow-y: auto;
 }
 
 .language-selector.open .language-dropdown {
@@ -238,25 +249,34 @@ input {
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    /* Augmenter l'espace */
     padding: 0.75rem 1rem;
-    /* Augmenter le padding */
     cursor: pointer;
-    transition: background-color var(--transition-fast);
+    transition: all var(--transition-fast);
+    border-bottom: 1px solid var(--border);
+}
+
+.language-option:last-child {
+    border-bottom: none;
 }
 
 .language-option .language-name {
     display: inline-block !important;
-    /* S'assurer que le nom est toujours visible */
+    flex: 1;
 }
 
 .language-option:hover {
     background-color: var(--input);
+    transform: translateX(2px);
 }
 
 .language-option.selected {
-    background-color: rgba(var(--primary), 0.1);
+    background-color: var(--primary);
+    color: white;
     font-weight: 600;
+}
+
+.language-option.selected .flag {
+    filter: brightness(0) invert(1);
 }
 
 /* Boutons d'en-tête */
@@ -393,6 +413,29 @@ input {
 .message-bubble p {
     margin: 0;
     line-height: 1.5;
+}
+
+.message-language {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 0.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0.8;
+}
+
+.user .message-language {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.loading-spinner {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
 .message-actions {
@@ -562,13 +605,27 @@ input {
     background-color: var(--input);
     color: var(--foreground);
     font-size: 1rem;
-    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+    transition: all var(--transition-fast);
+    resize: none;
+    min-height: 44px;
+    max-height: 120px;
 }
 
 #textInput:focus {
     outline: none;
     border-color: var(--primary);
-    box-shadow: 0 0 0 2px var(--ring);
+    box-shadow: 0 0 0 3px var(--ring);
+    background-color: var(--card);
+}
+
+#textInput:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+#textInput::placeholder {
+    color: var(--card-foreground);
+    opacity: 0.6;
 }
 
 .send-button {
@@ -585,13 +642,20 @@ input {
     transition: transform var(--transition-fast), box-shadow var(--transition-fast);
 }
 
-.send-button:hover {
+.send-button:hover:not(:disabled) {
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
 }
 
 .send-button:active {
     transform: translateY(0);
+}
+
+.send-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
 }
 
 /* Bouton d'enregistrement */

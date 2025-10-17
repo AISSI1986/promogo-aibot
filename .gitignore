@@ -247,3 +247,9 @@ temp/
 *.bmp
 *.tiff
 *.svg
+
+# Documentation and Setup Guides
+DEPLOYMENT_GUIDE.md
+GHANA_NLP_SETUP.md
+OPENAI_SETUP.md
+HUGGINGFACE_SETUP.md

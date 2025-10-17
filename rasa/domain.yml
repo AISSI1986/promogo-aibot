@@ -190,10 +190,15 @@ forms:
       - location
 
 actions:
+  # GhanaNLP Integration Actions
+  - action_ghananlp_translate
+  - action_openai_response
+  - action_detect_language
   - action_multilingual_response
+  
+  # Legacy Actions (kept for compatibility)
   - action_default_fallback
   - action_restart
-  - action_detect_language
   - action_reset_slots
   - action_process_purchase
   - action_process_sale

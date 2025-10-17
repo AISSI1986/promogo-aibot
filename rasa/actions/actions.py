@@ -1,4 +1,4 @@
-# actions.py - Version optimisée avec formulaires simplifiés via API JSON
+# actions.py - GhanaNLP + OpenAI Integration for Promogo
 
 from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker, FormValidationAction
@@ -8,6 +8,17 @@ from rasa_sdk.types import DomainDict
 import logging
 import json
 import random
+import requests
+import openai
+import os
+
+# Import GhanaNLP actions
+from .ghananlp_actions import (
+    ActionGhanaNLPTranslate,
+    ActionOpenAIResponse,
+    ActionDetectLanguage,
+    ActionMultilingualResponse
+)
 
 logger = logging.getLogger(__name__)
 
