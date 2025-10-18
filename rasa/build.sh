@@ -13,8 +13,9 @@ pip install wheel setuptools
         # Try to install Rasa with specific constraint handling
         pip install --no-cache-dir rasa==3.1.0 rasa-sdk==3.1.1
 
-# Install other requirements
+# Install other requirements with version constraints
 pip install fastapi uvicorn openai>=1.0.0 requests>=2.31.0
+pip install "typing-extensions>=3.7.4,<4.0.0" "websockets>=10.0,<12.0"
 
 # Train the Rasa model
 echo "Training Rasa model..."
