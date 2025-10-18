@@ -162,7 +162,7 @@ class ActionOpenAIResponse(Action):
             # Create language-specific system prompt
             system_prompt = self.create_system_prompt(language, context)
             
-            # Make request to OpenAI
+            # Make request to OpenAI (older API format)
             response = openai.ChatCompletion.create(
                 model="gpt-3.5-turbo",
                 messages=[
@@ -390,7 +390,7 @@ class ActionMultilingualResponse(Action):
             # Create system prompt
             system_prompt = self.create_system_prompt(language, context)
             
-            # Make request to OpenAI
+            # Make request to OpenAI (older API format)
             response = openai.ChatCompletion.create(
                 model="gpt-3.5-turbo",
                 messages=[
