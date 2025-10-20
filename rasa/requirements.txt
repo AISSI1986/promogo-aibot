@@ -2,5 +2,5 @@ fastapi==0.68.0
 uvicorn==0.15.0
 openai==0.28.1
 requests>=2.31.0
-rasa==3.6.0
-rasa-sdk==3.6.0
+rasa==2.8.34
+rasa-sdk==2.8.34

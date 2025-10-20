@@ -38,7 +38,7 @@ services:
     env: python
     plan: free
     buildCommand: cd rasa && chmod +x build.sh && ./build.sh
-    startCommand: cd rasa && rasa run --enable-api --cors "*"
+    startCommand: cd rasa && rasa run --enable-api --cors "*" --actions
     envVars:
       - key: PYTHON_VERSION
         value: "3.9.18"
