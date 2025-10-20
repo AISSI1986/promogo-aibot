@@ -70,7 +70,6 @@ nlu:
       - hey, can we talk?
       - hello, I'm looking for [help](action_type)
 
-      # Hausa
       - sannu
       - barka
       - barka da zuwa
@@ -139,7 +138,6 @@ nlu:
       - sannu, za mu iya magana?
       - barka, ina neman [taimako](action_type)
 
-      # Ewe
       - Ŋdɔ na mi
       - Ŋdɔ na mi katã
       - Aleke nèle?
@@ -204,7 +202,6 @@ nlu:
       - Ŋdi, míate ŋu aƒo nua?
       - Ŋdɔ, mele [kpekpeɖeŋu](action_type) dim
 
-      # Twi
       - Ɛte sɛn bio?
       - Wo ho te sɛn ɛnnɛ?
       - Wo ho te sɛn anɔpa yi?
@@ -310,7 +307,6 @@ nlu:
       - I'll text you [later](time)
       - I'll email you [later](time)
 
-      # Hausa
       - sai an jima
       - sai wata [rana](time)
       - sai [gobe](time)
@@ -356,7 +352,6 @@ nlu:
       - Sai mun sake ganawa da juna
       - Sai mun sake magana da juna
 
-      # Ewe
       - Míakpe kpuie
       - Míakpe kpuie ake
       - Míakpe kpuie ake ɖe [ŋgɔ](time)
@@ -401,7 +396,6 @@ nlu:
       - Ele be madzo [kpata kpata kpata kpata](time)
       - Ele be madzo [kpata kpata kpata kpata kpata](time)
 
-      # Twi
       - Yɛbɛhyia bio [ɛnkyɛ](time)
       - Yɛbɛhyia bio [ɔkyena](time)
       - Yɛbɛhyia bio [nnawɔtwe yi](time)
@@ -496,7 +490,6 @@ nlu:
       - I'll use [AirtelTigo Money](payment_method)
       - Can I pay through [PayPal](payment_method)?
 
-      # Hausa
       - [shinkafa](product)
       - [masara](product)
       - [waya](product)
@@ -533,7 +526,6 @@ nlu:
       - Zan yi amfani da [Glo Mobile Money](payment_method)
       - Zan iya biya ta [PayPal](payment_method)?
 
-      # Ewe
       - [mɔli](product)
       - [bli](product)
       - [kaƒomɔ](product)
@@ -569,7 +561,6 @@ nlu:
       - Mazã [AirtelTigo Money](payment_method)
       - Mate ŋu axe fe to [PayPal](payment_method) dzia?
 
-      # Twi
       - [ɔmo](product)
       - [aburo](product)
       - [fon](product)
@@ -655,7 +646,6 @@ nlu:
       - Thank you for the [fast delivery](assistance_type)
       - I appreciate the [quality service](assistance_type)
 
-      # Hausa
       - na gode
       - na gode sosai
       - na gode da yawa
@@ -709,7 +699,6 @@ nlu:
       - Na gode da [sauri a isarwa](assistance_type)
       - Na gode da [ingantaccen sabis](assistance_type)
 
-      # Ewe
       - Akpe kakaka
       - Akpe geɖe
       - Akpe geɖe ŋutɔ
@@ -764,7 +753,6 @@ nlu:
       - Akpe ɖe [dɔdɔɖa kaba](assistance_type) ta
       - Akpe ɖe [subɔsubɔ nyui](assistance_type) ta
 
-      # Twi
       - Meda wo ase paa
       - Meda wo ase pii
       - Meda wo ase bebree
@@ -861,7 +849,6 @@ nlu:
       - Show me [non-stick](feature) [cookware](product) sets
       - Find [hypoallergenic](feature) [pillows](product) for [sensitive skin](purpose)
 
-      # Hausa
       - nuna mini [takalma](product)
       - ina neman [riga](product) [ja](color)
       - nemo [wayoyin itace](product) ƙasa da [200](price)
@@ -900,7 +887,6 @@ nlu:
       - Nuna mini [tukwanen](product) [marasa maɗaɗi](feature)
       - Nemo [makoshi](product) [marasa haifar da rashin lafiya](feature) don [fata mai laushi](purpose)
 
-      # Ewe
       - wɔmɛ fihã [sneakers](product)
       - menye [dukatsi](product) kpakple [dɔwɔnu](product)
       - etsɔ [smartphones](product) heƒe nutome ɖe [200](price)
@@ -939,7 +925,6 @@ nlu:
       - Wɔmɛ fihã [nuɖagbawo](product) [siwo nuɖuɖu melénɛ o](feature)
       - Dɔ [abɔmewo](product) [siwo mena allergies o](feature) na [ŋutilã bɔbɔewo](purpose)
 
-      # Twi
       - kyerɛ me [sneakers](product)
       - merehwehwɛ [kɔkɔɔ](color) [ataade](product)
       - hwehwɛ [smartphones](product) a bo ne kora [200](price)
@@ -1021,7 +1006,6 @@ nlu:
       - What's the [screen size](attribute) of this [TV](product)?
       - Is this [product](product) [compatible](feature) with [Mac](device_type)?
 
-      # Hausa
       - menene farashin [iPhone 12](product)?
       - nawa ne wannan [jaket](product)?
       - farashin [rigar](product) [shuɗi](color)
@@ -1058,7 +1042,6 @@ nlu:
       - Menene [girman allon](attribute) wannan [talabijin](product)?
       - Shin wannan [kaya](product) [yana dacewa](feature) da [Mac](device_type)?
 
-      # Ewe
       - [iPhone 12](product) nutomeɖe odoƒe na mi?
       - ƒe [jacket](product) le be akpaɖeŋu?
       - [blue](color) [shirt](product) nu nutomeɖe?
@@ -1095,7 +1078,6 @@ nlu:
       - [TV](product) sia ƒe [nuŋɔŋlɔƒe](attribute) ƒe lolome ɖe?
       - Ðe [nu](product) sia [sɔ](feature) kple [Mac](device_type)?
 
-      # Twi
       - [iPhone 12](product) boɔ no siɛ neɛ?
       - ɛhe na saa [jakɛt](product) yi bo?
       - [blue](color) [shirt](product) no bo sɛn?
@@ -1174,7 +1156,6 @@ nlu:
       - What [kitchen gadgets](product_category) are worth buying?
       - What's a good [camera](product) for [travel photography](purpose)?
 
-      # Hausa
       - ba ni shawarar [kyauta](product_type) ga [uwa](recipient)
       - me ake sayarwa sosai a [kayan lantarki](product_category)?
       - mafi kyawun [kwamfyutoci](product) ga [ɗalibai](user_type)?
@@ -1215,7 +1196,6 @@ nlu:
       - Wane [kayan amfani na gidan girki](product_category) ya cancanci saya?
       - Menene [kyamara](product) mai kyau don [ɗaukar hotuna yayin tafiya](purpose)?
 
-      # Ewe
       - dɔm [akpe](product_type) aɖe na [mama](recipient)
       - [elektrɔniks](product_category) me le dɔɖi aɖe si wòxɔxɔ?
       - [laptops](product) si le [ɖeviwo](user_type) gbɔ me nyea?
@@ -1256,7 +1236,6 @@ nlu:
       - [Gidakpɔnu](product_category) kawo dze na ƒleƒle?
       - [Fotomɔ](product) ka nye nyuitɔ na [fotodada le mɔzɔzɔ me](purpose)?
 
-      # Twi
       - fa [akyɛde](product_type) bi ma me [maame](recipient)
       - dɛn na ɛyɛ popular wɔ [electronics](product_category) mu?
       - sɛn na yɛ [laptop](product) a ɛfata [sukuufo](user_type)?
@@ -1351,7 +1330,6 @@ nlu:
       - how much would I save with the [family plan](product_variant)?
       - what's the cost of [upgrading](service_type) later?
 
-      # Hausa
       - Nawa zan biya don wannan?
       - Nawa ne kudin wannan [abu](product)?
       - Nawa ne farashin [kaya](product)?
@@ -1416,7 +1394,6 @@ nlu:
       - nawa zan adana tare da [shirin iyali](product_variant)?
       - menene kudin [haɓaka](service_type) daga baya?
 
-      # Ewe
       - Nukae nye asixɔxɔ?
       - Nukae nàkpɔ asi?
       - Nukae nàkpɔ asixɔxɔ?
@@ -1481,7 +1458,6 @@ nlu:
       - home nenie madzra ɖo kple [ƒome ƒe ɖoɖo](product_variant)?
       - home nenie nye [ɖɔɖɔɖo](service_type) emegbe?
 
-      # Twi
       - Ne bo yɛ dɛn?
       - Ɛyɛ sika sɛn?
       - Ɛyɛ dɛn na ɛbɛyɛ?
@@ -1604,7 +1580,6 @@ nlu:
       - what about [G-Money](payment_method)?
       - is [E-zwich](payment_method) accepted?
 
-      # Hausa
       - wane zaɓin biyan kuɗi kuke da shi?
       - zan iya biya da [PayPal](payment_method)?
       - kuna karɓar [katin kuɗi](payment_method)?
@@ -1661,7 +1636,6 @@ nlu:
       - me game da [G-Money](payment_method)?
       - ana karɓar [E-zwich](payment_method)?
 
-      # Ewe
       - payment ƒe dɔwɔnu aɖe le be?
       - menye be mètsɔ [PayPal](payment_method)?
       - mèkpɔa [credit card](payment_method) le be?
@@ -1718,7 +1692,6 @@ nlu:
       - nukae nye [G-Money](payment_method)?
       - woxɔa [E-zwich](payment_method)?
 
-      # Twi
       - mo wɔhe bɔ ahe na ɛyɛ payment?
       - metumi de [PayPal](payment_method) akɔtɔ adeɛ?
       - mo gye [credit card](payment_method)?
@@ -1829,7 +1802,7 @@ nlu:
       - I want to order [furniture](product_category) for [delivery](service_type)
       - Can I buy [multiple items](quantity_type) with a [discount](discount_type)?
 
-      # Hausa - General buying intent
+ - General buying intent
       - Ina son saya wani abu
       - Ina son sayen wani abu
       - Ina bukatar saya wani abu
@@ -1844,7 +1817,7 @@ nlu:
       - Zan iya saya wani abu?
       - Zan iya sayen wani abu?
 
-      # Hausa - Specific products
+ - Specific products
       - Ina son saya [shinkafa](product)
       - Ina son sayen [masara](product)
       - Ina bukatar sayen [waya](product)
@@ -1871,7 +1844,7 @@ nlu:
       - Ina son oda [kayan gida](product_category) don [isarwa](service_type)
       - Zan iya sayen [abubuwa da yawa](quantity_type) tare da [rangwame](discount_type)?
 
-      # Ewe - General buying intent
+ - General buying intent
       - Medi be maƒle nu aɖe
       - Medi be maƒle nane
       - Mehiã be maƒle nu aɖe
@@ -1886,7 +1859,7 @@ nlu:
       - Mate ŋu aƒle nu aɖe?
       - Mate ŋu aƒle nane?
 
-      # Ewe - Specific products
+ - Specific products
       - Medi be maƒle [mɔli](product)
       - Medi be maƒle [bli](product)
       - Mehiã be maƒle [kaƒomɔ](product)
@@ -1913,7 +1886,7 @@ nlu:
       - Medi be maɖe gbe ɖi na [atikpuiwo](product_category) hena [dɔdɔɖa](service_type)
       - Mate ŋu aƒle [nu geɖewo](quantity_type) kple [asi ɖiɖi](discount_type)?
 
-      # Twi - General buying intent
+ - General buying intent
       - Mepɛ sɛ metɔ biribi
       - Mepɛ sɛ metɔ nneɛma bi
       - Mehia sɛ metɔ biribi
@@ -1928,7 +1901,7 @@ nlu:
       - Metumi atɔ biribi?
       - Metumi atɔ nneɛma bi?
 
-      # Twi - Specific products
+ - Specific products
       - Mepɛ sɛ metɔ [ɔmo](product)
       - Mepɛ sɛ metɔ [aburo](product)
       - Mehia sɛ metɔ [fon](product)
@@ -1955,7 +1928,7 @@ nlu:
       - Mepɛ sɛ me order [efie mu nneɛma](product_category) a [wɔde bɛba](service_type)
       - Metumi atɔ [nneɛma pii](quantity_type) a [wɔate so](discount_type)?
 
-      # Dagbani - General buying intent
+ - General buying intent
       - N niŋdi da bini ayi
       - N niŋdi da nane ayi
       - N bɔra da bini ayi
@@ -1966,7 +1939,7 @@ nlu:
       - N ni tooi da bini ayi?
       - N ni tooi da nane ayi?
 
-      # Dagbani - Specific products
+ - Specific products
       - N niŋdi da [mɔli](product)
       - N niŋdi da [masara](product)
       - N bɔra da [kaƒomɔ](product)
@@ -2037,7 +2010,6 @@ nlu:
       - right on
       - spot on
 
-      # Hausa
       - Eh mana
       - Hakika
       - Gaskiya ne
@@ -2103,7 +2075,6 @@ nlu:
       - dama dai
       - dama kuwa
 
-      # Ewe
       - Ee, menye
       - Ee, menye be
       - Ee, menye nu
@@ -2167,7 +2138,6 @@ nlu:
       - sɔ pɛpɛpɛ
       - le eteƒe tututu
 
-      # Twi
       - Aane, ɛyɛ nokware
       - Aane, ɛyɛ paa
       - Aane, ɛyɛ dɛ
@@ -2296,7 +2266,6 @@ nlu:
       - another time
       - rain check
 
-      # Hausa
       - A'a, ba haka ba
       - Da'a, ba zan iya ba
       - Sam, ba
@@ -2365,7 +2334,6 @@ nlu:
       - wani lokaci
       - sauran lokaci
 
-      # Ewe
       - Menye o, menye be
       - Menye nu o, menye nu be
       - ao
@@ -2432,7 +2400,6 @@ nlu:
       - ɣeyiɣi bubu
       - míagawɔe emegbe
 
-      # Twi
       - Daabi, menpɛ
       - Daabi, ɛnyɛ saa
       - daabi
@@ -2532,7 +2499,6 @@ nlu:
       - What's the stock market doing?
       - Can you solve math problems?
 
-      # Hausa
       - Menene sunan shugaban kasa?
       - Menene yanayin yau?
       - Wacece uwargidan shugaban kasa?
@@ -2564,7 +2530,6 @@ nlu:
       - Me kasuwar hannayen jari ke yi?
       - Za ka iya warware matsalolin lissafi?
 
-      # Ewe
       - Nukae nye president?
       - Nukae nye asime?
       - Nukae nye fia?
@@ -2596,7 +2561,6 @@ nlu:
       - Nukae asitsatsa ƒe asi le wɔm?
       - Àte ŋu awɔ akɔnta ƒe kuxiwo?
 
-      # Twi
       - Hena na ɔyɛ president?
       - Hena na ɔyɛ ɔhene?
       - Hena na ɔyɛ ɔbenfo?
@@ -2660,7 +2624,6 @@ nlu:
       - start anew
       - begin an
 
-      # Hausa
       - fara daga farko
       - sake fara
       - fara daga farko
@@ -2691,7 +2654,6 @@ nlu:
       - fara da sabon
       - fara da sabon
 
-      # Ewe
       - gbugbɔ dze egɔme
       - gbugbɔ dze fia
       - gbugbɔ dze eŋu
@@ -2722,7 +2684,6 @@ nlu:
       - dze egɔme yeye
       - dze eŋu yeye
 
-      # Twi
       - san firi aseɛ
       - firi aseɛ bio
       - hyɛ aseɛ bio
@@ -2800,7 +2761,6 @@ nlu:
       - I'm a [regular customer](customer_type), can you give me a special price?
       - If I [refer](referral) others, can I get a discount?
 
-      # Hausa
       - Za ka iya ba ni farashi mafi kyau?
       - Shin wannan ne mafi kyawun da za ka iya yi?
       - Za ka iya rage farashin?
@@ -2846,7 +2806,6 @@ nlu:
       - Ni [abokin ciniki ne na kullum](customer_type), za ka iya ba ni farashi na musamman?
       - Idan na [ba da shawarar](referral) wasu, zan iya samun rangwame?
 
-      # Ewe
       - Àte ŋu ana asi nyui wum?
       - Esia nye nyuitɔ si nàte ŋu awɔa?
       - Àte ŋu aɖe asi la ɖe anyi?
@@ -2892,7 +2851,6 @@ nlu:
       - [Nuƒlela si vana edziedzi](customer_type) menye, àte ŋu ana asi tɔxɛ aɖem?
       - Ne me[fia](referral) ame bubuwo, mate ŋu akpɔ asi ɖiɖi?
 
-      # Twi
       - Wobɛtumi ama me boɔ pa?
       - Ɛno ne nea wobɛtumi ayɛ paa?
       - Wobɛtumi ate boɔ no ase?
@@ -3000,7 +2958,6 @@ nlu:
       - I need assistance with [product selection](help_topic)
       - Help me understand the [pricing](help_topic)
 
-      # Hausa
       - Don Allah taimaka min
       - Ina bukatar [taimako](help_type) yanzu
       - Wani zai iya taimaka min?
@@ -3055,7 +3012,6 @@ nlu:
       - Ina bukatar taimako game da [zaɓin kaya](help_topic)
       - Taimaka min in fahimci [farashin](help_topic)
 
-      # Ewe
       - Mebu [kpekpeɖeŋu](help_type)
       - Mebu kpekpeɖeŋu na mi
       - Mebu kpekpeɖeŋu na wo
@@ -3109,7 +3065,6 @@ nlu:
       - Mehiã kpekpeɖeŋu le [nutiatia](help_topic) ŋu
       - Kpe ɖe ŋunye mase [asixɔxɔ](help_topic) gɔme
 
-      # Twi
       - Mesrɛ [mmoa](help_type)
       - Mesrɛ boa me
       - Mesrɛ boa me na wo
@@ -3204,7 +3159,6 @@ nlu:
       - support me
       - emergency
 
-      # Hausa
       - Ina bukatar magana da hidimar abokan ciniki
       - Zan iya magana da mutum?
       - Ina son magana da wakilin
@@ -3241,7 +3195,6 @@ nlu:
       - Ina bukatar wani taimako
       - Don Allah taimaka
 
-      # Ewe
       - Mehiã be maƒo nu kple dɔdzikpɔla
       - Mate ŋu aƒo nu kple amegbetɔ?
       - Medi be maƒo nu kple teƒenɔla
@@ -3278,7 +3231,6 @@ nlu:
       - Mehiã kpekpeɖeŋu aɖe
       - Taflatse, míeaɖo kpekpeɖeŋu
 
-      # Twi
       - Mehia sɛ me ne ɔtɔfoɔ som dwumadie kasa
       - Metumi ne onipa akasa?
       - Mepɛ sɛ me ne ananmusifoɔ kasa
@@ -3348,7 +3300,6 @@ nlu:
       - I never received a confirmation
       - My discount wasn't applied
 
-      # Hausa
       - Ina da matsala da oda na
       - Ban gamsu da kayan ba
       - Kayan da na karɓa ya lalace
@@ -3380,7 +3331,6 @@ nlu:
       - Ban taɓa karɓar tabbaci ba
       - Ba a yi amfani da rangwame na ba
 
-      # Ewe
       - Kuxi aɖe le asinye le nye ɖoɖo ŋu
       - Nyemedze [nu](product) la ŋu o
       - [Nu](product) si mexɔ la gbã
@@ -3412,7 +3362,6 @@ nlu:
       - Nyemexɔ kpeɖoɖo aɖeke kpɔ o
       - Womeɖe nye asi ɖiɖi ɖa o
 
-      # Twi
       - Mewɔ ɔhaw bi wɔ me order ho
       - Mani nnye me ho wɔ [adeɛ](product) no ho
       - [Adeɛ](product) a menya no abubu
@@ -3477,7 +3426,6 @@ nlu:
       - identify yourself
       - what's your identity?
 
-      # Hausa
       - wanene kai?
       - menene kai?
       - menene sunanka?
@@ -3509,7 +3457,6 @@ nlu:
       - gabatar da kanka
       - menene asalinka?
 
-      # Ewe
       - ameka nènye?
       - nukae nènye?
       - wò ŋkɔ ɖe?
@@ -3541,7 +3488,6 @@ nlu:
       - ɖe ɖokuiwò fia
       - nukae nye wò amenyenye?
 
-      # Twi
       - hena ne wo?
       - dɛn ne wo?
       - wo din de sɛn?
@@ -3608,7 +3554,6 @@ nlu:
       - I want to authenticate my account
       - I want to authentify my account
 
-      # Twi
       - Me pɛ sɛ me login
       - login kɔ m'account mu
       - bue m'account
@@ -3620,7 +3565,6 @@ nlu:
       - ma me nkɔ m'account mu
       - ma me ntumi nkɔ m'account mu
 
-      # Hausa
       - Ina son shiga
       - shiga cikin asusuna
       - bude asusuna
@@ -3632,7 +3576,6 @@ nlu:
       - bari in shiga
       - bari in bude asusuna
 
-      # Ewe
       - Medi be mage ɖe eme
       - ge ɖe nye account me
       - ʋu nye account
@@ -3653,21 +3596,18 @@ nlu:
       - I want to create an account
       - become a member
 
-      # Twi
       - Me pɛ sɛ me yɛ account
       - yɛ account
       - register
       - ɛkwan bɛn so na metumi ayɛ account
       - mepɛ sɛ me yɛ account
 
-      # Hausa
       - Ina son yin rijista
       - ƙirƙiri asusu
       - yin rijista
       - yaya zan yi rijista
       - ina son ƙirƙiri asusu
 
-      # Ewe
       - Medi be mawɔ account
       - wɔ account
       - ŋlɔ ŋkɔ
@@ -3683,7 +3623,6 @@ nlu:
       - how can I access my seller space
       - open my seller account
 
-      # Twi
       - Bue ɔtɔnfoɔ app no
       - Me pɛ sɛ me kɔ ɔtɔnfoɔ app no mu
       - ɔtɔnfoɔ application
@@ -3691,7 +3630,6 @@ nlu:
       - ɛkwan bɛn so na metumi akɔ m'ɔtɔnfoɔ baabi
       - bue me ɔtɔnfoɔ account
 
-      # Hausa
       - Bude app ɗin mai sayarwa
       - Ina son shiga app ɗin mai sayarwa
       - manhajjar mai sayarwa
@@ -3699,7 +3637,6 @@ nlu:
       - yaya zan shiga wurin mai sayarwa
       - bude asusuna na mai sayarwa
 
-      # Ewe
       - Ʋu dzrala ƒe app
       - Medi be mage ɖe dzrala ƒe app me
       - dzrala ƒe dɔwɔƒe
@@ -3716,7 +3653,6 @@ nlu:
       - how can I access my buyer space
       - open my buyer account
 
-      # Twi
       - Bue ɔtɔfoɔ app no
       - Me pɛ sɛ me kɔ ɔtɔfoɔ app no mu
       - ɔtɔfoɔ application
@@ -3724,7 +3660,6 @@ nlu:
       - ɛkwan bɛn so na metumi akɔ m'ɔtɔfoɔ baabi
       - bue me ɔtɔfoɔ account
 
-      # Hausa
       - Bude app ɗin mai saye
       - Ina son shiga app ɗin mai saye
       - manhajjar mai saye
@@ -3732,7 +3667,6 @@ nlu:
       - yaya zan shiga wurin mai saye
       - bude asusuna na mai saye
 
-      # Ewe
       - Ʋu ƒlela ƒe app
       - Medi be mage ɖe ƒlela ƒe app me
       - ƒlela ƒe dɔwɔƒe
@@ -3749,7 +3683,6 @@ nlu:
       - how can I access my delivery space
       - open my delivery account
 
-      # Twi
       - Bue nneɛma delivery app no
       - Me pɛ sɛ me kɔ nneɛma delivery app no mu
       - nneɛma delivery application
@@ -3757,7 +3690,6 @@ nlu:
       - ɛkwan bɛn so na metumi akɔ me nneɛma delivery baabi
       - bue me nneɛma delivery account
 
-      # Hausa
       - Bude app ɗin isar da kaya
       - Ina son shiga app ɗin isar da kaya
       - manhajjar isar da kaya
@@ -3765,7 +3697,6 @@ nlu:
       - yaya zan shiga wurin isar da kaya
       - bude asusuna na isar da kaya
 
-      # Ewe
       - Ʋu nutsɔla ƒe app
       - Medi be mage ɖe nutsɔla ƒe app me
       - nutsɔla ƒe dɔwɔƒe
@@ -3823,7 +3754,7 @@ nlu:
       - Can I sell [services](product_type) on this platform?
       - I'm selling items at [negotiable](price_attribute) prices
 
-      # Hausa - General selling intent
+ - General selling intent
       - Ina son sayar da wani abu
       - Ina son sayarwa
       - Ina bukatar sayar da wani abu
@@ -3841,7 +3772,7 @@ nlu:
       - Zan iya sayar da wani abu?
       - Zan iya jera wani abu?
 
-      # Hausa - Specific products
+ - Specific products
       - Ina so in sayar da [shinkafa](product)
       - Ina son bayar da [masara](product) don sayarwa
       - Ina bukatar sayar da [wayata](product)
@@ -3868,7 +3799,7 @@ nlu:
       - Zan iya sayar da [ayyuka](product_type) a wannan dandali?
       - Ina sayar da kaya a farashin [da za a tattauna](price_attribute)
 
-      # Ewe - General selling intent
+ - General selling intent
       - Medi be made nu aɖe
       - Medi be made nane
       - Mehiã be made nu aɖe
@@ -3888,7 +3819,7 @@ nlu:
       - Mate ŋu adzra nu aɖe?
       - Mate ŋu aŋlɔ nu aɖe?
 
-      # Ewe - Specific products
+ - Specific products
       - Medi be made [mɔli](product)
       - Medi be made [bli](product) na dzadzra
       - Mehiã be made nye [kaƒomɔ](product)
@@ -3915,7 +3846,7 @@ nlu:
       - Mate ŋu adzra [subɔsubɔwo](product_type) le mɔ sia dzi?
       - Mele nuwo dzram le asi siwo [woate ŋu aɖo ŋu](price_attribute) nu
 
-      # Twi - General selling intent
+ - General selling intent
       - Mepɛ sɛ metɔn biribi
       - Mepɛ sɛ metɔn
       - Mehia sɛ metɔn biribi
@@ -3933,7 +3864,7 @@ nlu:
       - Metumi atɔn biribi?
       - Metumi ade biribi to list so?
 
-      # Twi - Specific products
+ - Specific products
       - Mepɛ sɛ metɔn [ɔmo](product)
       - Mepɛ sɛ mɛma [aburo](product) atɔn
       - Mehia sɛ metɔn me [fon](product)
@@ -3960,7 +3891,7 @@ nlu:
       - Metumi atɔn [nnwuma](product_type) wɔ saa beaeɛ yi?
       - Meretɔn nneɛma wɔ boɔ a [wobɛtumi akasa afa ho](price_attribute) mu
 
-      # Dagbani - General selling intent
+ - General selling intent
       - N niŋdi kɔhi bini ayi
       - N niŋdi kɔhi nane ayi
       - N bɔra kɔhi bini ayi
@@ -3971,7 +3902,7 @@ nlu:
       - N ni tooi kɔhi bini ayi?
       - N ni tooi kɔhi nane ayi?
 
-      # Dagbani - Specific products
+ - Specific products
       - N niŋdi kɔhi [mɔli](product)
       - N niŋdi kɔhi [masara](product)
       - N bɔra kɔhi [kaƒomɔ](product)
