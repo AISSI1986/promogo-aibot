@@ -1802,7 +1802,7 @@ nlu:
       - I want to order [furniture](product_category) for [delivery](service_type)
       - Can I buy [multiple items](quantity_type) with a [discount](discount_type)?
 
- - General buying intent
+      # General buying intent
       - Ina son saya wani abu
       - Ina son sayen wani abu
       - Ina bukatar saya wani abu
@@ -1817,7 +1817,7 @@ nlu:
       - Zan iya saya wani abu?
       - Zan iya sayen wani abu?
 
- - Specific products
+      # Specific products
       - Ina son saya [shinkafa](product)
       - Ina son sayen [masara](product)
       - Ina bukatar sayen [waya](product)
@@ -1844,7 +1844,7 @@ nlu:
       - Ina son oda [kayan gida](product_category) don [isarwa](service_type)
       - Zan iya sayen [abubuwa da yawa](quantity_type) tare da [rangwame](discount_type)?
 
- - General buying intent
+      # General buying intent
       - Medi be maƒle nu aɖe
       - Medi be maƒle nane
       - Mehiã be maƒle nu aɖe
@@ -1859,7 +1859,7 @@ nlu:
       - Mate ŋu aƒle nu aɖe?
       - Mate ŋu aƒle nane?
 
- - Specific products
+      # Specific products
       - Medi be maƒle [mɔli](product)
       - Medi be maƒle [bli](product)
       - Mehiã be maƒle [kaƒomɔ](product)
@@ -1886,7 +1886,7 @@ nlu:
       - Medi be maɖe gbe ɖi na [atikpuiwo](product_category) hena [dɔdɔɖa](service_type)
       - Mate ŋu aƒle [nu geɖewo](quantity_type) kple [asi ɖiɖi](discount_type)?
 
- - General buying intent
+      # General buying intent
       - Mepɛ sɛ metɔ biribi
       - Mepɛ sɛ metɔ nneɛma bi
       - Mehia sɛ metɔ biribi
@@ -1901,7 +1901,7 @@ nlu:
       - Metumi atɔ biribi?
       - Metumi atɔ nneɛma bi?
 
- - Specific products
+      # Specific products
       - Mepɛ sɛ metɔ [ɔmo](product)
       - Mepɛ sɛ metɔ [aburo](product)
       - Mehia sɛ metɔ [fon](product)
@@ -1928,7 +1928,7 @@ nlu:
       - Mepɛ sɛ me order [efie mu nneɛma](product_category) a [wɔde bɛba](service_type)
       - Metumi atɔ [nneɛma pii](quantity_type) a [wɔate so](discount_type)?
 
- - General buying intent
+      # General buying intent
       - N niŋdi da bini ayi
       - N niŋdi da nane ayi
       - N bɔra da bini ayi
@@ -1939,7 +1939,7 @@ nlu:
       - N ni tooi da bini ayi?
       - N ni tooi da nane ayi?
 
- - Specific products
+      # Specific products
       - N niŋdi da [mɔli](product)
       - N niŋdi da [masara](product)
       - N bɔra da [kaƒomɔ](product)
@@ -3754,7 +3754,7 @@ nlu:
       - Can I sell [services](product_type) on this platform?
       - I'm selling items at [negotiable](price_attribute) prices
 
- - General selling intent
+      # General selling intent
       - Ina son sayar da wani abu
       - Ina son sayarwa
       - Ina bukatar sayar da wani abu
@@ -3772,7 +3772,7 @@ nlu:
       - Zan iya sayar da wani abu?
       - Zan iya jera wani abu?
 
- - Specific products
+      # Specific products
       - Ina so in sayar da [shinkafa](product)
       - Ina son bayar da [masara](product) don sayarwa
       - Ina bukatar sayar da [wayata](product)
@@ -3799,7 +3799,7 @@ nlu:
       - Zan iya sayar da [ayyuka](product_type) a wannan dandali?
       - Ina sayar da kaya a farashin [da za a tattauna](price_attribute)
 
- - General selling intent
+      # General selling intent
       - Medi be made nu aɖe
       - Medi be made nane
       - Mehiã be made nu aɖe
@@ -3819,7 +3819,7 @@ nlu:
       - Mate ŋu adzra nu aɖe?
       - Mate ŋu aŋlɔ nu aɖe?
 
- - Specific products
+      # Specific products
       - Medi be made [mɔli](product)
       - Medi be made [bli](product) na dzadzra
       - Mehiã be made nye [kaƒomɔ](product)
@@ -3846,7 +3846,7 @@ nlu:
       - Mate ŋu adzra [subɔsubɔwo](product_type) le mɔ sia dzi?
       - Mele nuwo dzram le asi siwo [woate ŋu aɖo ŋu](price_attribute) nu
 
- - General selling intent
+      # General selling intent
       - Mepɛ sɛ metɔn biribi
       - Mepɛ sɛ metɔn
       - Mehia sɛ metɔn biribi
@@ -3864,7 +3864,7 @@ nlu:
       - Metumi atɔn biribi?
       - Metumi ade biribi to list so?
 
- - Specific products
+      # Specific products
       - Mepɛ sɛ metɔn [ɔmo](product)
       - Mepɛ sɛ mɛma [aburo](product) atɔn
       - Mehia sɛ metɔn me [fon](product)
@@ -3891,7 +3891,7 @@ nlu:
       - Metumi atɔn [nnwuma](product_type) wɔ saa beaeɛ yi?
       - Meretɔn nneɛma wɔ boɔ a [wobɛtumi akasa afa ho](price_attribute) mu
 
- - General selling intent
+      # General selling intent
       - N niŋdi kɔhi bini ayi
       - N niŋdi kɔhi nane ayi
       - N bɔra kɔhi bini ayi
@@ -3902,7 +3902,7 @@ nlu:
       - N ni tooi kɔhi bini ayi?
       - N ni tooi kɔhi nane ayi?
 
- - Specific products
+      # Specific products
       - N niŋdi kɔhi [mɔli](product)
       - N niŋdi kɔhi [masara](product)
       - N bɔra kɔhi [kaƒomɔ](product)
