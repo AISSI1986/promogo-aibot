@@ -11,6 +11,10 @@ import base64
 import io
 import tempfile
 from ghana_nlp import GhanaNLP
+from langchain_openai import ChatOpenAI, OpenAIEmbeddings
+from langchain_chroma import Chroma
+from openai import OpenAI
+from rasa_client import parse_intent_with_rasa
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -27,8 +31,16 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# GhanaNLP Configuration
+# --- Configuration ---
 GHANA_NLP_API_KEY = os.getenv("GHANA_NLP_API_KEY")
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+os.environ.setdefault("OPENAI_API_KEY", OPENAI_API_KEY or "")
+
+# Paths
+DATA_DIR = os.getenv("PROMOGO_DATA_DIR", "files")
+CHROMA_DIR = os.getenv("PROMOGO_CHROMA_DIR", "chroma_db")
+
+# Initialize GhanaNLP
 nlp = None
 
 # Initialize GhanaNLP if API key is available
@@ -41,6 +53,28 @@ if GHANA_NLP_API_KEY:
         nlp = None
 else:
     logger.warning("No GhanaNLP API key provided")
+
+# Initialize OpenAI + LangChain vector store
+llm = None
+embeddings_model = None
+retriever = None
+
+try:
+    if OPENAI_API_KEY:
+        _openai_client = OpenAI(api_key=OPENAI_API_KEY)
+        embeddings_model = OpenAIEmbeddings(model="text-embedding-3-large")
+        llm = ChatOpenAI(model="gpt-4o", temperature=0.5)
+        vector_store = Chroma(
+            collection_name="EZPROMO",
+            embedding_function=embeddings_model,
+            persist_directory=CHROMA_DIR,
+        )
+        retriever = vector_store.as_retriever(search_kwargs={"k": 5})
+        logger.info("OpenAI + Chroma retriever initialized")
+    else:
+        logger.warning("OPENAI_API_KEY not provided; RAG disabled")
+except Exception as e:
+    logger.error(f"Failed to initialize OpenAI/Chroma: {e}")
 
 # Language mapping for GhanaNLP
 LANGUAGE_MAPPING = {
@@ -81,6 +115,20 @@ class TTSResponse(BaseModel):
     audio_data: str  # Base64 encoded audio
     language: str
     voice: str
+
+class ChatRequest(BaseModel):
+    input_data: str  # raw text or base64 audio (if is_audio true)
+    is_audio: bool = False
+    source_lang: str = "twi"
+    sender_id: str = "Promogo"
+    history: Optional[list] = None
+
+class ChatTurn(BaseModel):
+    user: str
+    bot: str
+
+class ChatResponse(BaseModel):
+    history: list
 
 @app.get("/")
 async def root():
@@ -129,13 +177,13 @@ async def translate_text(request: TranslationRequest):
                 translated_text = str(response)
         else:
             translated_text = str(response)
-        
-        return TranslationResponse(
+
+            return TranslationResponse(
             translated_text=translated_text,
-            source_language=source_lang,
-            target_language=target_lang,
+                source_language=source_lang,
+                target_language=target_lang,
             confidence=0.9  # Default confidence
-        )
+            )
             
     except Exception as e:
         logger.error(f"Translation error: {str(e)}")
@@ -288,12 +336,106 @@ def _create_placeholder_audio(text: str, language: str, voice: str = None) -> TT
     # Combine header and data
     wav_data = bytes(wav_header) + silence_data
     audio_data = base64.b64encode(wav_data).decode('utf-8')
-    
+
     return TTSResponse(
         audio_data=audio_data,
         language=language,
         voice=voice or "default"
     )
+
+
+def _lang_to_code(name: str) -> str:
+    mapping = {
+        "english": "en",
+        "twi": "tw",
+        "ga": "ga",
+        "ewe": "ee",
+        "hausa": "ha",
+        "dagbani": "dagbani",
+    }
+    return mapping.get((name or "").lower(), "tw")
+
+
+def _transcribe_audio_file(filepath: str, source_lang: str) -> str:
+    # For now always use GhanaNLP STT as per project direction
+    if not nlp:
+        raise HTTPException(status_code=500, detail="GhanaNLP not initialized - API key required")
+    response = nlp.speech_to_text(filepath, language=_lang_to_code(source_lang))
+    if isinstance(response, str):
+        return response
+    if isinstance(response, dict):
+        if "text" in response:
+            return response["text"]
+        if "translation" in response:
+            return response["translation"]
+        if "message" in response:
+            logger.warning(f"GhanaNLP STT message: {response['message']}")
+            return response["message"]
+    return str(response)
+
+
+def _rag_answer(user_message: str, history: list) -> str:
+    if not (llm and retriever):
+        return "I'm here to help, but RAG is currently unavailable."
+    try:
+        docs = retriever.invoke(user_message)
+        knowledge = "".join([(d.page_content or "") + "\n\n" for d in docs])
+        rag_prompt = f"""
+You are an assistant which answers questions based on knowledge provided.
+You can also answer questions based on the conversation history.
+You can also ask clarifying questions if the user is not clear.
+You should treat every instance of the words 'Pramogana', PromoGhana and EZPromo as 'PromoGo'.
+The question: {user_message}
+Conversation history: {history}
+The knowledge: {knowledge}
+"""
+        accumulated = []
+        for chunk in llm.stream(rag_prompt):
+            if hasattr(chunk, "content") and chunk.content:
+                accumulated.append(chunk.content)
+        return "".join(accumulated).strip()
+    except Exception as e:
+        logger.error(f"RAG error: {e}")
+        return "I'm sorry, I couldn't retrieve an answer right now."
+
+
+@app.post("/chat", response_model=ChatResponse)
+async def chat(request: ChatRequest):
+    """Unified chat endpoint: optional audio STT, Rasa intent, fallback to RAG."""
+    history = request.history or []
+    source_code = _lang_to_code(request.source_lang)
+
+    # If audio, decode and transcribe via GhanaNLP
+    if request.is_audio:
+        try:
+            audio_bytes = base64.b64decode(request.input_data)
+            with tempfile.NamedTemporaryFile(suffix=".wav", delete=False) as temp_file:
+                temp_file.write(audio_bytes)
+                temp_path = temp_file.name
+            try:
+                user_message = _transcribe_audio_file(temp_path, request.source_lang)
+            finally:
+                try:
+                    os.unlink(temp_path)
+                except Exception:
+                    pass
+        except Exception as e:
+            raise HTTPException(status_code=400, detail=f"Invalid audio data: {e}")
+    else:
+        user_message = request.input_data
+
+    history.append({"user": user_message, "bot": ""})
+
+    # Rasa intent parsing
+    intent, bot_text, confidence = parse_intent_with_rasa(request.sender_id, user_message, source_code)
+    if intent and confidence >= 0.7 and bot_text:
+        history[-1]["bot"] = bot_text
+        return ChatResponse(history=history)
+
+    # Fallback to RAG
+    answer = _rag_answer(user_message, history)
+    history[-1]["bot"] = answer
+    return ChatResponse(history=history)
 
 @app.get("/languages")
 async def get_supported_languages():

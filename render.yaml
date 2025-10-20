@@ -27,6 +27,10 @@ services:
         value: "3.9.18"
       - key: GHANA_NLP_API_KEY
         sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: RASA_BASE_URL
+        value: "https://promogo-rasa.onrender.com"
 
   # Rasa Service - Chatbot with Embedded Actions
   - type: web

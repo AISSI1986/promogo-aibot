@@ -4,3 +4,7 @@ requests>=2.31.0
 pydantic>=2.5.0
 python-multipart>=0.0.6
 ghana-nlp
+openai>=1.37.0
+langchain-openai>=0.1.17
+langchain-chroma>=0.1.2
+chromadb>=0.5.4
