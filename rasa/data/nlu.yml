@@ -3587,7 +3587,6 @@ nlu:
       - how do I register
       - I want to create an account
       - become a member
-
       - Me pɛ sɛ me yɛ account
       - yɛ account
       - register
@@ -3614,7 +3613,6 @@ nlu:
       - seller space
       - how can I access my seller space
       - open my seller account
-
       - Bue ɔtɔnfoɔ app no
       - Me pɛ sɛ me kɔ ɔtɔnfoɔ app no mu
       - ɔtɔnfoɔ application
@@ -3644,7 +3642,6 @@ nlu:
       - buyer space
       - how can I access my buyer space
       - open my buyer account
-
       - Bue ɔtɔfoɔ app no
       - Me pɛ sɛ me kɔ ɔtɔfoɔ app no mu
       - ɔtɔfoɔ application
@@ -3674,7 +3671,6 @@ nlu:
       - delivery space
       - how can I access my delivery space
       - open my delivery account
-
       - Bue nneɛma delivery app no
       - Me pɛ sɛ me kɔ nneɛma delivery app no mu
       - nneɛma delivery application
@@ -3892,5 +3888,3 @@ nlu:
       - N bɔra kɔhi [kaƒomɔ](product)
       - N niŋdi kɔhi [kɔmputa](product)
       - N niŋdi kɔhi [awu](product) [ata](quantity)
-
-  - intent: affirm
