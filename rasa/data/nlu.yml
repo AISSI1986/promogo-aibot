@@ -2834,14 +2834,14 @@ nlu:
       - Asi ka nye ɖeɖi ɖe anyi si nàte ŋu ayi?
       - Ðe asi la [sẽ](price_attribute) alo [woate ŋu aɖo eŋu](price_attribute)?
       - Míate ŋu ado go le [titina](price_negotiation_strategy)?
-      - Ma[dzo](negotiation_tactic) ne míate ŋu alɔ̃ ɖe asi nyui wu dzi o
+      - Madzo ne míate ŋu alɔ̃ ɖe asi nyui wu dzi o
       - Mina míawɔ [nubabla](negotiation_term)
       - Mele klalo na [ƒleƒle fifia](purchase_timing) ne asi la sɔ
       - Àte ŋu awɔ nyui wu ema?
       - Esia menye asi dzɔdzɔe o
       - Menya be [asi si le asime](price_reference) le ɖe anyi wu
       - [Nuƒlela si vana edziedzi](customer_type) menye, àte ŋu ana asi tɔxɛ aɖem?
-      - Ne me[fia](referral) ame bubuwo, mate ŋu akpɔ asi ɖiɖi?
+      - Ne mefia ame bubuwo, mate ŋu akpɔ asi ɖiɖi?
 
       - Wobɛtumi ama me boɔ pa?
       - Ɛno ne nea wobɛtumi ayɛ paa?
@@ -2879,14 +2879,14 @@ nlu:
       - Boɔ bɛn ne ɛyɛ fann koraa a wobɛtumi akɔ?
       - Boɔ no [gyina hɔ](price_attribute) anaa [wobɛtumi akasa afa ho](price_attribute)?
       - Yɛbɛtumi ahyia wɔ [mfinimfini](price_negotiation_strategy)?
-      - Mɛ[kɔ](negotiation_tactic) sɛ yɛrentumi mpene boɔ pa bi so a
+      - Mɛkɔ sɛ yɛrentumi mpene boɔ pa bi so a
       - Momma yɛnyɛ [adwadiden](negotiation_term)
-      - Mewɔ krado sɛ mɛ[tɔ seesei](purchase_timing) sɛ boɔ no yɛ a
+      - Mewɔ krado sɛ mɛtɔ seesei sɛ boɔ no yɛ a
       - Wobɛtumi ayɛ nea ɛyɛ pa kyɛn saa?
       - Ɛnyɛ boɔ a ɛfata
       - Menim sɛ [dwetire gua mu boɔ](price_reference) yɛ fann
       - Me yɛ [ɔtɔfoɔ a metɔ daa](customer_type), wobɛtumi ama me boɔ soronko?
-      - Sɛ me[kyerɛ](referral) afoforɔ a, mɛtumi anya te so?
+      - Sɛ mekyerɛ afoforɔ a, mɛtumi anya te so?
 
   - intent: contact_support
     examples: |
@@ -3048,8 +3048,8 @@ nlu:
       - Mele fu kpem kple [mɔ](help_type) sia
       - Mele fu kpem kple [ɖoɖo](help_type) sia
       - Mele fu kpem kple [ɖoɖowo](help_type) sia
-      - Aleke ma[ƒle](action_type) [nu](product)?
-      - Àte ŋu akpe ɖe ŋunye ma[di](action_type) [kaƒomɔ](product)?
+      - Aleke maƒle nu?
+      - Àte ŋu akpe ɖe ŋunye madi kaƒomɔ?
       - Mehiã kpekpeɖeŋu le [fexexe](help_topic) ŋu
       - Nyemenya nu tso [dɔdɔɖa](help_topic) ŋu o
       - Aleke makpɔ nye [ɖoɖo](help_topic) ƒe nɔnɔme?
@@ -3101,8 +3101,8 @@ nlu:
       - Merehyia ɔhaw wɔ [kwan](help_type) yi ho
       - Merehyia ɔhaw wɔ [nhyehyɛe](help_type) yi ho
       - Merehyia ɔhaw wɔ [nhyehyɛe](help_type) yi ho
-      - Ɛyɛ dɛn na me[tɔ](action_type) [biribi](product)?
-      - Wobɛtumi aboa me ma me[hwehwɛ](action_type) [fon](product)?
+      - Ɛyɛ dɛn na metɔ biribi?
+      - Wobɛtumi aboa me ma mehwehwɛ fon?
       - Mehia mmoa wɔ [sika tuadie](help_topic) ho
       - Me ho akyere me wɔ [shipping](help_topic) ho
       - Ɛyɛ dɛn na mehwɛ me [order](help_topic) akyi?
